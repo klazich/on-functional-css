@@ -1,7 +1,16 @@
 const gulp = require('gulp')
 
+gulp.task('html', function () {
+  const htmlmin = require('gulp-htmlmin')
+
+  return gulp.src('src/index.html')
+    .pipe(htmlmin())
+    .pipe(gulp.dest('build'))
+})
+
+
 gulp.task('css:sass', function () {
-  let sass = require('gulp-sass')
+  const sass = require('gulp-sass')
 
   return gulp
     .src('node_modules/bf-solid/_lib/solid.scss')
