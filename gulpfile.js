@@ -43,7 +43,7 @@ gulp.task('css:postcss', [`css:${styles}`], function () {
     uncss: {
       html: ['build/index.html'],
       ignore: [],
-    }
+    },
   }
 
   let processors = [
@@ -61,7 +61,7 @@ gulp.task('css:postcss', [`css:${styles}`], function () {
 
 
 gulp.task('css:beautify', [`css:${styles}`, 'css:postcss'], function () {
-  var stylefmt = require('gulp-stylefmt')
+  const stylefmt = require('gulp-stylefmt')
 
   return gulp.src('build/css/*.css')
     .pipe(stylefmt())
@@ -76,8 +76,8 @@ gulp.task('css:minify', [`css:${styles}`, 'css:postcss', 'css:beautify'], functi
 
   let options = {
     cssnano: {
-      autoprefixer: false
-    }
+      autoprefixer: false,
+    },
   }
 
   return gulp
