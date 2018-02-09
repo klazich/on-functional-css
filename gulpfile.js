@@ -88,3 +88,5 @@ gulp.task('css:minify', [`css:${styles}`, 'css:postcss', 'css:beautify'], functi
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('build/css'))
 })
+
+gulp.task('build', ['html', `css:${styles}`, 'css:postcss', 'css:beautify', 'css:minify'])
