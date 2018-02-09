@@ -1,5 +1,7 @@
 const gulp = require('gulp')
 
+const styles = 'tachyons'
+
 gulp.task('html', function () {
   const htmlmin = require('gulp-htmlmin')
 
@@ -9,7 +11,7 @@ gulp.task('html', function () {
 })
 
 
-gulp.task('css:sass', function () {
+gulp.task('css:solid', function () {
   const sass = require('gulp-sass')
 
   return gulp
@@ -19,7 +21,21 @@ gulp.task('css:sass', function () {
 })
 
 
-gulp.task('css:postcss', ['css:sass'], function () {
+gulp.task('css:tachyons', function () {
+  const postcss = require('gulp-postcss')
+
+  let processors = [
+    require('postcss-import'),
+    require('postcss-nested'),
+  ]
+
+  return gulp.src('node_modules/tachyons/src/tachyons.css')
+    .pipe(postcss(processors))
+    .pipe(gulp.dest('src/css'))
+})
+
+
+gulp.task('css:postcss', [`css:${styles}`], function () {
   const postcss = require('gulp-postcss')
   const sourcemaps = require('gulp-sourcemaps')
 
@@ -36,8 +52,7 @@ gulp.task('css:postcss', ['css:sass'], function () {
     require('postcss-cssnext'),
   ]
 
-  return gulp
-    .src('src/css/styles.css')
+  return gulp.src('src/css/styles.css')
     .pipe(sourcemaps.init())
     .pipe(postcss(processors))
     .pipe(sourcemaps.write('.'))
@@ -45,7 +60,7 @@ gulp.task('css:postcss', ['css:sass'], function () {
 })
 
 
-gulp.task('css:beautify', ['css:sass', 'css:postcss'], function () {
+gulp.task('css:beautify', [`css:${styles}`, 'css:postcss'], function () {
   var stylefmt = require('gulp-stylefmt')
 
   return gulp.src('build/css/*.css')
@@ -54,7 +69,7 @@ gulp.task('css:beautify', ['css:sass', 'css:postcss'], function () {
 })
 
 
-gulp.task('css:minify', ['css:sass', 'css:postcss', 'css:beautify'], function () {
+gulp.task('css:minify', [`css:${styles}`, 'css:postcss', 'css:beautify'], function () {
   const postcss = require('gulp-postcss')
   const sourcemaps = require('gulp-sourcemaps')
   const rename = require('gulp-rename')
