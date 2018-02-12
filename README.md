@@ -1,5 +1,11 @@
 # f(css)
-On Funtional CSS
+Recreating a medium article page with Tachyons (tachyons-bootstrap).
+
+Article: [Css and Scalability](http://mrmrs.github.io/writing/2016/03/24/scalable-css/)
+
+by: Adam Morse `@MRMRS`
+
+Recreating page: [Medium Branding Guidelines](https://medium.design/logos-and-brand-guidelines-f1a01a733592)
 
 ## Install
 ```
