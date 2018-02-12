@@ -1,6 +1,6 @@
 .vscode
 .idea
 node_modules
-build/
+dist/
 src/css/solid.css
 src/css/tachyons.css
