@@ -1,1 +1,21 @@
 @import "tachyons.css";
+
+/*@import "../../node_modules/tachyons/src/_debug.css";*/
+
+p {
+  font-family: "PT Serif", georgia, times, serif;
+}
+
+.serif {
+  font-family: "PT Serif", georgia, times, serif;
+}
+
+.sans-serif {
+  font-family: "PT Sans", -apple-system, BlinkMacSystemFont,
+  'avenir next', avenir,
+  'helvetica neue', helvetica,
+  ubuntu,
+  roboto, noto,
+  'segoe ui', arial,
+  sans-serif;
+}

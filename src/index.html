@@ -6,91 +6,505 @@
     <title>On Functional CSS</title>
 
     <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i|PT+Serif:400,400i,700,700i" rel="stylesheet">
 </head>
 
 <body class="w-100 sans-serif">
-    <header>
+<header class="cf fixed block w-100 bg-white">
+    <div class="flex items-center mw8 h3 ph3 mr-auto ml-auto">
 
-    </header>
-    <article>
-        <header class="bg-gold sans-serif">
-            <div class="mw9 center pa4 pt5-ns ph7-l">
-                <time class="f6 mb2 dib ttu tracked">
-                    <small>27 July, 2015</small>
-                </time>
-                <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
-                    <span class="bg-black-90 lh-copy white pa1 tracked-tight">
-                        Too many tools and frameworks
-                    </span>
-                </h3>
-                <h4 class="f3 fw1 georgia i">The definitive guide to the javascript tooling landscape in 2015.</h4>
-                <h5 class="f6 ttu tracked black-80">By Adam Morse</h5>
-            </div>
-        </header>
-
-        <div class="pa4 ph7-l georgia mw9-l center">
-            <p class="f5 f3-ns lh-copy measure georgia">
-                Theodore Sturgeon was a science fiction author, critic, and the basis for Kurt Vonnegut's recurring character Kilgore Trout.
-                He was prolific, authoring over 200 pieces himself and critiquing around 400 others.
-            </p>
-            <p class="f5 f3-ns lh-copy measure georgia">
-                In 1958 he published a piece in Venture proclaiming what he called "Sturgeon's Revelation"
-            </p>
-            <p class="f6 f5-ns lh-copy measure i pl4 bl bw1 b--gold mb4">
-                I repeat Sturgeon's Revelation, which was wrung out of me after twenty years of wearying defense of science fiction against
-                attacks of people who used the worst examples of the field for ammunition, and whose conclusion was that
-                ninety percent of SF is crud. Using the same standards that categorize 90% of science fiction as trash, crud,
-                or crap, it can be argued that 90% of film, literature, consumer goods, etc. is crap. In other words, the
-                claim (or fact) that 90% of science fiction is crap is ultimately uninformative, because science fiction
-                conforms to the same trends of quality as all other artforms.
-            </p>
-            <p class="f5 f4-ns lh-copy measure mb4">
-                You don't have to bounce a tennis ball very far in San Francisco before it will hit two developers complaining about how
-                many js tools/frameworks there are for development in 2015 and how much unneccessary complexity they add.
-                Doing a search on twitter for 'too many js tools' or 'yet another js framework' returns... a lot of people
-                lamenting the current state of affairs.
-            </p>
-
-            <p class="f5 f4-ns lh-copy measure">
-                This is most likely, the wrong conversation for us as a community, to be having. The presence of bad tools - shouldn't discourage
-                us from wanting more tools or frameworks. There are more books published in a single day than I will ever
-                be able to read in my lifetime. But this does not make me sad. Or overwhelm me. Mostly I think about how
-                excited I am to read the best books that are being published. And this is where we should push the conversation.
-                How do we build better tools? What does that look like?
-            </p>
+        <div class="relative flex items-center">
+            <a class="flex items-center" href="https://medium.com">
+                <svg class="o-80" width="45" height="45" viewBox="0 0 45 45">
+                    <path d="M5 40V5h35v35H5zm8.56-12.627c0 .555-.027.687-.318 1.03l-2.457 2.985v.396h6.974v-.396l-2.456-2.985c-.291-.343-.344-.502-.344-1.03V18.42l6.127 13.364h.714l5.256-13.364v10.644c0 .29 0 .342-.185.528l-1.848 1.796v.396h9.19v-.396l-1.822-1.796c-.184-.186-.21-.238-.21-.528V15.937c0-.291.026-.344.21-.528l1.823-1.797v-.396h-6.471l-4.622 11.542-5.203-11.542h-6.79v.396l2.14 2.64c.239.292.291.37.291.768v10.353z"></path>
+                </svg>
+            </a>
         </div>
-    </article>
 
-    <article class="cf ph3 ph5-ns pv5">
-        <header class="fn fl-ns w-50-ns pr4-ns">
-            <h1 class="f2 lh-title fw9 mb3 mt0 pt3 bt bw2">
-                On Typography
-            </h1>
-            <h2 class="f3 mid-gray lh-title">
-                An excerpt from the Form of the Book by Jan Tschichold
-            </h2>
-            <time class="f6 ttu tracked gray">Sometime before 1967</time>
-        </header>
-        <div class="fn fl-ns w-50-ns">
-            <p class="f5 lh-copy measure mt0-ns">
-                TYPOGRAPHY, even when poorly executed, can never be taken for granted; nor is it ever accidental. Indeed, beauti- fully typeset
-                pages are always the result of long experience. Now and then they even attain the rank of great artistic
-                achievement. But the art of typesetting stands apart from ex- pressive artwork, because the appeal is not
-                limited to a small circle. It is open to everyone's critical judgment, and nowhere does this judgment carry
-                more weight. Typography that can- not be read by everybody is useless. Even for someone who constantly ponders
-                matters of readability and legibility, it is difficult to determine whether something can be read with ease,
-                but the average reader will rebel at once when the type is too small or otherwise irritates the eye; both
-                are signs of a certain illegibility already.
-            </p>
-            <p class="f5 lh-copy measure">
-                All typography consists of letters. These appear either in the form of a smoothly running sentence or as an assembly of lines,
-                which may even have contrasting shapes. Good typog- raphy begins, and this is no minor matter, with the typeset-
-                ting of a single line of text in a book or a newspaper. Using exactly the same typeface, it is possible to
-                create either a pleasant line, easily read, or an onerous one. Spacing, if it is too wide or too compressed,
-                will spoil almost any typeface.
-            </p>
+        <div class="inline-flex items-center h-75">
+            <span class="dib mh3 br b--black-20 h-50"></span>
         </div>
-    </article>
+
+        <div class="inline-flex items-center pl1 ml1">
+            <a>
+                <span class="f5 b black-70">On Functional CSS</span>
+            </a>
+        </div>
+
+
+    </div>
+</header>
+<div class="block w-100 h3"></div>
+<article class="mw7 mr-auto ml-auto">
+    <div class="ph3">
+        <time class="f6 gray" datetime="2016-03-24 00:00:00 +0000">24 March 2016</time>
+        <h1 class="f6 ttu tracked">
+            Css and Scalability
+        </h1>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Several years ago I got curious about how css worked at scale. When I first started out,
+            there weren’t nearly as many learning resources as there are now. There were a few books
+            that my friends lent me and a couple of decent blog posts. But css was still pretty new
+            and most people hadn't started to think deeply or learn hard lessons about concepts of
+            maintainability when working with teams on large web apps.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Css zen garden was a highly influential demo 'back in the day.' Most of my colleagues
+            and I thought this did a perfect job at illustrating the power of the cascade. You could
+            drastically alter a site's visual design without touching even a bit of html.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            In the beginning, that’s what people sold me as a feature. By writing css, you could
+            make a change in one place and have it propagate everywhere. In principle this sounds
+            highly desirable. But eleven years later, my experience on both large and small teams is
+            that this is the most terrifying thing about css and can cripple an organizations
+            ability to iterate on their product.
+        </p>
+        <blockquote class="ph0 mh0">
+            <p class="i mb2">
+                Two css properties walk into a bar.<br>
+                A barstool in a completely different bar falls over.
+            </p>
+            <cite class="mt0 fs-normal">
+                <a class="f4 link dim black underline"
+                   href="https://twitter.com/thomasfuchs/status/493790680397803521"
+                   title="Thomas Fuchs on Twitter">
+                    - @thomasfuchs
+                </a>
+            </cite>
+        </blockquote>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            After countless implementations of css systems that broke down and became difficult to
+            maintain as apps and teams grew larger...I've found I want little to no part of the
+            cascade's 'features.'
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            I used to joke that the worst part about front-end development was that the other people
+            solving your problems were front-end developers. But in the past few years a lot of very
+            smart people have been thinking more about css and this has lead to some fascinating
+            discussions around how to build ‘scalable’ ui and how that relates to css. When I first
+            started to think about scalability I naturally started to read every blog post and watch
+            every tech talk I could get my hands on. There are a number of suggested 'best
+            practices' around how sass/less/stylus etc. will help you build maintainable css. How
+            mixins can make your code more DRY. How extends will keep your markup clean and pretty
+            to look at. How BEM will make your code so perfect you want to cry.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            But what is reality? What actually gets shipped to production? What do all of these tips
+            and tricks do to our production css? How does it affect the whole team? More important,
+            how are your end users affected?
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            When it comes to designing and shipping products I like to think about reality. Which
+            can be challenging sometimes. I’ve sat in too many meetings where people don't want to
+            hear or talk about reality. They talk in empty phrases about hypothetical possibilities.
+            I like to do drugs and talk like that too sometimes. But, if you don't accurately assess
+            where you currently are and what your reality is, it can be pretty tough to figure out
+            what your problems are. And the chance of finding solutions to unidentified problems is,
+            well, not good.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            So there I was, in the fall of 2014, a new employee at an <a title="sfdc dot com"
+                                                                         href="http://salesforce.com"
+                                                                         class="link black">award
+            winning tech company</a> that had a website. And that website had a lot of css. Wanting
+            to familiarize myself with the codebase - I opened up dev tools and started to read the
+            site's css.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Line by line.<br>
+            From start to finish.<br>
+        </p>
+        <p class="mb2">
+            Some of the code made me laugh:
+        </p>
+        <pre class="">
+<code class="">/* Start of reusable styles here */</code>
+</pre>
+
+        <p class="mb2">Some of the code made me cry.</p>
+        <pre class="">
+<code class="">.homepage-promos .grid-50 {
+    width: 100%
+}
+.homepage-promos .grid-33 {
+    width: 100%
+}
+.homepage-promos .grid-34 {
+    width: 100%
+}</code>
+</pre>
+
+        <p class="mb2">Some of it made me laugh and cry at the same time.</p>
+        <pre class="">
+<code>#seo-container {
+    display: none;
+}</code>
+</pre>
+        <p class="mb2">
+            Some of it made me wonder where numbers come from
+        </p>
+        <pre class="">
+<code>.product-tab {
+  height: 530px;
+  width: 99.7%;
+}</code>
+</pre>
+        <p class="mb2">Some of it made me thankful that I have read the spec</p>
+        <pre class="">
+<code>.container-inner.promo-status {
+     float: center;
+  }</code>
+</pre>
+        <p class="mb2">
+            Eventually, I stumbled across this class of code.
+        </p>
+        <pre class="">
+<code>.left {
+  float: left!important;
+}</code>
+</pre>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            I saw this class and thought - well at least you know what it does. Unlike some of the
+            other css it seemed like it was very reusable. By anyone who needed to float something
+            left.
+        </p>
+        <p class="mb2">
+            I kept reading and stumbled across this:</p>
+        <pre class="">
+<code>.left-max-scr1,
+.left-max-scr2,
+.left-max-scr3,
+.left-only-scr1 {
+    float: left;
+}</code>
+</pre>
+
+        <p class="mb2">…followed by this very similar block of code…</p>
+        <pre class="">
+<code>.left-min-scr2,
+.left-min-scr3,
+.left-max-scr3,
+.left-only-scr3 {
+    float: left;
+}</code>
+</pre>
+        <p class="mb2">
+            I found myself wondering what the story was behind this next code block. Is it for
+            elements with the class .header-nav-list that aren’t nested inside an element with the
+            class .header-nav-container?
+        </p>
+        <pre class="">
+<code>.header-nav-container .header-nav-list {
+    float: left;
+}
+
+.CA .header-nav-list.second {
+    float: left;
+}
+
+#nav.challenger-a .submenu-3col li,
+#nav.challenger-a .submenu-3col li {
+    float: left;
+}</code>
+</pre>
+
+        <p class="mb2">Here we start to see a mixture of content-semantic (.submenu) with visually
+            semantic class names
+            (-3col).</p>
+        <pre class="">
+<code>.ie6 #footer-content .flex-control-nav li a,
+.ie7 #footer-content .flex-control-nav li a,
+.ie8 #footer-content .flex-control-nav li a {
+    float: left;
+}
+
+#nav.challenger-a li.menu-products {
+    float: left;
+}</code></pre>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Css is interesting because unlike other types of code, you are most likely to find the
+            most recent code towards the bottom of the file. Reading a css file from start to finish
+            will often times reveal in chronological order how a defined system breaks down.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            In the above examples we see things breaking down to increasingly longer selectors that
+            have more and more weight that were only setting one property to one value: float: left.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Mind you, there are only three options for float. Contrary to one of the code examples
+            above, there is no float center. Just left, right, and none.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Reading the css made me think about a lot of things. One thing I couldn’t get out of my
+            head was - why all this work to change one thing? Why write all that code to just float
+            something left?
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            To me, this is a reflection of the mental model most people are in when they are writing
+            front-end code. They are generally trying to change one or two things in an interface
+            and that’s it. And when you are in this mode of development you want to limit the amount
+            of things you break - while also making the change that is being asked for in some jira
+            ticket that got assigned to you.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            I also started to think about communication and how it moves in multiple directions. If
+            I’m reading html, I want to know what the css is going to do. If I’m reading css I want
+            to know what will happen if I apply it to a block of html. In a great system there is a
+            two way street of information. If you look at the css, you can tell what will happen. If
+            you look at the html, you know what the code will do.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            But most front-end systems are not great. You have what I refer to as one-way streets of
+            information. If I am looking at a block of html and I can’t find ALL of the css that
+            will visually affect how it renders in under 5 seconds, I feel that system is failing.
+            So if I ran into the above example:
+        </p>
+        <code>
+            .container-inner.promo-status
+        </code>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            That means I would have to find elements that had both of those classes (but not limited
+            to) on an element. But by looking at this block of css I also have no idea if it has
+            been redefined elsewhere. So I must grep through the system to find definitions for
+            container-inner and promo-status. By the time I found those definitions - I would
+            probably have forgotten what I was trying to do in which case I’d leave my desk and go
+            get coffee.
+        </p>
+
+        <p class="mb2">
+            On the flip side think about this example:
+        </p>
+        <pre>
+<code>.red {
+  color: #FF4136;
+}</code>
+</pre>
+
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            I’d presume that this would make an element have red text. I was traditionally told this
+            is a horrible name for a class. But I quite like it. The only way I’d think it was bad
+            is if it set the color property to: purple, blue, or any other color that wasn’t red. Or
+            if it was mutated a few times to a few different shades of red. But more on that later.
+        </p>
+
+        <p class="mb2">And if I saw this block of html:</p>
+        <pre>
+<code>&lt;div class=“red”&gt;Some text&lt;/div&gt;</code>
+</pre>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            I’d know without looking at the css what was going to happen. This is what I call a
+            two-way street of information. It’s easy to learn a group of small classes that do one
+            thing well and can be reused in any context. There should be a one to one mapping
+            between a class and it’s definition. Having a class that has multiple definitions be
+            being redefined depending on context doesn’t solve problems, it creates them. The
+            concept of immutability is not new - but we’ve ignored it in the css community for far
+            too long. Imagine if you had a function called ‘filesize’ where you passed it a filename
+            and it returned the filesize. That sounds pretty great. But imagine if sometimes it
+            returned the amount of lines in the file. That doesn’t sound great at all does it. Well
+            that’s what you’re doing anytime you redefine a css class. It’s the worst for people who
+            are good at debugging css. It’s even more horrible for people new to the cascade.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            When we look at convoluted css, we must remember that behind every css ruleset is a
+            story. Maybe the author was on a time crunch and didn’t have time to look up if there
+            was some previously written code they could reuse. Maybe they don’t care about css at
+            all and the second something works they save, commit, and go back to writing monads.
+            When I write bad code, it isn’t because I’m not trying to write good code. There are
+            always other forces at work. What are the forces that work against writing clean
+            reusable code? How do we get rid of them? I’ve spent the last few years doing a lot of
+            user testing centered around how people write their own front-end code, consume other
+            peoples front-end code, and think about developing UI in general. It has been a pretty
+            valuable experience (as user-testing generally is). I’ve learned a lot about the
+            different mental models people use - and how to try to construct systems that allow
+            people of all abilities to spend more time designing / building and less time
+            debugging/fighting/crying.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            <b>Sidenote:</b> <i>(I don’t know where to fit this in)</i><br> Before I started doing
+            both performance and user testing I did not like the idea of oocss/atomic css. I really
+            liked writing monolithic classes and traversing the dom with my selectors. It made a ton
+            of sense to me and I was able to build out a lot of websites that way. Running tests and
+            testing my assumptions helped inform a lot of how I think about code now. I’m not very
+            interested in what I can do with css. I’m interested at this point in what I can help
+            groups of people do with css.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            If you’re going to build a new component, or change a piece of UI in your app - what do
+            you do? I don’t know anyone that reads all the available css in the app to see if there
+            is something they can reuse. Who has time to read thousands of lines of code before they
+            start working!? Even if people do have the time, I have not found that this is their
+            first instinct on how to get going. I don’t blame them.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Even if you did read all of the available css and stumbled upon some code that you think
+            might be reusable - what if someone edits it later? If you are starting from the
+            assumption that your css isn't reusable, your first instinct is to write new css. But
+            most likely you aren't creating a new classification of visual styles. In my experience
+            it is likely that you are replicating visual styles that already exist.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Salesforce may pay people a lot of money. And they may win Forbes awards for being the
+            most innovative. But they are not known for hiring people who are great at css. Their
+            css is anything but innovative. After reading all of the css and going through bits of
+            crying, head-scratching, and laughing out loud - I determined that this problem must
+            only exist at Salesforce. Surely awesome companies like Medium, GitHub, Adobe, and
+            Pinterest didn’t have this problem. They’ve hired some of the most amazing css
+            developers I’ve ever met. They must have figured out how to scale css.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Naturally I opened up their sites and started to read their css too. Line by line. From
+            start to finish. I wanted to see what everyone’s reality really was.
+        </p>
+
+        <p class="lh-copy mt4 f4 fw3 black-90">I found the exact same things.</p>
+
+        <p class="mb2">Let’s take a look at just the rulesets that set things to display none:</p>
+
+        <ul class="list lh-copy pl0 mt0">
+            <li><a class="link underline dim black"
+                   href="https://gist.github.com/mrmrs/786241f0a5fade0324e2"
+                   title="GitHub">GitHub</a></li>
+            <li><a class="link underline dim black"
+                   href="https://gist.github.com/mrmrs/57705f9a9fdce4d3d6f7"
+                   title="Pinterest">Pinterest</a></li>
+            <li><a class="link underline dim black"
+                   href="https://gist.github.com/mrmrs/07e2ad668bac33e2da67"
+                   title="Medium">Medium</a></li>
+            <li><a class="link underline dim black"
+                   href="https://gist.github.com/mrmrs/2d5592826adb45748bac"
+                   title="Adobe">Adobe</a></li>
+        </ul>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            That’s a lot of code setting things to display: none. If you look at the files above ask
+            yourself some questions: Do they seem like they follow the principles behind DRY? Does
+            this seem like a bunch of code you would know how to reuse?
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            If I’m going to write css, I want it to be reusable. If someone isn’t going to reuse it
+            - it seems pretty useless.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            So what does DRY even mean? Because you do have to repeat yourself somewhere! You either
+            repeat yourself in html or in css. But no matter how good you are at css - you can’t
+            build out a new component without editing html. But, it is possible to build a new
+            component without writing a single line of css. And this applies to changing UI too. You
+            should be able to change most things, just by editing html.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            When you repeat yourself in html, there isn’t any real damage to file size (read:
+            multi-class patterns will not bloat your html). A user doesn’t have to download every
+            html file from your website to view one page. Yet most web sites are architected in a
+            way that require you to download the css for the entire site when you try to view one
+            page. This is a broken model.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            The files I referenced above are the result of css authors generating really long
+            selectors that add a lot of weight to your cascade to do one or two things. And as time
+            goes on there are more and more things in your cascade to override. So your selectors
+            get longer and longer, your file sizes get bigger and bigger, and the amount of time you
+            spend debugging css is going to go up and up and up.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            In this model, you will never stop writing css. Refactoring css is hard and time
+            consuming. Deleting unused css is hard and time consuming. And more often than not -
+            it’s not work people are excited to do. So what happens? People keep writing more and
+            more css.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            This affects scalability in two ways. One, it makes it harder to work on your app
+            because you can't realistically memorize all of the css in your app. And if it isn't
+            internalized it isn't likely to be reused. It also means that your users have an
+            increasing amount of code to download. And if you think “oh but it will never get that
+            bad, gzip will save the day” - well you’re wrong. Pinterest has more than 1mb of
+            uncompressed css spread out over 5 files. Once gzipped it is still a whopping 159kb.
+            <b>That is a lot of css</b>. 97% of it isn’t used on the homepage. I’d rather just try
+            and send my users the 3% they do need.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Part of this code bloat is an attachment to authoring ‘content-semantic’ class names.
+            Honestly I’m surprised you can find people that still think this isn’t the worst idea
+            ever. <a class="link dim underline black"
+                     href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">
+            Nicolas Gallagher already wrote the mic drop piece on why this doesn’t work.</a> But for
+            some reason you still find people arguing for its merits as a silver bullet solution.
+            Personally I think most of the internet is unnecessarily broken. So I assume everything
+            we have been taught is most likely wrong.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            This is where we come to the crux of the problem I have with any system that requires
+            you to map visual styles to components in your css. Content semantics have <b
+                class="fw4 ttu">nothing to do with visual styles</b>. When I used to build things
+            with legos I never thought ‘oh this is a piece for an engine block’ I thought ‘oh cool
+            this is a 1x4 blue lego and I can do anything I want with it’. It didn't matter if I was
+            building an underwater aquanauts base or an airplane - I knew exactly how to use that
+            lego block.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            It’s all about lego bits. Because I never needed to re-contextualize my understanding of
+            lego blocks. I could use them across ‘projects’ and they were always the same. I dream
+            of this world in front-end development. I want lego blocks that work everywhere because
+            there is serious power in leveraging solutions that are project agnostic.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Outside of some brand specific background-images, gradients, and colors etc., the
+            overwhelming majority of css you would need for your site has already been written. Yet
+            we continue as a community to constantly reinvent the wheel. Which is starting to feel
+            like building a camera from scratch every time you want to take a photo. I totally think
+            building cameras from scratch is cool and a worthwhile endeavor. But I don’t want to do
+            it every time I am going to take a photo. I just want to go take photos.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            When I read about or listen to ideas on how to scale an app’s css - most of the talk is
+            about how to write css. The real way to scale css, is to stop writing css. Abstract out
+            the things you use most and move to a multi-class pattern where you compose visual
+            patterns in your html. You might be amazed at how quickly your team starts to move.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            There are a lot of problems that come along with people writing css. Inconsistent
+            values, the introduction of magic numbers, duplicate code, non-responsive patterns. I’m
+            sure there are others.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            If you create a system that is flexible and powerful, and pull from that, you might find
+            your designs to be more harmonious. You might spend less time debugging the cascade.
+            Your pages will probably load faster. But who knows. Maybe that won’t work for you at
+            all. All I know is the current model is definitely not going to work.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Writing new css should be the exception, not the rule.
+        </p>
+
+        <h3>Parting Thoughts</h3>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            If you have never read your outputted css from start to finish - I recommend it as an
+            amazing way to learn a lot about css and how people use it. After I read salesforce’s
+            css I started reading css in entirety for many sites. I still do this! I learn something
+            new every time.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Don’t take this as dogma. The real point of this whole piece is to encourage you to go
+            test your assumptions. Not many people sit with other people building UI and just
+            *observe* how they build out new features or refactor old ones. User-testing is such a
+            great exercise to learn about how people use things. You can learn a lot from people who
+            are great at writing front-end code and also people who are brand new to it. I wouldn’t
+            have learned much of this if I just sat around and tried to solve problems by myself or
+            read all the latest hip blog posts. The reality is lots of people with varying levels of
+            agency will touch your front-end code and you should design a system that works for
+            everyone.
+        </p>
+        <p class="lh-copy mt4 f4 fw3 black-90">
+            Thank you to everyone who has given me feedback on these thoughts over the last few
+            years. And special thanks to the trailblazers that had the guts to challenge existing
+            best practices and gave me the courage to do the same. I'm looking at you
+            <a class="link dim underline black"
+               href="http://twitter.com/stubbornella">@stubbornella</a>,
+            <a class="link dim underline black" href="http://twitter.com/necolas">@necolas</a>, and
+            <a class="link dim underline black" href="http://twitter.com/dam">@dam</a>.
+        </p>
+    </div>
+</article>
+
 
 </body>
 
