@@ -9,6 +9,7 @@
     "autoprefixer": "^7.2.5",
     "colorguard": "^1.2.1",
     "cssnano": "^3.10.0",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-htmlmin": "^4.0.0",
     "gulp-postcss": "^7.0.1",
