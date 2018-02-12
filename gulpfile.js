@@ -2,12 +2,21 @@ const gulp = require('gulp')
 
 const styles = 'tachyons'
 
+
+gulp.task('clean:dist', function () {
+  const del = require('del')
+  return del.sync('dist')
+})
+
 gulp.task('html', function () {
   const htmlmin = require('gulp-htmlmin')
+  const del = require('del')
+
+  del.sync('dist/*.html')
 
   return gulp.src('src/index.html')
     .pipe(htmlmin())
-    .pipe(gulp.dest('build'))
+    .pipe(gulp.dest('dist'))
 })
 
 
@@ -41,7 +50,7 @@ gulp.task('css:postcss', [`css:${styles}`], function () {
 
   let options = {
     uncss: {
-      html: ['build/index.html'],
+      html: ['dist/index.html'],
       ignore: [],
     },
   }
@@ -50,22 +59,23 @@ gulp.task('css:postcss', [`css:${styles}`], function () {
     require('postcss-import'),
     require('postcss-nested'),
     require('postcss-cssnext'),
+    require('postcss-font-magician')
   ]
 
   return gulp.src('src/css/styles.css')
     .pipe(sourcemaps.init())
     .pipe(postcss(processors))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('build/css'))
+    .pipe(gulp.dest('dist/css'))
 })
 
 
 gulp.task('css:beautify', [`css:${styles}`, 'css:postcss'], function () {
   const stylefmt = require('gulp-stylefmt')
 
-  return gulp.src('build/css/*.css')
+  return gulp.src('dist/css/*.css')
     .pipe(stylefmt())
-    .pipe(gulp.dest('build/css'))
+    .pipe(gulp.dest('dist/css'))
 })
 
 
@@ -81,12 +91,17 @@ gulp.task('css:minify', [`css:${styles}`, 'css:postcss', 'css:beautify'], functi
   }
 
   return gulp
-    .src('build/css/styles.css')
+    .src('dist/css/styles.css')
     .pipe(sourcemaps.init())
     .pipe(rename({ suffix: '.min' }))
     .pipe(postcss([require('cssnano')(options.cssnano)]))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('build/css'))
+    .pipe(gulp.dest('dist/css'))
 })
 
 gulp.task('build', ['html', `css:${styles}`, 'css:postcss', 'css:beautify', 'css:minify'])
+
+gulp.task('watch', function () {
+  gulp.watch('src/index.html', ['html'])
+  gulp.watch('src/css/styles.css', ['css:tachyons', 'css:postcss', 'css:beautify', 'css:minify'])
+})
