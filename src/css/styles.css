@@ -1,9 +1,15 @@
 @import "tachyons.css";
 
-/*@import "../../node_modules/tachyons/src/_debug.css";*/
+/*
+@import "../../node_modules/tachyons/src/_debug.css";
+*/
 
 p {
   font-family: "PT Serif", georgia, times, serif;
+}
+
+code {
+  font-family: Inconsolata, monospace;
 }
 
 .serif {
