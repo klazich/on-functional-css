@@ -4,6 +4,16 @@
 @import "../../node_modules/tachyons/src/_debug.css";
 */
 
+#first-p::first-letter {
+  font-family: "Source Sans Pro";
+  font-size: 4rem;
+  float: left;
+  margin-top: 0.60rem;
+  margin-right: 0.25rem;
+  margin-left: -0.25rem;
+  font-weight: 600;
+}
+
 p {
   font-family: "PT Serif", georgia, times, serif;
 }
@@ -16,8 +26,10 @@ code {
   font-family: "PT Serif", georgia, times, serif;
 }
 
+
+h1, h2, h3, h4, h5, h6,
 .sans-serif {
-  font-family: "PT Sans", -apple-system, BlinkMacSystemFont,
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
   'avenir next', avenir,
   'helvetica neue', helvetica,
   ubuntu,
