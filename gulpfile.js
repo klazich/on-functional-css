@@ -124,6 +124,7 @@ gulp.task('browserSync', () => {
   ========================================================================== */
 
 gulp.task('watch', ['css:tachyons', 'css:postcss', 'html', 'images', 'browserSync'], () => {
+  gulp.watch('src/images/**/*', ['images'])
   gulp.watch('src/index.html', ['html'])
   gulp.watch('src/css/styles.css', ['css:tachyons', 'css:postcss', 'html'])
   gulp.watch('dist/index.html').on('change', browserSync.reload)
