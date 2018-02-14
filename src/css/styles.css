@@ -5,13 +5,20 @@
 */
 
 #first-p::first-letter {
-  font-family: "Source Sans Pro";
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 4rem;
   float: left;
   margin-top: 0.60rem;
   margin-right: 0.25rem;
   margin-left: -0.25rem;
   font-weight: 600;
+}
+
+pre code {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
 }
 
 p {
