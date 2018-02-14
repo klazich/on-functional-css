@@ -1,21 +1,29 @@
 @import "tachyons.css";
 
-/*
-@import "../../node_modules/tachyons/src/_debug.css";
-*/
+/* uncomment to debug css */
+/* @import "../../node_modules/tachyons/src/_debug.css"; */
+
+.sticky {
+  position: sticky;
+}
+
+/* p .link {
+  color: inherit;
+  background-image: linear-gradient(transparent,transparent 87.5%,rgba(0,119,204,.125) 0);
+} */
 
 #first-p::first-letter {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 4rem;
+  font-size: 3.8rem;
   float: left;
-  margin-top: 0.60rem;
+  margin-top: 0.80rem;
   margin-right: 0.25rem;
   margin-left: -0.25rem;
   font-weight: 600;
 }
 
 pre code {
-  background-color: #eee;
+  background-color: var(--light-gray);
   border: 1px solid #999;
   display: block;
   padding: 20px;
