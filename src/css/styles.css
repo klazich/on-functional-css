@@ -36,11 +36,5 @@ code {
 
 h1, h2, h3, h4, h5, h6,
 .sans-serif {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-  'avenir next', avenir,
-  'helvetica neue', helvetica,
-  ubuntu,
-  roboto, noto,
-  'segoe ui', arial,
-  sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
