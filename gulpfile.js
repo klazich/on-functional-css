@@ -9,6 +9,13 @@ gulp.task('clean:dist', () => {
   return del.sync('dist')
 })
 
+/* Images tasks
+  ========================================================================== */
+
+gulp.task('images', () => {
+  return gulp.src('src/images/**/*')
+    .pipe(gulp.dest('dist/images'))
+})
 
 /* HTML tasks
   ========================================================================== */
@@ -116,7 +123,7 @@ gulp.task('browserSync', () => {
 /* Grouped and watch tasks
   ========================================================================== */
 
-gulp.task('watch', ['browserSync', 'css:tachyons', 'css:postcss', 'html'], () => {
+gulp.task('watch', ['css:tachyons', 'css:postcss', 'html', 'images', 'browserSync'], () => {
   gulp.watch('src/index.html', ['html'])
   gulp.watch('src/css/styles.css', ['css:tachyons', 'css:postcss', 'html'])
   gulp.watch('dist/index.html').on('change', browserSync.reload)
