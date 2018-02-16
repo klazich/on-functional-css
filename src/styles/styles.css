@@ -1,7 +1,7 @@
 @import "tachyons.css";
 
-/* uncomment to debug css */
-/* @import "../../node_modules/tachyons/src/_debug.css"; */
+/* uncomment to debug styles */
+/* @import "../../node_modules/tachyons/src/_debug.styles"; */
 
 .sticky {
   position: sticky;

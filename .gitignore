@@ -2,5 +2,5 @@
 .idea
 node_modules
 dist/
-src/css/solid.css
-src/css/tachyons.css
+tmp/
+src/styles/tachyons.css
