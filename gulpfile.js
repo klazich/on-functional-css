@@ -1,8 +1,9 @@
-const gulp = require('gulp')
-const del = require('del')
-const paths = require('./paths.js')
+let gulp = require('gulp')
+let del = require('del')
+let paths = require('./paths.js')
 
-const browserSync = require('browser-sync').create()
+let browserSync = require('browser-sync').create()
+let reload = browserSync.reload
 
 let options = {
   uncss: {
@@ -11,90 +12,62 @@ let options = {
   },
   fontMagician: {
     display: 'fallback',
-  },
-  browserSync: {
-    match: '**/*.css',
-  },
-  cssnano: {
-    autoprefixer: false,
-    preset: ['default', {
-      discardComments: {
-        removeAll: true,
-      },
-    }]
   }
 }
 
-
-gulp.task('clean', function (done) {
-  return del(['dist', 'tmp'], done)
-})
-
-
-gulp.task('browserSync', function () {
+gulp.task('browserSync', () => {
   browserSync.init({
-    server: { baseDir: 'dist' },
+    server: {
+      baseDir: 'dist'
+    },
   })
 })
 
-
-// tasks - clean
-gulp.task('clean:images', (done) => del(paths.images.dest, done))
-gulp.task('clean:html', (done) => del(paths.html.dest + 'index.html', done))
-gulp.task('clean:tachyons', (done) => del(paths.tachyons.dest + 'tachyons.css', done))
-gulp.task('clean:styles', (done) => del(paths.styles.dest, done))
-
-// tasks - copy
-gulp.task('copy:images', () => gulp.src(paths.images.src).pipe(gulp.dest(paths.images.dest)))
-gulp.task('copy:html', () => gulp.src(paths.html.src).pipe(gulp.dest(paths.html.dest)))
-
-
-gulp.task('build:tachyons', () => {
-  const postcss = require('gulp-postcss')
-
-  let processors = [
-    require('postcss-import'),
-    require('postcss-nested'),
-  ]
-
-  return gulp.src(paths.tachyons.src)
-    .pipe(postcss(processors))
-    .pipe(gulp.dest(paths.tachyons.dest))
-})
+cleanImages = (done) => del(paths.images.dest, done)
+cleanStyles = (done) => del(paths.styles.dest, done)
+copyImages = () => gulp.src(paths.images.src).pipe(gulp.dest(paths.images.dest))
+copyHtml = () => gulp.src(paths.html.src).pipe(gulp.dest(paths.html.dest))
 
 gulp.task('build:styles', () => {
-  const stylefmt = require('gulp-stylefmt')
-  const postcss = require('gulp-postcss')
-  const rename = require('gulp-rename')
+  let sourcemaps = require('gulp-sourcemaps')
+  let stylefmt = require('gulp-stylefmt')
+  let postcss = require('gulp-postcss')
+  let rename = require('gulp-rename')
+  let cleanCSS = require('gulp-clean-css')
 
   let processors = [
     require('postcss-import'),
     require('postcss-nested'),
-    require('postcss-uncss')(options.uncss),
+    // require('postcss-uncss')(options.uncss),
     require('postcss-cssnext'),
     require('postcss-font-magician')(options.fontMagician),
   ]
 
   return gulp.src(paths.styles.src)
+    .pipe(sourcemaps.init())
     .pipe(postcss(processors))
-    .pipe(stylefmt())
+    .pipe(cleanCSS({format: 'beautify'}))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.styles.dest))
-    .pipe(postcss([require('cssnano')(options.cssnano)]))
     .pipe(rename({ suffix: '.min' }))
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.styles.dest))
-    .pipe(browserSync.stream(options.browserSync))
+    .pipe(browserSync.stream())
 })
 
-gulp.task('images', gulp.series('clean:images', 'copy:images'))
-gulp.task('html', gulp.series('clean:html', 'copy:html'))
-gulp.task('tachyons', gulp.series('clean:tachyons', 'build:tachyons'))
-gulp.task('styles', gulp.series('clean:styles', 'build:styles'))
+// grouped
+gulp.task('html', gulp.series(copyHtml))
+gulp.task('images', gulp.series(cleanImages, copyImages))
+gulp.task('styles', gulp.series(cleanStyles, 'build:styles'))
+gulp.task('build', gulp.parallel(gulp.series('html', 'styles'), 'images'))
 
+// watchers
+watchImages = () => gulp.watch(paths.images.src, gulp.series('images'))
+watchStyles = () => gulp.watch(paths.styles.src, gulp.series('styles'))
+watchHtml = () => gulp.watch(paths.html.src, gulp.series('html'))
+watchDist = () => gulp.watch(paths.html.dest).on('change', reload)
+gulp.task('watch', gulp.parallel(watchHtml, watchImages, watchStyles, watchDist))
 
-// gulp.task('watch', gulp.series(gulp.parallel('tachyons', 'html', 'images'), 'styles', 'styles:minify', 'browserSync', function () {
-//   gulp.watch(paths.images.src, ['images'])
-//   gulp.watch(paths.html.src, ['html'])
-//   gulp.watch(paths.styles.src, gulp.series('styles', 'styles:minify'))
-//   gulp.watch(paths.html.dest).on('change', browserSync.reload)
-// }))
-
+// default - all together
+gulp.task('default', gulp.series('build', gulp.parallel('watch', 'browserSync')))
