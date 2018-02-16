@@ -5,7 +5,7 @@ module.exports = {
   tmp: 'tmp/',
 
   styles: {
-    src: 'src/styles/**/*.css',
+    src: 'src/styles/styles.css',
     dest: 'dist/styles/',
     tmp: 'tmp/styles/',
   },
@@ -24,14 +24,14 @@ module.exports = {
 
   html: {
     src: 'src/index.html',
-    dest: 'dist/index.html',
-    tmp: 'tmp/index.html',
+    dest: 'dist/',
+    tmp: 'tmp/',
   },
 
   tachyons: {
     src: 'node_modules/tachyons/src/tachyons.css',
-    tmp: 'src/styles/tachyons.css',
-    dest: 'src/styles/tachyons.css'
+    tmp: 'tmp/styles/',
+    dest: 'src/styles/'
   },
 
 }
