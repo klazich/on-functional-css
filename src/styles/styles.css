@@ -1,7 +1,7 @@
-@import "tachyons.css";
+@import "../../node_modules/tachyons/src/tachyons.css";
 
 /* uncomment to debug styles */
-/* @import "../../node_modules/tachyons/src/_debug.styles"; */
+/* @import "../../node_modules/tachyons/src/_debug.css"; */
 
 .sticky {
   position: sticky;
@@ -22,11 +22,21 @@
   font-weight: 600;
 }
 
-pre code {
-  background-color: var(--light-gray);
-  border: 1px solid #999;
+/* pre code {
+  background-color: var(--light-green);
   display: block;
-  padding: 20px;
+} */
+
+pre {
+  tab-size: 4;
+  overflow-x: auto;
+}
+
+@media print {
+  pre {
+    overflow-x:visible;
+    white-space:pre-wrap;
+  }
 }
 
 p {
