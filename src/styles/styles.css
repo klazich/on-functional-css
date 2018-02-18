@@ -4,7 +4,7 @@
 /* @import "../../node_modules/tachyons/src/_debug.css"; */
 
 .sticky {
-  position: sticky;
+  position : sticky;
 }
 
 /* p .link {
@@ -13,46 +13,45 @@
 } */
 
 #first-p::first-letter {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 3.8rem;
-  float: left;
-  margin-top: 0.80rem;
-  margin-right: 0.25rem;
-  margin-left: -0.25rem;
-  font-weight: 600;
+  font-family  : "Source Sans Pro", sans-serif;
+  font-size    : 3.8rem;
+  float        : left;
+  margin-top   : 0.80rem;
+  margin-right : 0.25rem;
+  margin-left  : -0.25rem;
+  font-weight  : 600;
 }
 
-/* pre code {
-  background-color: var(--light-green);
-  display: block;
-} */
+pre code {
+  line-height      : 1.5;
+  //font-size        : 85%;
+}
 
 pre {
-  tab-size: 4;
-  overflow-x: auto;
+  tab-size   : 4;
+  overflow-x : auto;
 }
 
 @media print {
   pre {
-    overflow-x:visible;
-    white-space:pre-wrap;
+    overflow-x  : visible;
+    white-space : pre-wrap;
   }
 }
 
 p {
-  font-family: "PT Serif", georgia, times, serif;
+  font-family : "PT Serif", georgia, times, serif;
 }
 
 code {
-  font-family: Inconsolata, monospace;
+  font-family : Iosevka, Consolas, monospace;
 }
 
 .serif {
-  font-family: "PT Serif", georgia, times, serif;
+  font-family : "PT Serif", georgia, times, serif;
 }
-
 
 h1, h2, h3, h4, h5, h6,
 .sans-serif {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family : "Source Sans Pro", sans-serif;
 }
