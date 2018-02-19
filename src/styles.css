@@ -1,7 +1,7 @@
-@import "../../node_modules/tachyons/src/tachyons.css";
+@import "../node_modules/tachyons/src/tachyons.css";
 
 /* uncomment to debug styles */
-/* @import "../../node_modules/tachyons/src/_debug.css"; */
+/* @import "../node_modules/tachyons/src/_debug.css"; */
 
 .sticky {
   position : sticky;
@@ -24,7 +24,7 @@
 
 pre code {
   line-height      : 1.5;
-  //font-size        : 85%;
+  font-size        : 85%;
 }
 
 pre {
