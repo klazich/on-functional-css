@@ -1,72 +1,66 @@
-const gulp       = require('gulp')
-const newer      = require('gulp-newer')
-const imagemin   = require('gulp-imagemin')
-const htmlmin    = require('gulp-html-minifier')
-const stylefmt   = require('gulp-stylefmt')
-const postcss    = require('gulp-postcss')
-const rename     = require('gulp-rename')
+const path = require('path')
+
+const gulp = require('gulp')
+const newer = require('gulp-newer')
+const imagemin = require('gulp-imagemin')
+const htmlmin = require('gulp-html-minifier')
+const stylefmt = require('gulp-stylefmt')
+const postcss = require('gulp-postcss')
+const rename = require('gulp-rename')
 const sourcemaps = require('gulp-sourcemaps')
-const injectStr  = require('gulp-inject-string')
-const inline     = require('gulp-inline')
-const del        = require('del')
-const Browser    = require('browser-sync')
-const noop       = require('./noop.js')
+const injectStr = require('gulp-inject-string')
+const inline = require('gulp-inline')
+const del = require('del')
+const Browser = require('browser-sync')
+const noop = require('./noop.js')
 
 const browser = Browser.create()
-const reload  = browser.reload
+const reload = browser.reload
 
 const options = {
-  uncss       : { html: ['src/index.html'] },
+  uncss: { html: ['src/index.html'] },
   fontMagician: {
     display: 'fallback',
-    hosted : ['src/fonts/ttf', 'src/fonts/woff', 'src/fonts/woff2'],
+    hosted: ['src/fonts/ttf', 'src/fonts/woff', 'src/fonts/woff2'],
   },
-  rename      : { suffix: '.min' },
-  inline      : { base: 'tmp/', disabledTypes: ['js', 'css', 'img'] },
-  cssnano     : { autoprefixer: false },
+  rename: { suffix: '.min' },
+  inline: { base: 'tmp/', disabledTypes: ['js', 'css', 'img'] },
+  cssnano: { autoprefixer: false },
 }
 
-/**
- * Clean tmp/dist gulp task
- */
-
-let clean = dir => done => del(dir, done)
-
-gulp.task('clean', clean(['tmp', 'dist']))
-
 
 /**
- * Fonts gulp tasks
+ * Fonts/images assets functions
  */
 
-let fonts = dest => () =>
+const fonts = dest => () =>
   gulp.src('src/fonts/**/*')
-    .pipe(newer(dest))
-    .pipe(gulp.dest(dest))
+    .pipe(newer(path.resolve(dest, 'fonts')))
+    .pipe(gulp.dest(path.resolve(dest, 'fonts')))
 
-gulp.task('fonts', fonts('tmp/fonts'))
-gulp.task('fonts:dist', fonts('dist/fonts'))
-
-
-/**
- * Images gulp tasks
- */
-
-let images = dest => () =>
+const images = dest => () =>
   gulp.src('src/images/**/*')
-    .pipe(newer(dest))
+    .pipe(newer(path.resolve(dest, 'images')))
     .pipe(imagemin({ optimizationLevel: 5 }))
-    .pipe(gulp.dest(dest))
+    .pipe(gulp.dest(path.resolve(dest, 'images')))
 
-gulp.task('images', images('tmp/images'))
-gulp.task('images:dist', images('dist/images'))
+const assets = dest => gulp.parallel(fonts(dest), images(dest))
 
 
 /**
- * HTML gulp task
+ * Javascript function
  */
 
-let html = dest => () =>
+const js = dest => () =>
+  gulp.src('src/js/**/*')
+    .pipe(gulp.dest(dest))
+
+
+/**
+ * HTML functions
+ */
+
+const html = dest => () =>
   gulp.src('src/index.html')
     .pipe(newer(dest))
     .pipe(inline(options.inline))
@@ -74,27 +68,25 @@ let html = dest => () =>
     .pipe(dest === 'dist' ? htmlmin() : noop())
     .pipe(gulp.dest(dest))
 
-gulp.task('html', ['images'], html('tmp'))
-gulp.task('html:dist', ['images:dist'], html('dist'))
-
 
 /**
- * CSS gulp task
+ * CSS functions
  */
 
-let css = dest => {
+const css = dest => {
 
   let processors = [
-    require('postcss-import'),
-    require('postcss-nested'),
-    require('postcss-cssnext'),
+    require('postcss-import')(),
+    require('postcss-nested')(),
+    require('postcss-discard-comments')(),
+    require('postcss-cssnext')(),
     require('postcss-font-magician')(options.fontMagician),
-    require('postcss-svgo'),
-    require('postcss-sorting'),
-    require('css-mqpacker'),
+    require('postcss-svgo')(),
+    require('postcss-sorting')(),
+    require('css-mqpacker')(),
   ]
 
-  if ( dest === 'dist' ) {
+  if (dest === 'dist') {
     processors = [
       ...processors,
       require('postcss-uncss')(options.uncss),
@@ -104,7 +96,7 @@ let css = dest => {
 
   processors = [
     ...processors,
-    require('postcss-reporter'),
+    require('postcss-reporter')(),
   ]
 
   return () =>
@@ -118,40 +110,58 @@ let css = dest => {
       .pipe(browser.stream())
 }
 
-gulp.task('css', ['html', 'images', 'fonts'], css('tmp'))
-gulp.task('css:dist', ['html:dist', 'images:dist', 'fonts:dist'], css('dist'))
+/**
+ * Build and clean functions
+ */
+
+const clean = dir => done => del(dir, done)
+const build = dest => gulp.series(clean(['tmp', 'dist']), assets(dest), js(dest), html(dest), css(dest))
 
 
 /**
- * Build gulp tasks
+ * BrowserSync init function
  */
 
-gulp.task('build', ['html', 'css', 'fonts'])
-gulp.task('build:dist', ['html:dist', 'css:dist', 'fonts:dist'])
-
-
-/**
- * BrowserSync init task
- */
-
-gulp.task('browserSync', ['build'], () => {
+const bs = dest => () => {
   browser.init({
-    server: { baseDir: 'tmp' },
+    server: { baseDir: dest },
   })
-})
+}
+
 
 /**
- * Watch and serve gulp tasks
+ * Watch and serve functions
  */
 
-gulp.task('watch', ['build'], () => {
-  gulp.watch('src/fonts/**/*', ['fonts'])
-  gulp.watch('src/images/**/*', ['images'])
-  gulp.watch('src/index.html', ['html'])
-  gulp.watch('src/styles.css', ['css'])
+const watch = dest => () => {
+  gulp.watch('src/fonts/**/*', fonts(dest))
+  gulp.watch('src/images/**/*', images(dest))
+  gulp.watch('src/js/index.js', js(dest))
+  gulp.watch('src/index.html', html(dest))
+  gulp.watch('src/styles.css', css(dest))
   gulp.watch('tmp/index.html').on('change', reload)
-})
+  gulp.watch('tmp/bundle.js').on('change', reload)
+}
 
-gulp.task('serve', ['watch', 'browserSync'])
+const serve = dest => gulp.series(build(dest), gulp.parallel(watch(dest), bs(dest)))
 
-gulp.task('default', ['serve'])
+
+/**
+ * Gulp tasks
+ */
+
+// tmp
+gulp.task(`assets`, assets('tmp'))
+gulp.task(`html`, gulp.series(assets('tmp'), html('tmp')))
+gulp.task(`css`, gulp.series(assets('tmp'), html('tmp'), css('tmp')))
+gulp.task(`clean`, clean('tmp'))
+gulp.task(`build`, build('tmp'))
+gulp.task('serve', serve('tmp'))
+gulp.task('default', serve('tmp'))
+
+// dist
+gulp.task(`assets:dist`, assets('dist'))
+gulp.task(`html:dist`, gulp.series(assets('dist'), html('dist')))
+gulp.task(`css:dist`, gulp.series(assets('dist'), html('dist'), css('dist')))
+gulp.task(`clean:dist`, clean('dist'))
+gulp.task(`build:dist`, build('dist'))
