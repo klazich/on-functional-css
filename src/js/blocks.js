@@ -1,9 +1,14 @@
 
 const data = {
 
-  block01: `/* Start of reusable styles here */`,
+  block01: 
 
-  block02: `.homepage-promos .grid-50 {
+`/* Start of reusable styles here */`,
+
+  
+  block02: 
+  
+`.homepage-promos .grid-50 {
   width: 100%
 }
 .homepage-promos .grid-33 {
@@ -13,38 +18,59 @@ const data = {
   width: 100%
 }`,
 
-  block03: `#seo-container {
+  
+  block03: 
+
+`#seo-container {
   display: none;
 }`,
 
-  block04: `.product-tab {
-height: 530px;
-width: 99.7%;
+  
+  block04: 
+  
+`.product-tab {
+  height: 530px;
+  width: 99.7%;
 }`,
 
-  block05: `.container-inner.promo-status {
-   float: center;
+  
+  block05: 
+  
+`.container-inner.promo-status {
+  float: center;
 }`,
 
-  block06: `.left {
-float: left!important;
+  
+  block06: 
+  
+`.left {
+  float: left!important;
 }`,
 
-  block07: `.left-max-scr1,
+  
+  block07: 
+  
+`.left-max-scr1,
 .left-max-scr2,
 .left-max-scr3,
 .left-only-scr1 {
   float: left;
 }`,
 
-  block08: `.left-min-scr2,
+  
+  block08: 
+  
+`.left-min-scr2,
 .left-min-scr3,
 .left-max-scr3,
 .left-only-scr3 {
   float: left;
 }`,
 
-  block09: `.header-nav-container .header-nav-list {
+  
+  block09: 
+  
+`.header-nav-container .header-nav-list {
   float: left;
 }
 
@@ -57,7 +83,10 @@ float: left!important;
   float: left;
 }`,
 
-  block10: `.ie6 #footer-content .flex-control-nav li a,
+  
+  block10: 
+  
+`.ie6 #footer-content .flex-control-nav li a,
 .ie7 #footer-content .flex-control-nav li a,
 .ie8 #footer-content .flex-control-nav li a {
   float: left;
@@ -67,13 +96,23 @@ float: left!important;
   float: left;
 }`,
 
-  block11: `.container-inner.promo-status`,
+  
+  block11: 
+  
+`.container-inner.promo-status`,
 
-  block12: `.red {
-color: #FF4136;
+  
+  block12: 
+  
+`.red {
+  color: #FF4136;
 }`,
 
-  block13: `&lt;div class“red”&gt;Some text&lt;/div&gt;`,
+  
+  block13: 
+  
+`&lt;div class“red”&gt;Some text&lt;/div&gt;`
+  
 }
 
 
