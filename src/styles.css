@@ -32,6 +32,20 @@ pre {
   overflow-x : auto;
 }
 
+/* code {
+  color: var(--white);
+  background-color: rgba(0, 0, 0, .8);
+  padding-left: .5rem;
+  padding-right: .5rem;
+  border-radius: 2px;
+} */
+
+/* #header {
+  background-color: rgba(255,255,255,0.4);
+	box-shadow: 0 0 1px rgba(0,0,0,0.25);
+	transition: background-color 0.3s ease-in-out;
+} */
+
 @media print {
   pre {
     overflow-x  : visible;

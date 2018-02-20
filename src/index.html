@@ -5,18 +5,18 @@
   <meta charset="UTF-8">
   <title>On Functional CSS</title>
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"
-        rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css"/>
   <link href="styles.css" rel="stylesheet">
-  <!--    <link href="https://fonts.googleapis.com/css?family=|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i|PT+Serif:400,400i,700,700i"
-            rel="stylesheet">-->
+  <!-- <link href="https://fonts.googleapis.com/css?family=|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i|PT+Serif:400,400i,700,700i" rel="stylesheet"> -->
+  <script src="index.js" type="module"></script>
+  <script defer src="bundle.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 </head>
 
 <body class="w-100 sans-serif">
-<header class="sticky top-0 block w-100 bg-white">
+<header id="header" class="sticky top-0 block w-100 bg-white">
   <div class="flex items-center mw8 h3 ph3 mr-auto ml-auto">
 
     <div class="inline-flex relative items-center">
@@ -62,7 +62,7 @@
   </div>
 </header>
 
-<article class="mw7 ph3 mr-auto ml-auto">
+<article id="app" class="mw7 ph3 mr-auto ml-auto">
 
   <div class="mh3 mv4 mb3">
     <div class="dtc w2 w3-ns v-mid">
@@ -193,66 +193,37 @@
       Some of the code made me laugh:
     </p>
 
-    <figure>
-      <pre><code>/* Start of reusable styles here */</code></pre>
-    </figure>
+    <figure><pre><code>{{ block01 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Some of the code made me cry.
     </p>
 
-    <figure>
-<pre><code>.homepage-promos .grid-50 {
-    width: 100%
-}
-.homepage-promos .grid-33 {
-    width: 100%
-}
-.homepage-promos .grid-34 {
-    width: 100%
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block02 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Some of it made me laugh and cry at the same time.
     </p>
 
-    <figure>
-<pre><code>#seo-container {
-    display: none;
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block03 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Some of it made me wonder where numbers come from
     </p>
 
-    <figure>
-<pre><code>.product-tab {
-  height: 530px;
-  width: 99.7%;
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block04 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Some of it made me thankful that I have read the spec
     </p>
 
-    <figure>
-<pre><code>.container-inner.promo-status {
-     float: center;
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block05 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Eventually, I stumbled across this class of code.
     </p>
 
-    <figure>
-<pre><code>.left {
-  float: left!important;
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block06 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       I saw this class and thought - well at least you know what it does. Unlike some of the
@@ -263,27 +234,13 @@
       I kept reading and stumbled across this:
     </p>
 
-    <figure>
-<pre><code>.left-max-scr1,
-.left-max-scr2,
-.left-max-scr3,
-.left-only-scr1 {
-    float: left;
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block07 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       …followed by this very similar block of code…
     </p>
 
-    <figure>
-<pre><code>.left-min-scr2,
-.left-min-scr3,
-.left-max-scr3,
-.left-only-scr3 {
-    float: left;
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block08 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       I found myself wondering what the story was behind this next code block. Is it for
@@ -291,37 +248,14 @@
       class .header-nav-container?
     </p>
 
-    <figure>
-<pre><code>.header-nav-container .header-nav-list {
-    float: left;
-}
-
-.CA .header-nav-list.second {
-    float: left;
-}
-
-#nav.challenger-a .submenu-3col li,
-#nav.challenger-a .submenu-3col li {
-    float: left;
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block09 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
-      Here we start to see a mixture of content-semantic (.submenu) with visually semantic
+      Here we start to see a mixture of content-semantic (<code>.submenu</code>) with visually semantic
       class names (-3col).
     </p>
 
-    <figure>
-<pre><code>.ie6 #footer-content .flex-control-nav li a,
-.ie7 #footer-content .flex-control-nav li a,
-.ie8 #footer-content .flex-control-nav li a {
-    float: left;
-}
-
-#nav.challenger-a li.menu-products {
-    float: left;
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block10 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Css is interesting because unlike other types of code, you are most likely to find the
@@ -330,7 +264,8 @@
     </p>
     <p class="lh-copy mv4 f4 fw3 black-80">
       In the above examples we see things breaking down to increasingly longer selectors that
-      have more and more weight that were only setting one property to one value: float: left.
+      have more and more weight that were only setting one property to one value:
+      <code>float: left</code>.
     </p>
     <p class="lh-copy mv4 f4 fw3 black-80">
       Mind you, there are only three options for float. Contrary to one of the code examples
@@ -362,9 +297,7 @@
       So if I ran into the above example:
     </p>
 
-    <figure>
-      <pre><code>.container-inner.promo-status</code></pre>
-    </figure>
+    <figure><pre><code>{{ block11 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       That means I would have to find elements that had both of those classes (but not limited
@@ -379,11 +312,7 @@
       On the flip side think about this example:
     </p>
 
-    <figure>
-<pre><code>.red {
-  color: #FF4136;
-}</code></pre>
-    </figure>
+    <figure><pre><code>{{ block12 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       I’d presume that this would make an element have red text. I was traditionally told this
@@ -396,9 +325,7 @@
       And if I saw this block of html:
     </p>
 
-    <figure>
-      <pre><code>&lt;div class=“red”&gt;Some text&lt;/div&gt;</code></pre>
-    </figure>
+    <figure><pre><code>{{ block13 }}</code></pre></figure>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       I’d know without looking at the css what was going to happen. This is what I call a
