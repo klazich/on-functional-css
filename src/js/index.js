@@ -1,10 +1,11 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
-import data from './blocks'
+import data from './data'
+import '../styles.css'
 
 
-let app = new Vue({
-  el: '#app',
-  data: data
+new Vue({
+  el  : '#app',
+  data: data,
 })
 
