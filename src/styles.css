@@ -1,7 +1,7 @@
 @import "../node_modules/tachyons/src/tachyons.css";
 
 /* uncomment to debug styles */
-/* @import "../node_modules/tachyons/src/_debug.css"; */
+@import "../node_modules/tachyons/src/_debug.css";
 
 .sticky {
   position : sticky;
@@ -54,15 +54,15 @@ pre {
 }
 
 p {
-  font-family : "PT Serif", georgia, times, serif;
+  font-family : "PT Serif", serif;
 }
 
 code {
-  font-family : Iosevka, Consolas, monospace;
+  font-family : Iosevka, monospace;
 }
 
 .serif {
-  font-family : "PT Serif", georgia, times, serif;
+  font-family : "PT Serif", serif;
 }
 
 h1, h2, h3, h4, h5, h6,
