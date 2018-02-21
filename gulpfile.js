@@ -19,9 +19,12 @@ const reload  = browser.reload
 
 const options = {
   uncss       : { html: ['src/index.html'] },
-  fontMagician: { display: 'fallback', hosted: ['src/fonts'] },
+  fontMagician: { display: 'fallback', hosted: ['src/fonts/ttf'] },
   rename      : { suffix: '.min' },
-  inline      : { base: 'tmp/', disabledTypes: ['js', 'css', 'img'] },
+  inline      : {
+    // base: 'tmp',
+    disabledTypes: ['js', 'css', 'img']
+  },
   cssnano     : { autoprefixer: false },
 }
 
@@ -107,7 +110,7 @@ const css = dest => {
  */
 
 const clean = dir => done => del(dir, done)
-const build = dest => gulp.series(clean(['tmp', 'dist']), assets(dest), js(dest), html(dest))
+const build = dest => gulp.series(clean(['tmp', 'dist']), assets(dest) , html(dest))
 
 
 /**
@@ -133,6 +136,8 @@ const watch = dest => () => {
   gulp.watch('src/styles.css', css(dest))
   gulp.watch('tmp/index.html').on('change', reload)
   gulp.watch('tmp/bundle.js').on('change', reload)
+  gulp.watch('tmp/index.html').on('add', reload)
+  gulp.watch('tmp/bundle.js').on('add', reload)
 }
 
 const serve = dest => gulp.series(build(dest), gulp.parallel(watch(dest), bs(dest)))
@@ -145,7 +150,7 @@ const serve = dest => gulp.series(build(dest), gulp.parallel(watch(dest), bs(des
 // tmp - development directory and server
 // -----------------------------------------
 // gulp.task(`assets`, assets('tmp'))
-// gulp.task(`html`, gulp.series(assets('tmp'), html('tmp')))
+gulp.task(`html`, html('tmp'))
 // gulp.task(`css`, gulp.series(assets('tmp'), html('tmp'), css('tmp')))
 gulp.task(`clean`, clean('tmp'))
 gulp.task(`build`, build('tmp'))
@@ -156,7 +161,7 @@ gulp.task('serve', serve('tmp'))
 // gulp.task(`assets:dist`, assets('dist'))
 // gulp.task(`html:dist`, gulp.series(assets('dist'), html('dist')))
 // gulp.task(`css:dist`, gulp.series(assets('dist'), html('dist'), css('dist')))
-gulp.task(`clean:dist`, clean('dist'))
+// gulp.task(`clean:dist`, clean('dist'))
 gulp.task(`build:dist`, build('dist'))
 
 gulp.task('default', serve('tmp'))
