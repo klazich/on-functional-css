@@ -1,36 +1,33 @@
 const path = require('path')
 
-const gulp = require('gulp')
-const newer = require('gulp-newer')
-const imagemin = require('gulp-imagemin')
-const htmlmin = require('gulp-html-minifier')
-const stylefmt = require('gulp-stylefmt')
-const postcss = require('gulp-postcss')
-const rename = require('gulp-rename')
+const gulp       = require('gulp')
+const newer      = require('gulp-newer')
+const imagemin   = require('gulp-imagemin')
+const htmlmin    = require('gulp-html-minifier')
+const stylefmt   = require('gulp-stylefmt')
+const postcss    = require('gulp-postcss')
+const rename     = require('gulp-rename')
 const sourcemaps = require('gulp-sourcemaps')
-const injectStr = require('gulp-inject-string')
-const inline = require('gulp-inline')
-const del = require('del')
-const Browser = require('browser-sync')
-const noop = require('./noop.js')
+const injectStr  = require('gulp-inject-string')
+const inline     = require('gulp-inline')
+const del        = require('del')
+const Browser    = require('browser-sync')
+const noop       = require('./noop.js')
 
 const browser = Browser.create()
-const reload = browser.reload
+const reload  = browser.reload
 
 const options = {
-  uncss: { html: ['src/index.html'] },
-  fontMagician: {
-    display: 'fallback',
-    hosted: ['src/fonts/ttf', 'src/fonts/woff', 'src/fonts/woff2'],
-  },
-  rename: { suffix: '.min' },
-  inline: { base: 'tmp/', disabledTypes: ['js', 'css', 'img'] },
-  cssnano: { autoprefixer: false },
+  uncss       : { html: ['src/index.html'] },
+  fontMagician: { display: 'fallback', hosted: ['src/fonts'] },
+  rename      : { suffix: '.min' },
+  inline      : { base: 'tmp/', disabledTypes: ['js', 'css', 'img'] },
+  cssnano     : { autoprefixer: false },
 }
 
 
 /**
- * Fonts/images assets functions
+ * Assets (fonts/images)
  */
 
 const fonts = dest => () =>
@@ -48,7 +45,7 @@ const assets = dest => gulp.parallel(fonts(dest), images(dest))
 
 
 /**
- * Javascript function
+ * Javascript
  */
 
 const js = dest => () =>
@@ -57,7 +54,7 @@ const js = dest => () =>
 
 
 /**
- * HTML functions
+ * HTML
  */
 
 const html = dest => () =>
@@ -70,7 +67,7 @@ const html = dest => () =>
 
 
 /**
- * CSS functions
+ * CSS
  */
 
 const css = dest => {
@@ -86,40 +83,35 @@ const css = dest => {
     require('css-mqpacker')(),
   ]
 
-  if (dest === 'dist') {
-    processors = [
-      ...processors,
-      require('postcss-uncss')(options.uncss),
-      require('cssnano')(options.cssnano),
-    ]
-  }
-
-  processors = [
-    ...processors,
-    require('postcss-reporter')(),
-  ]
+  processors = dest === 'dist'
+    ? [...processors,
+       require('postcss-uncss')(options.uncss),
+       require('cssnano')(options.cssnano),]
+    : [...processors,
+       require('postcss-browser-reporter')(),
+       require('postcss-reporter')(),]
 
   return () =>
     gulp.src('src/styles.css')
       .pipe(sourcemaps.init())
       .pipe(postcss(processors))
-      .pipe(dest === 'dist' ? rename(options.rename) : noop())
+      .pipe(dest !== 'dist' ? noop() : rename(options.rename))
       .pipe(dest === 'dist' ? noop() : stylefmt())
-      .pipe(sourcemaps.write())
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dest))
       .pipe(browser.stream())
 }
 
 /**
- * Build and clean functions
+ * Build/clean
  */
 
 const clean = dir => done => del(dir, done)
-const build = dest => gulp.series(clean(['tmp', 'dist']), assets(dest), js(dest), html(dest), css(dest))
+const build = dest => gulp.series(clean(['tmp', 'dist']), assets(dest), js(dest), html(dest))
 
 
 /**
- * BrowserSync init function
+ * BrowserSync
  */
 
 const bs = dest => () => {
@@ -130,7 +122,7 @@ const bs = dest => () => {
 
 
 /**
- * Watch and serve functions
+ * Watch/serve
  */
 
 const watch = dest => () => {
@@ -150,18 +142,21 @@ const serve = dest => gulp.series(build(dest), gulp.parallel(watch(dest), bs(des
  * Gulp tasks
  */
 
-// tmp
-gulp.task(`assets`, assets('tmp'))
-gulp.task(`html`, gulp.series(assets('tmp'), html('tmp')))
-gulp.task(`css`, gulp.series(assets('tmp'), html('tmp'), css('tmp')))
+// tmp - development directory and server
+// -----------------------------------------
+// gulp.task(`assets`, assets('tmp'))
+// gulp.task(`html`, gulp.series(assets('tmp'), html('tmp')))
+// gulp.task(`css`, gulp.series(assets('tmp'), html('tmp'), css('tmp')))
 gulp.task(`clean`, clean('tmp'))
 gulp.task(`build`, build('tmp'))
 gulp.task('serve', serve('tmp'))
-gulp.task('default', serve('tmp'))
 
-// dist
-gulp.task(`assets:dist`, assets('dist'))
-gulp.task(`html:dist`, gulp.series(assets('dist'), html('dist')))
-gulp.task(`css:dist`, gulp.series(assets('dist'), html('dist'), css('dist')))
+// dist - production directory
+// -----------------------------------------
+// gulp.task(`assets:dist`, assets('dist'))
+// gulp.task(`html:dist`, gulp.series(assets('dist'), html('dist')))
+// gulp.task(`css:dist`, gulp.series(assets('dist'), html('dist'), css('dist')))
 gulp.task(`clean:dist`, clean('dist'))
 gulp.task(`build:dist`, build('dist'))
+
+gulp.task('default', serve('tmp'))
