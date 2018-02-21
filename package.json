@@ -11,6 +11,7 @@
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.23.6",
     "colorguard": "^1.2.1",
+    "css-loader": "^0.28.9",
     "css-mqpacker": "^6.0.2",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
@@ -25,16 +26,20 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylefmt": "^1.1.0",
     "gulp-uglify": "^3.0.0",
+    "postcss-browser-reporter": "^0.5.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-discard-comments": "^2.0.4",
     "postcss-font-magician": "^2.1.0",
     "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.0",
     "postcss-nested": "^3.0.0",
     "postcss-reporter": "^5.0.0",
     "postcss-sorting": "^3.1.0",
     "postcss-svgo": "^2.1.6",
     "postcss-uncss": "^0.16.1",
+    "postcss-url": "^7.3.0",
     "prettier": "1.10.2",
+    "style-loader": "^0.20.2",
     "tachyons": "^4.9.1",
     "through2": "^2.0.3",
     "uncss": "^0.16.1",
@@ -45,8 +50,8 @@
     "vue": "^2.5.13"
   },
   "scripts": {
-    "build": "gulp build:dist",
-    "start": "gulp serve",
+    "build": "$env:NODE_ENV=\"production\" && gulp build:dist",
+    "start": "$env:NODE_ENV=\"development\" && gulp serve",
     "pack": "webpack"
   }
 }
