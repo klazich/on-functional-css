@@ -1,46 +1,14 @@
-const path              = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
 
 module.exports = {
-  entry  : path.resolve(__dirname, 'src/js/index.js'),
-  output : {
+  entry: path.resolve(__dirname, 'src/js/index.js'),
+  output: {
     filename: 'bundle.js',
-    path    : path.resolve(__dirname, 'tmp'),
+    path: path.resolve(__dirname, 'tmp'),
   },
-  module : {
+  module: {
     rules: [
-      {
-        test   : /\.js$/,
-        loader : 'babel-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test   : /\.css$/,
-        include: path.resolve(__dirname, 'src'),
-        use : ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use     : [
-            // { loader: 'style-loader' },
-            { loader: 'css-loader', options: { importLoaders: 1 } },
-            {
-              loader : 'postcss-loader',
-              options: {
-                config: {
-                  ctx: { cssnext: {} },
-                },
-              },
-            },
-          ]
-        }),
-      },
-      /*{
-          test: /\.(gif|png|jpe?g|svg)$/i,
-          include: path.resolve(__dirname, 'tmp'),
-          use: [
-            { loader: 'file-loader' },
-            { loader: 'image-webpack-loader', options: { bypassOnDebug: true } },
-          ]
-        },*/
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
     ],
   },
   resolve: {
@@ -48,8 +16,4 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
     },
   },
-  plugins: [
-    new ExtractTextPlugin('styles.css'),
-  ],
-
 }

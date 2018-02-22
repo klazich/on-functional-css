@@ -1,19 +1,16 @@
-module.exports = ({ file, options, env }) => ( {
+env = process.env.NODE_ENV || 'development'
+
+module.exports =  {
   plugins: {
     'postcss-import'          : {},
     'postcss-nested'          : {},
-    'postcss-discard-comments': {},
-    'postcss-cssnext'         : options.cssnext ? options.cssnext : {},
-    'postcss-font-magician'   : { /*display: 'fallback',*/ hosted: ['src/fonts/ttf'] },
+    'postcss-cssnext'         : {},
+    'postcss-font-magician'   : { display: 'fallback' },
     'postcss-svgo'            : {},
-    'css-mqpacker'            : {}, // env === 'production' ? {} : false,
+    'css-mqpacker'            : {},
     'postcss-sorting'         : {},
+    'stylefmt'                : {},
     'postcss-uncss'           : env === 'production' ? { html: ['src/index.html'] } : false,
-    'cssnano'                 : env === 'production' ? { autoprefixer: false } : false,
     'postcss-browser-reporter': {},
-    'postcss-reporter'        : {},
   },
-} )
-
-
-
+} 
