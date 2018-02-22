@@ -19,11 +19,12 @@ const reload  = browser.reload
 
 const options = {
   uncss       : { html: ['src/index.html'] },
-  fontMagician: { display: 'fallback', hosted: ['src/fonts/ttf'] },
+  fontMagician: { display: 'fallback',
+    hosted: ['src/fonts/ttf', 'src/fonts/woff', 'src/fonts/woff2'] },
   rename      : { suffix: '.min' },
   inline      : {
-    // base: 'tmp',
-    disabledTypes: ['js', 'css', 'img']
+    base: 'tmp',
+    disabledTypes: ['js', 'css'],
   },
   cssnano     : { autoprefixer: false },
 }
@@ -39,10 +40,10 @@ const fonts = dest => () =>
     .pipe(gulp.dest(path.resolve(dest, 'fonts')))
 
 const images = dest => () =>
-  gulp.src('src/images/**/*')
-    .pipe(newer(path.resolve(dest, 'images')))
+  gulp.src('src/img/**/*')
+    .pipe(newer(path.resolve(dest, 'img')))
     .pipe(imagemin({ optimizationLevel: 5 }))
-    .pipe(gulp.dest(path.resolve(dest, 'images')))
+    .pipe(gulp.dest(path.resolve(dest, 'img')))
 
 const assets = dest => gulp.parallel(fonts(dest), images(dest))
 
@@ -105,6 +106,7 @@ const css = dest => {
       .pipe(browser.stream())
 }
 
+
 /**
  * Build/clean
  */
@@ -130,10 +132,9 @@ const bs = dest => () => {
 
 const watch = dest => () => {
   gulp.watch('src/fonts/**/*', fonts(dest))
-  gulp.watch('src/images/**/*', images(dest))
+  gulp.watch('src/img/**/*', images(dest))
   gulp.watch('src/js/index.js', js(dest))
   gulp.watch('src/index.html', html(dest))
-  gulp.watch('src/styles.css', css(dest))
   gulp.watch('tmp/index.html').on('change', reload)
   gulp.watch('tmp/bundle.js').on('change', reload)
   gulp.watch('tmp/index.html').on('add', reload)
