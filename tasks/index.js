@@ -1,0 +1,13 @@
+import gulp from 'gulp'
+
+import { scripts } from '/webpack'
+import { server } from './server'
+
+export const dev = gulp.series(server)
+export const build = gulp.series(scripts)
+
+export default dev
+
+/** 
+ * https://css-tricks.com/combine-webpack-gulp-4/ 
+ */
