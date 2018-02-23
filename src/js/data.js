@@ -1,5 +1,6 @@
-const data = {
+/** @format */
 
+const data = {
   block01: `/* Start of reusable styles here */`,
 
   block02: `.homepage-promos .grid-50 {
@@ -74,6 +75,5 @@ const data = {
 
   block13: `<div class“red”>Some text</div>`,
 }
-
 
 export default data

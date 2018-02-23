@@ -1,4 +1,6 @@
-@import "../node_modules/tachyons/css/tachyons.css";
+/** @format */
+
+@import '../node_modules/tachyons/css/tachyons.css';
 
 /* uncomment to debug styles */
 /*
@@ -6,7 +8,7 @@
 */
 
 .sticky {
-  position : sticky;
+  position: sticky;
 }
 
 /* p .link {
@@ -15,50 +17,50 @@
 } */
 
 #first-p::first-letter {
-  font-family  : "Source Sans Pro", sans-serif;
-  font-size    : 3.8rem;
-  float        : left;
-  margin-top   : 0.80rem;
-  margin-right : 0.25rem;
-  margin-left  : -0.25rem;
-  font-weight  : 600;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 3.8rem;
+  float: left;
+  margin-top: 0.8rem;
+  margin-right: 0.25rem;
+  margin-left: -0.25rem;
+  font-weight: 600;
 }
 
 figure {
-  background-color : #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .html code:before {
-  content : "HTML";
+  content: 'HTML';
 }
 
 .css code:before {
-  content : "CSS";
+  content: 'CSS';
 }
 
 .html code:before,
 .css code:before {
-  float          : right;
-  top            : 0;
-  right          : 0;
-  color          : #CCC;
-  text-align     : right;
-  font-size      : 0.75em;
-  padding        : 7px 11px 0;
-  height         : 15px;
-  font-weight    : 900;
-  letter-spacing : 0.05em;
+  float: right;
+  top: 0;
+  right: 0;
+  color: #ccc;
+  text-align: right;
+  font-size: 0.75em;
+  padding: 7px 11px 0;
+  height: 15px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
 }
 
 pre code {
-  font-size : 90%;
-  color      : #525252;
+  font-size: 90%;
+  color: #525252;
   line-height: 1.5em;
 }
 
 pre {
-  tab-size   : 4;
-  overflow-x : auto;
+  tab-size: 4;
+  overflow-x: auto;
 }
 
 /* code {
@@ -77,24 +79,29 @@ pre {
 
 @media print {
   pre {
-    overflow-x  : visible;
-    white-space : pre-wrap;
+    overflow-x: visible;
+    white-space: pre-wrap;
   }
 }
 
 p {
-  font-family : "PT Serif", serif;
+  font-family: 'PT Serif', serif;
 }
 
 code {
-  font-family : Iosevka, monospace;
+  font-family: Iosevka, monospace;
 }
 
 .serif {
-  font-family : "PT Serif", serif;
+  font-family: 'PT Serif', serif;
 }
 
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .sans-serif {
-  font-family : "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
