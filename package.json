@@ -14,6 +14,9 @@
     "css-mqpacker": "^6.0.2",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
     "gulp": "^4.0.0",
     "gulp-clone": "^2.0.1",
     "gulp-cssnano": "^2.1.2",
@@ -58,6 +61,7 @@
     "start": "$NODE_ENV=development gulp serve",
     "pack": "webpack",
     "dev": "gulp --require babel-register --gulpfile tasks",
-    "build": "gulp build --require babel-register --gulpfile tasks"
+    "build": "gulp build --require babel-register --gulpfile tasks",
+    "format": "prettier --config ./.prettierrc.js --write ./**/*.*(js|css|html)"
   }
 }
