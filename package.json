@@ -6,6 +6,7 @@
   "author": "Kevin Lazich <dev@kevinlazich.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
@@ -14,15 +15,14 @@
     "css-mqpacker": "^6.0.2",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
-    "eslint": "^4.18.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.9.0",
     "gulp": "^4.0.0",
+    "gulp-babel": "^7.0.1",
     "gulp-clone": "^2.0.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-html-minifier": "^0.1.8",
     "gulp-imagemin": "^4.1.0",
     "gulp-inline": "^0.1.3",
+    "gulp-jsbeautifier": "^2.1.2",
     "gulp-newer": "^1.4.0",
     "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
@@ -38,7 +38,6 @@
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.0",
     "postcss-nested": "^3.0.0",
-    "postcss-reporter": "^5.0.0",
     "postcss-sorting": "^3.1.0",
     "postcss-svgo": "^2.1.6",
     "postcss-uncss": "^0.16.1",
@@ -60,8 +59,10 @@
     "_start": "$env:NODE_ENV=\"development\" && gulp serve",
     "start": "$NODE_ENV=development gulp serve",
     "pack": "webpack",
-    "dev": "gulp --require babel-register --gulpfile tasks",
-    "build": "gulp build --require babel-register --gulpfile tasks",
-    "format": "prettier --config ./.prettierrc.js --write ./**/*.*(js|css|html)"
+    "dev": "gulp --gulpfile tasks_es5",
+    "build": "gulp build --gulpfile tasks_es5",
+    "html": "gulp html --gulpfile tasks_es5",
+    "format": "prettier --config ./prettier.config.js --write \"./**/*.*(js|css)\"",
+    "build:tasks": "babel tasks --out-dir tasks_es5 --presets env"
   }
 }
