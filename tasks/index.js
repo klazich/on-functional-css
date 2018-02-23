@@ -1,3 +1,5 @@
+/** @format */
+
 import gulp from 'gulp'
 
 import { scripts } from '/webpack'
@@ -8,6 +10,6 @@ export const build = gulp.series(scripts)
 
 export default dev
 
-/** 
- * https://css-tricks.com/combine-webpack-gulp-4/ 
+/**
+ * https://css-tricks.com/combine-webpack-gulp-4/
  */

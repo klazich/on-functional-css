@@ -1,3 +1,5 @@
+/** @format */
+
 import gulp from 'gulp'
 import Browser from 'browser-sync'
 import webpack from 'webpack'
@@ -9,19 +11,16 @@ import { config as webpackConfig } from './webpack'
 const browser = Browser.create()
 const bundler = webpack(webpackConfig)
 
-
 export function server() {
-
   let config = {
     server: 'tmp',
     middleware: [
       webpackDevMiddleware(bundler, {}),
-      webpackHotMiddleware(bundler)
-    ]
+      webpackHotMiddleware(bundler),
+    ],
   }
 
   browser.init(config)
 
   gulp.watch('tmp/*.js').on('change', () => browser.reload())
-
 }

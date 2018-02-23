@@ -1,3 +1,5 @@
+/** @format */
+
 const { resolve } = require('path')
 
 const { series, parallel, task, watch, src, dest } = require('gulp')
@@ -18,7 +20,6 @@ const reload = browser.reload
 
 const dir = process.env.NODE_ENV === 'production' ? 'dist' : 'tmp'
 
-
 /**
  * Assets (images)
  */
@@ -29,8 +30,7 @@ const images = () =>
     .pipe(imagemin({ optimizationLevel: 5 }))
     .pipe(dest(resolve(dir, 'img')))
 
-let assets = parallel(images, /* fonts */)
-
+let assets = parallel(images /* fonts */)
 
 /**
  * HTML
@@ -43,12 +43,11 @@ const html = () =>
     .pipe(dir === 'dist' ? htmlmin() : noop())
     .pipe(dest(dir))
 
-
 /**
  * CSS
  */
 
-const css = function () {
+const css = function() {
   const postcss = require('gulp-postcss')
   const cssnano = require('gulp-cssnano')
   const stylefmt = require('gulp-stylefmt')
@@ -59,8 +58,11 @@ const css = function () {
     .pipe(postcss())
     .pipe(stylefmt())
 
-  let min = css.pipe(clone())
-    .pipe(cssnano({ discardComments: { removeAll: true }, autoprefixer: false }))
+  let min = css
+    .pipe(clone())
+    .pipe(
+      cssnano({ discardComments: { removeAll: true }, autoprefixer: false })
+    )
     .pipe(rename({ suffix: '.min' }))
 
   return merge(css, min)
@@ -69,7 +71,6 @@ const css = function () {
     .pipe(browser.stream())
 }
 
-
 /**
  * Build/clean
  */
@@ -77,42 +78,33 @@ const css = function () {
 const clean = done => del(['tmp', 'dist'], done)
 const build = series(clean, assets, html, css)
 
-
 /**
  * Watch
  */
 
-const bundleWatcher = series(
-  done => del('tmp')
-)
+const bundleWatcher = series(done => del('tmp'))
 
 const watchers = () => {
   watch('src/img/**/*', images),
-  watch('src/index.html', html),
-  watch('src/styles.css', css),
-  watch('tmp/index.html').on('change', () => reload),
-  watch('tmp/bundle.js').on('add', () => reload)
+    watch('src/index.html', html),
+    watch('src/styles.css', css),
+    watch('tmp/index.html').on('change', () => reload),
+    watch('tmp/bundle.js').on('add', () => reload)
 }
-
 
 /**
  * BrowserSync/server
  */
 
-const serve = () => { browser.init({ server: { baseDir: 'tmp' } }) }
+const serve = () => {
+  browser.init({ server: { baseDir: 'tmp' } })
+}
 const start = series(build, parallel(watchers, serve))
-
 
 /**
  * Gulp tasks
  */
 
-export {
-  build,
-  clean,
-  assets,
-  html,
-  css
-}
+export { build, clean, assets, html, css }
 
 export default start
