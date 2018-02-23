@@ -11,20 +11,15 @@ let config = {
       'webpack-hot-middleware/client',
     ],
   },
-
   output: {
     filename: './bundle.js',
     path: path.resolve(__dirname, '../tmp'),
   },
-
-  context: path.resolve(__dirname, '../tmp'),
-
+  context: path.resolve(__dirname, '../src'),
   module: {
     rules: [{ test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }],
   },
-
   plugins: [new webpack.HotModuleReplacementPlugin()],
-
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.esm.js',
@@ -32,7 +27,7 @@ let config = {
   },
 }
 
-function script() {
+function scripts() {
   return new Promise(resolve =>
     webpack(
       config,

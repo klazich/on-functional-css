@@ -27,7 +27,7 @@ export const webpackConfig = {
   },
 }
 
-export const browserSync = {
+export const browserSyncConfig = {
   server: 'tmp',
   middleware: [
     webpackDevMiddleware(bundler, {}),
