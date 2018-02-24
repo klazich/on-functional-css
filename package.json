@@ -42,7 +42,6 @@
     "postcss-svgo": "^2.1.6",
     "postcss-uncss": "^0.16.1",
     "postcss-url": "^7.3.0",
-    "prettier": "1.10.2",
     "stylefmt": "^6.0.0",
     "stylelint": "^9.1.1",
     "tachyons": "^4.9.1",
@@ -62,7 +61,6 @@
     "dev": "gulp --gulpfile tasks_es5",
     "build": "gulp build --gulpfile tasks_es5",
     "html": "gulp html --gulpfile tasks_es5",
-    "format": "prettier --config ./prettier.config.js --write \"./**/*.*(js|css)\"",
     "build:tasks": "babel tasks --out-dir tasks_es5 --presets env"
   }
 }
