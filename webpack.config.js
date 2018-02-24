@@ -1,19 +1,28 @@
-/** @format */
+const path    = require('path')
+const webpack = require('webpack')
 
-const path = require('path')
-
-module.exports = {
-  entry: path.resolve(__dirname, 'src/js/index.js'),
-  output: {
+let config = {
+  entry  : {
+    main: [
+      path.resolve(__dirname, 'src/main.js'),
+      'webpack/hot/dev-server',
+      'webpack-hot-middleware/client',
+    ],
+  },
+  output : {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'tmp'),
+    path    : path.resolve(__dirname, 'tmp'),
   },
-  module: {
-    rules: [{ test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }],
+  // context: path.resolve(__dirname, '../src'),
+  module : {
+    rules: [
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+    ],
   },
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   resolve: {
-    alias: {
-      vue$: 'vue/dist/vue.esm.js',
-    },
+    alias: { vue$: 'vue/dist/vue.esm.js', },
   },
 }
+
+module.exports = config
