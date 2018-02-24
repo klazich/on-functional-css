@@ -1,7 +1,0 @@
-.vscode
-.idea
-.git
-node_modules
-dist/
-tmp/
-tasks_es5/
