@@ -1,12 +1,19 @@
 import Vue from 'vue'
 
-import snippets from './js/data'
+import CodeSnippet from '../components/CodeSnippet.vue'
+import HeaderMetaBlock from '../components/HeaderRight.vue'
 
-Vue.component('code-snippet', {
-  template: `<figure class="highlight css"><pre><code>{{ snippet }}</code></pre></figure>`,
-  data    : () => ( { snippet: snippets.shift() } ),
+new Vue({
+  el        : '#app',
+  components: {
+    CodeSnippet,
+    HeaderMetaBlock,
+  },
 })
 
 new Vue({
-  el: '#app',
+  el: '#header',
+  components:{
+    HeaderMetaBlock
+  }
 })
