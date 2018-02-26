@@ -42,7 +42,7 @@ function content() {
   return gulp.src('src/index.html')
     // .pipe(newer(dir))
     .pipe(inline({ base: 'tmp', disabledTypes: ['js', 'css'] }))
-    .pipe(dir === 'dist' ? htmlmin() : prettify())
+    // .pipe(dir === 'dist' ? htmlmin() : prettify())
     .pipe(gulp.dest(dir))
 }
 
