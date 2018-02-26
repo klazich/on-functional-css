@@ -9,7 +9,7 @@ module.exports = {
     'postcss-svgo'            : {},
     'css-mqpacker'            : {},
     'postcss-sorting'         : {},
-    'stylefmt'                : {},
+    // 'stylefmt'                : {},
     'postcss-uncss'           : env === 'production' ? { html: ['src/index.html'] } : false,
     'postcss-browser-reporter': {},
   },
