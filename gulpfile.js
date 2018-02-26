@@ -1,157 +1,129 @@
+const { resolve } = require('path')
+
 const gulp       = require('gulp')
 const newer      = require('gulp-newer')
 const imagemin   = require('gulp-imagemin')
 const htmlmin    = require('gulp-html-minifier')
-const stylefmt   = require('gulp-stylefmt')
-const postcss    = require('gulp-postcss')
-const rename     = require('gulp-rename')
+const prettify   = require('gulp-jsbeautifier')
 const sourcemaps = require('gulp-sourcemaps')
-const injectStr  = require('gulp-inject-string')
 const inline     = require('gulp-inline')
+const clone      = require('gulp-clone')
+const postcss    = require('gulp-postcss')
+const cssnano    = require('gulp-cssnano')
+const stylefmt   = require('gulp-stylefmt')
+const rename     = require('gulp-rename')
+const merge      = require('merge2')
 const del        = require('del')
 const Browser    = require('browser-sync')
-const noop       = require('./noop.js')
+const webpack    = require('webpack')
 
-const browser = Browser.create()
-const reload  = browser.reload
-
-const options = {
-  uncss       : { html: ['src/index.html'] },
-  fontMagician: {
-    display: 'fallback',
-    hosted : ['src/fonts/ttf', 'src/fonts/woff', 'src/fonts/woff2'],
-  },
-  rename      : { suffix: '.min' },
-  inline      : { base: 'tmp/', disabledTypes: ['js', 'css', 'img'] },
-  cssnano     : { autoprefixer: false },
-}
-
-/**
- * Clean tmp/dist gulp task
- */
-
-let clean = dir => done => del(dir, done)
-
-gulp.task('clean', clean(['tmp', 'dist']))
+const dir = process.env.NODE_ENV === 'production' ? 'dist' : 'tmp'
 
 
 /**
- * Fonts gulp tasks
+ * Assets (images)
  */
 
-let fonts = dest => () =>
-  gulp.src('src/fonts/**/*')
-    .pipe(newer(dest))
-    .pipe(gulp.dest(dest))
-
-gulp.task('fonts', fonts('tmp/fonts'))
-gulp.task('fonts:dist', fonts('dist/fonts'))
-
-
-/**
- * Images gulp tasks
- */
-
-let images = dest => () =>
-  gulp.src('src/images/**/*')
-    .pipe(newer(dest))
+function images() {
+  return gulp.src('src/img/**/*')
+    .pipe(newer(resolve(dir, 'img')))
     .pipe(imagemin({ optimizationLevel: 5 }))
-    .pipe(gulp.dest(dest))
-
-gulp.task('images', images('tmp/images'))
-gulp.task('images:dist', images('dist/images'))
-
-
-/**
- * HTML gulp task
- */
-
-let html = dest => () =>
-  gulp.src('src/index.html')
-    .pipe(newer(dest))
-    .pipe(inline(options.inline))
-    .pipe(dest === 'dist' ? injectStr.replace('styles.css', 'styles.min.css') : noop())
-    .pipe(dest === 'dist' ? htmlmin() : noop())
-    .pipe(gulp.dest(dest))
-
-gulp.task('html', ['images'], html('tmp'))
-gulp.task('html:dist', ['images:dist'], html('dist'))
-
-
-/**
- * CSS gulp task
- */
-
-let css = dest => {
-
-  let processors = [
-    require('postcss-import'),
-    require('postcss-nested'),
-    require('postcss-cssnext'),
-    require('postcss-font-magician')(options.fontMagician),
-    require('postcss-svgo'),
-    require('postcss-sorting'),
-    require('css-mqpacker'),
-  ]
-
-  if ( dest === 'dist' ) {
-    processors = [
-      ...processors,
-      require('postcss-uncss')(options.uncss),
-      require('cssnano')(options.cssnano),
-    ]
-  }
-
-  processors = [
-    ...processors,
-    require('postcss-reporter'),
-  ]
-
-  return () =>
-    gulp.src('src/styles.css')
-      .pipe(sourcemaps.init())
-      .pipe(postcss(processors))
-      .pipe(dest === 'dist' ? rename(options.rename) : noop())
-      .pipe(dest === 'dist' ? noop() : stylefmt())
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest(dest))
-      .pipe(browser.stream())
+    .pipe(gulp.dest(resolve(dir, 'img')))
 }
 
-gulp.task('css', ['html', 'images', 'fonts'], css('tmp'))
-gulp.task('css:dist', ['html:dist', 'images:dist', 'fonts:dist'], css('dist'))
+const assets = gulp.parallel(images, /* fonts */)
 
 
 /**
- * Build gulp tasks
+ * Content (html)
  */
 
-gulp.task('build', ['html', 'css', 'fonts'])
-gulp.task('build:dist', ['html:dist', 'css:dist', 'fonts:dist'])
+function content() {
+  return gulp.src('src/index.html')
+    // .pipe(newer(dir))
+    .pipe(inline({ base: 'tmp', disabledTypes: ['js', 'css'] }))
+    // .pipe(dir === 'dist' ? htmlmin() : prettify())
+    .pipe(gulp.dest(dir))
+}
 
 
 /**
- * BrowserSync init task
+ * Scripts (javascript)
  */
 
-gulp.task('browserSync', ['build'], () => {
+let webpackConfig = require('./webpack.config')
+const browser     = Browser.create()
+
+function scripts() {
+  return new Promise(resolve => {
+    webpack(webpackConfig,
+
+      (err, stats) => {
+        if ( err ) console.log('WEBPACK', err)
+        console.log(stats.toString({ /* stats options */ }))
+        resolve()
+      })
+  })
+}
+
+
+/**
+ * Styles (css)
+ */
+
+function styles() {
+  let css = gulp.src('src/css/styles.css')
+    .pipe(sourcemaps.init())
+    .pipe(postcss())
+    .pipe(stylefmt())
+
+  let min = css.pipe(clone())
+    .pipe(cssnano({ discardComments: { removeAll: true }, autoprefixer: false }),)
+    .pipe(rename({ suffix: '.min' }))
+
+  return merge(css, min)
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(resolve(dir, 'css')))
+    .pipe(browser.stream())
+}
+
+
+/**
+ * Server (browser-sync, webpack)
+ */
+
+function server() {
   browser.init({
     server: { baseDir: 'tmp' },
   })
-})
+}
+
 
 /**
- * Watch and serve gulp tasks
+ * Watchers
  */
 
-gulp.task('watch', ['build'], () => {
-  gulp.watch('src/fonts/**/*', ['fonts'])
-  gulp.watch('src/images/**/*', ['images'])
-  gulp.watch('src/index.html', ['html'])
-  gulp.watch('src/styles.css', ['css'])
-  gulp.watch('tmp/index.html').on('change', reload)
-})
+function watchers() {
+  gulp.watch('src/img/**/*', images)
+  gulp.watch('src/index.html', content)
+  gulp.watch('src/js/*.js', scripts)
+  gulp.watch('src/components/*.vue', scripts)
+  gulp.watch('src/css/styles.css', styles)
+  gulp.watch('tmp/index.html').on('change', () => browser.reload())
+  gulp.watch('tmp/js/bundle.js').on('change', () => browser.reload())
+}
 
-gulp.task('serve', ['watch', 'browserSync'])
 
-gulp.task('default', ['serve'])
+/**
+ * Gulp tasks
+ */
+
+const clean = () => del(['tmp', 'dist'])
+const build = gulp.series(clean, assets, content, styles, scripts)
+const start = gulp.series(build, gulp.parallel(watchers, server))
+
+gulp.task('default', start)
+
+module.exports = {
+  images, /*fonts,*/ assets, content, styles, scripts, clean, build, start, server, watchers,
+}
