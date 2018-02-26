@@ -41,6 +41,7 @@
     "postcss-svgo": "^2.1.6",
     "postcss-uncss": "^0.16.1",
     "postcss-url": "^7.3.0",
+    "prismjs": "^1.11.0",
     "stylefmt": "^6.0.0",
     "stylelint": "^9.1.1",
     "tachyons": "^4.9.1",
