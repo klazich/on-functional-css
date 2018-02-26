@@ -1,25 +1,54 @@
-const path    = require('path')
-const webpack = require('webpack')
+const path = require('path')
 
 let config = {
-  entry  : {
-    main: [
-      path.resolve(__dirname, 'src/main.js'),
-      'webpack/hot/dev-server',
-      'webpack-hot-middleware/client',
-    ],
+  entry: path.resolve(__dirname, 'src/js/main.js'),
+
+  stats: {
+    colors: true,
   },
-  output : {
-    filename: 'bundle.js',
-    path    : path.resolve(__dirname, 'tmp'),
+
+  output: {
+    filename  : 'bundle.js',
+    path      : path.resolve(__dirname, 'tmp', 'js'),
+    publicPath: '/js/',
   },
-  // context: path.resolve(__dirname, '../src'),
-  module : {
+
+  module: {
     rules: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+      {
+        test   : /\.js$/,
+        loader : ['babel-loader'],
+        exclude: /node_modules/,
+      },
+      {
+        test  : /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
+        test   : /\.svg$/,
+        loader : 'vue-svg-loader', // `vue-svg` for webpack 1.x
+        options: {
+          // optional [svgo](https://github.com/svg/svgo) options
+          svgo: {
+            plugins: [
+              { removeDoctype: true },
+              { removeComments: true },
+            ],
+          },
+        },
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      }
     ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+
   resolve: {
     alias: { vue$: 'vue/dist/vue.esm.js', },
   },
