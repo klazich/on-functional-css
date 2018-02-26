@@ -17,12 +17,6 @@ const del        = require('del')
 const Browser    = require('browser-sync')
 const webpack    = require('webpack')
 
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
-
-let webpackConfig = require('./webpack.config')
-
-
 const dir = process.env.NODE_ENV === 'production' ? 'dist' : 'tmp'
 
 
@@ -52,12 +46,33 @@ function content() {
     .pipe(gulp.dest(dir))
 }
 
+
+/**
+ * Scripts (javascript)
+ */
+
+let webpackConfig = require('./webpack.config')
+const browser     = Browser.create()
+
+function scripts() {
+  return new Promise(resolve => {
+    webpack(webpackConfig,
+
+      (err, stats) => {
+        if ( err ) console.log('WEBPACK', err)
+        console.log(stats.toString({ /* stats options */ }))
+        resolve()
+      })
+  })
+}
+
+
 /**
  * Styles (css)
  */
 
 function styles() {
-  let css = gulp.src('src/styles.css')
+  let css = gulp.src('src/css/styles.css')
     .pipe(sourcemaps.init())
     .pipe(postcss())
     .pipe(stylefmt())
@@ -68,44 +83,21 @@ function styles() {
 
   return merge(css, min)
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(dir))
+    .pipe(gulp.dest(resolve(dir, 'css')))
     .pipe(browser.stream())
 }
 
-/**
- * Scripts (javascript)
- */
-
-function scripts() {
-  return new Promise(resolve => {
-    webpack(webpackConfig,
-
-      (err, stats) => {
-        if ( err ) console.log('WEBPACK', err)
-        console.log(stats.toString({}))
-        resolve()
-      })
-  })
-}
 
 /**
  * Server (browser-sync, webpack)
  */
 
-const bundler = webpack(webpackConfig)
-const browser = Browser.create()
-
 function server() {
   browser.init({
-    server    : { baseDir: 'tmp' },
-    middleware: [
-      webpackDevMiddleware(bundler, {}),
-      webpackHotMiddleware(bundler),
-    ],
+    server: { baseDir: 'tmp' },
   })
-
-  gulp.watch('tmp/*.js').on('change', () => browser.reload())
 }
+
 
 /**
  * Watchers
@@ -114,15 +106,19 @@ function server() {
 function watchers() {
   gulp.watch('src/img/**/*', images)
   gulp.watch('src/index.html', content)
-  gulp.watch('src/styles.css', styles)
+  gulp.watch('src/js/*.js', scripts)
+  gulp.watch('src/components/*.vue', scripts)
+  gulp.watch('src/css/styles.css', styles)
   gulp.watch('tmp/index.html').on('change', () => browser.reload())
+  gulp.watch('tmp/js/bundle.js').on('change', () => browser.reload())
 }
+
 
 /**
  * Gulp tasks
  */
 
-const clean = done => del(['tmp', 'dist'], done)
+const clean = () => del(['tmp', 'dist'])
 const build = gulp.series(clean, assets, content, styles, scripts)
 const start = gulp.series(build, gulp.parallel(watchers, server))
 

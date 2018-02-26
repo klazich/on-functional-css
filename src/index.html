@@ -4,11 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>On Functional CSS</title>
-
-  <link href="styles.css" rel="stylesheet">
-  <script src="index.js" type="module"></script>
-  <script defer src="bundle.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link href="css/styles.min.css" rel="stylesheet">
+  <script defer src="js/bundle.js"></script>
 </head>
 
 <body class="w-100 sans-serif">
@@ -32,7 +29,8 @@
     </div>
 
     <div class="inline-flex items-center gray mr2">
-      <button type="button" class="pointer f7 fw2 br2 ba green b--green bg-white ph2 h-100">Follow</button>
+      <button type="button" class="pointer f7 fw2 br2 ba green b--green bg-white ph2 h-100">Follow
+      </button>
     </div>
 
     <div class="inline-flex items-center">
@@ -40,25 +38,12 @@
       <a href="#" class="link gray hover-black-80"><img src="img/icons/facebook.svg"/></a>
     </div>
 
-    <div class="inline-flex items-center ml-auto">
-      <a href="#" class="f6 link nowrap green mr3">Sign in</a>
-      <button type="button"
-              class="f6 link green pointer nowrap br2 ba b--green bg-white pv2 ph3 ml1 mv1">
-        Get started
-      </button>
-    </div>
-
-    <div>
-      <a href="#" class="link gray hover-black-80">
-        <img src="img/icons/search.svg"/>
-        <!--<i class="f4 fas fa-search"></i>-->
-      </a>
-    </div>
+    <header-meta-block></header-meta-block>
 
   </div>
 </header>
 
-<article id="app" class="mw7 ph3 mr-auto ml-auto">
+<article id="app" class="mw7 ph3 mb6 mr-auto ml-auto">
 
   <div class="mh3 mv4 mb3">
     <div class="dtc w2 w3-ns v-mid">
@@ -102,10 +87,6 @@
         transform="translate(-15.13 -67.61)"></path>
     </svg>
   </div>
-
-  <!-- <div class="center ph3 pb3 o-60">
-      <img class="cover center" src="img/tachyons-dark-tight.png" alt="tachyons">
-  </div> -->
 
   <div class="ph3">
     <h1 class="f2 black-90">
@@ -189,49 +170,37 @@
       Some of the code made me laugh:
     </p>
 
-    <figure class="highlight html">
-      <pre><code>{{ block01 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Some of the code made me cry.
     </p>
 
-    <figure class="highlight html">
-      <pre><code>{{ block02 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Some of it made me laugh and cry at the same time.
     </p>
 
-    <figure>
-      <pre><code>{{ block03 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Some of it made me wonder where numbers come from
     </p>
 
-    <figure>
-      <pre><code>{{ block04 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Some of it made me thankful that I have read the spec
     </p>
 
-    <figure>
-      <pre><code>{{ block05 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Eventually, I stumbled across this class of code.
     </p>
 
-    <figure>
-      <pre><code>{{ block06 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       I saw this class and thought - well at least you know what it does. Unlike some of the
@@ -242,17 +211,13 @@
       I kept reading and stumbled across this:
     </p>
 
-    <figure>
-      <pre><code>{{ block07 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       …followed by this very similar block of code…
     </p>
 
-    <figure>
-      <pre><code>{{ block08 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       I found myself wondering what the story was behind this next code block. Is it for
@@ -260,9 +225,7 @@
       class .header-nav-container?
     </p>
 
-    <figure>
-      <pre><code>{{ block09 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Here we start to see a mixture of content-semantic (<code>.submenu</code>) with visually
@@ -270,9 +233,7 @@
       class names (-3col).
     </p>
 
-    <figure>
-      <pre><code>{{ block10 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       Css is interesting because unlike other types of code, you are most likely to find the
@@ -314,9 +275,7 @@
       So if I ran into the above example:
     </p>
 
-    <figure>
-      <pre><code>{{ block11 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       That means I would have to find elements that had both of those classes (but not limited
@@ -331,9 +290,7 @@
       On the flip side think about this example:
     </p>
 
-    <figure>
-      <pre><code>{{ block12 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       I’d presume that this would make an element have red text. I was traditionally told this
@@ -346,9 +303,7 @@
       And if I saw this block of html:
     </p>
 
-    <figure>
-      <pre><code>{{ block13 }}</code></pre>
-    </figure>
+    <code-snippet></code-snippet>
 
     <p class="lh-copy mv4 f4 fw3 black-80">
       I’d know without looking at the css what was going to happen. This is what I call a
@@ -545,7 +500,7 @@
       Writing new css should be the exception, not the rule.
     </p>
 
-    <h3>Parting Thoughts</h3>
+    <h3 class="f3">Parting Thoughts</h3>
     <p class="lh-copy mv4 f4 fw3 black-80">
       If you have never read your outputted css from start to finish - I recommend it as an
       amazing way to learn a lot about css and how people use it. After I read salesforce’s
