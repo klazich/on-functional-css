@@ -1,10 +1,7 @@
-/** @format */
 @import '../../node_modules/tachyons/css/tachyons.css';
 
 /* uncomment to debug styles */
-/*
-@import "../node_modules/tachyons/src/_debug.css";
-*/
+/* @import "../../node_modules/tachyons/src/_debug.css"; */
 
 :root {
   --font-mono  : 'Fira Mono';
@@ -16,10 +13,10 @@
   position : sticky;
 }
 
-/* p .link {
+p .link {
   color: inherit;
   background-image: linear-gradient(transparent,transparent 87.5%,rgba(0,119,204,.125) 0);
-} */
+}
 
 #first-p::first-letter {
   font-family  : var(--font-sans, sans-serif);
