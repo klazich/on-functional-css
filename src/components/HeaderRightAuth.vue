@@ -1,11 +1,11 @@
 <template>
-  <div key="loggedIn" class="inline-flex items-center ml-auto">
+  <div key="loggedIn" class="inline-flex items-center ml-auto h-100">
     <SearchBar/>
-    <a href="#" class="link gray hover-black-80 mr3">
+    <a href="#" class="gray hover-black-80 mh3 v-mid">
       <NotificationIcon/>
     </a>
     <a @click="$emit('toggled')">
-      <img src="../img/avatar.png" class="br-100 h2 w2">
+      <img src="../img/avatar.png" class="br-100 h2 v-mid">
     </a>
   </div>
 </template>

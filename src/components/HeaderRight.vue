@@ -2,7 +2,6 @@
   <transition v-if="show" name="fade" mode="out-in">
     <header-right-public v-on:toggled="show = !show"/>
   </transition>
-
   <transition v-else name="fade" mode="out-in">
     <header-right-auth v-on:toggled="show = !show"/>
   </transition>
