@@ -1,6 +1,6 @@
 <template>
   <figure class="css br2 bg-light-gray mh0 mh4-l">
-    <pre class="pa3 pl4-ns"><code>{{ snippet }}</code></pre>
+    <pre class="pa3 pl4-ns f6 f5-ns"><code class="">{{ snippet }}</code></pre>
   </figure>
 </template>
 

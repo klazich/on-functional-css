@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <title>On Functional CSS</title>
-  <link href="css/styles.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
   <script defer src="js/bundle.js"></script>
 </head>
 
 <body class="w-100 sans-serif">
-<header id="header" class="sticky top-0 block w-100 bg-white h3">
+<header id="header" class="sticky top-0 block w-100 bg-white h3 z-max">
   <div class="flex items-center mw8 h3 ph3 mr-auto ml-auto">
 
-    <div class="inline-flex relative items-center h-100 pv3">
+    <div class="inline-flex items-center h-100 pv3">
       <a class="flex items-center" href="https://medium.com">
         <img src="img/medium-logos-master/monogram/Monogram.svg" class="o-80 h2 w2"/>
       </a>
     </div>
 
     <div class="inline-flex items-center h-100 mr3">
-      <span class="dib mh3 pa0 br b--black-20 h-50"></span>
+      <span class="mh3 pa0 br b--black-20 h-50 dn dib-ns"></span>
       <a href="#" class="link ml2">
         <span class="f3 f4-l b black-60 nowrap">On Functional CSS</span>
       </a>
@@ -37,6 +37,7 @@
     <header-meta-block></header-meta-block>
 
   </div>
+
 </header>
 <article id="app" class="mw7 mh3 mb6 mr-auto ml-auto">
 
@@ -55,8 +56,7 @@
       </div>
       <div class="flex items-center mt1">
         <h2 class="f6 fw4 mv0 black-60">Designer in London; Trying to make the web: fast,
-          readable, and
-          easy to navigate.</h2>
+          readable, and easy to navigate.</h2>
       </div>
       <div class="flex items-center pt1">
         <h2 class="f6 fw4 mv0 black-60">
@@ -95,7 +95,7 @@
       ability to iterate on their product.
     </p>
 
-    <blockquote class="ph0 mv3 mv4-m mv5-ns mw7 mh0 mh5-l">
+    <blockquote class="ph0 pl1 mv3 mv4-m mv5-ns mw7 mh1 mh5-l">
       <p class="lh-copy f4 f3-ns b mb3">
         <span class="nl2">“</span>Two css properties walk into a bar.
         <br> A barstool in a completely different bar falls over.”
@@ -139,7 +139,7 @@
     </p>
     <p class="lh-title lh-copy-ns mv3 mv4-ns f5 f4-ns fw3 black-80">
       So there I was, in the fall of 2014, a new employee at an
-      <a title="sfdc dot com" href="http://salesforce.com" class="link black underline">award
+      <a title="sfdc dot com" href="http://salesforce.com" class="link black hover-bg-washed-green">award
         winning tech company</a> that had a website. And that website had a lot of css.
       Wanting to familiarize myself with the codebase - I opened up dev tools and started to
       read the site's css.

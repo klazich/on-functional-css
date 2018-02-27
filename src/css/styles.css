@@ -15,7 +15,11 @@
 
 p .link {
   color: inherit;
-  background-image: linear-gradient(transparent,transparent 87.5%,rgba(0,119,204,.125) 0);
+  background-image: linear-gradient(transparent,transparent 87.5%, rgba(0, 204, 87, 0.12) 0);
+}
+
+p .link:hover {
+  background-image: none;
 }
 
 #first-p::first-letter {
@@ -50,7 +54,6 @@ p .link {
 }
 
 pre code {
-  font-size   : 90%;
   color       : #525252;
   line-height : 1.5em;
 }
