@@ -4,18 +4,18 @@ const gulp       = require('gulp')
 const newer      = require('gulp-newer')
 const imagemin   = require('gulp-imagemin')
 const htmlmin    = require('gulp-html-minifier')
-const prettify   = require('gulp-jsbeautifier')
 const sourcemaps = require('gulp-sourcemaps')
 const inline     = require('gulp-inline')
 const clone      = require('gulp-clone')
 const postcss    = require('gulp-postcss')
-const cssnano    = require('gulp-cssnano')
 const stylefmt   = require('gulp-stylefmt')
 const rename     = require('gulp-rename')
 const merge      = require('merge2')
 const del        = require('del')
 const Browser    = require('browser-sync')
 const webpack    = require('webpack')
+
+const noop = require('./noop')
 
 const dir = process.env.NODE_ENV === 'production' ? 'dist' : 'tmp'
 
@@ -42,7 +42,7 @@ function content() {
   return gulp.src('src/index.html')
     // .pipe(newer(dir))
     .pipe(inline({ base: 'tmp', disabledTypes: ['js', 'css'] }))
-    // .pipe(dir === 'dist' ? htmlmin() : prettify())
+    .pipe(dir === 'dist' ? htmlmin() : noop())
     .pipe(gulp.dest(dir))
 }
 
@@ -60,7 +60,7 @@ function scripts() {
 
       (err, stats) => {
         if ( err ) console.log('WEBPACK', err)
-        console.log(stats.toString({ /* stats options */ }))
+        console.log(stats.toString({ colors: true }))
         resolve()
       })
   })
@@ -78,7 +78,7 @@ function styles() {
     .pipe(stylefmt())
 
   let min = css.pipe(clone())
-    .pipe(cssnano({ discardComments: { removeAll: true }, autoprefixer: false }),)
+    .pipe(postcss(require('cssnano')({ discardComments: { removeAll: true }, autoprefixer: false }),))
     .pipe(rename({ suffix: '.min' }))
 
   return merge(css, min)

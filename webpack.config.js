@@ -3,10 +3,6 @@ const path = require('path')
 let config = {
   entry: path.resolve(__dirname, 'src/js/main.js'),
 
-  stats: {
-    colors: true,
-  },
-
   output: {
     filename  : 'bundle.js',
     path      : path.resolve(__dirname, 'tmp', 'js'),
@@ -39,13 +35,13 @@ let config = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        use: [
+        use : [
           {
-            loader: 'file-loader',
-            options: {}
-          }
-        ]
-      }
+            loader : 'file-loader',
+            options: {},
+          },
+        ],
+      },
     ],
   },
 
