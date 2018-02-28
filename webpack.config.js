@@ -1,7 +1,10 @@
 const path = require('path')
 
+
 let config = {
-  entry: path.resolve(__dirname, 'src/js/main.js'),
+  mode: process.env.NODE_ENV || 'development',
+
+  entry: path.resolve(__dirname, 'src/js/index.js'),
 
   output: {
     filename  : 'bundle.js',

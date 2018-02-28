@@ -17,7 +17,10 @@ const webpack    = require('webpack')
 
 const noop = require('./noop')
 
-const dir = process.env.NODE_ENV === 'production' ? 'www' : 'dist'
+const env = process.env.NODE_ENV
+const dir = env === 'production' ? 'build' : 'dist'
+
+console.log(env, 'environment', `--> '${dir}/'`)
 
 
 /**
@@ -42,7 +45,7 @@ function content() {
   return gulp.src('src/index.html')
     // .pipe(newer(dir))
     .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css'] }))
-    .pipe(dir === 'www' ? htmlmin() : noop())
+    .pipe(env === 'production' ? htmlmin() : noop())
     .pipe(gulp.dest(dir))
 }
 
@@ -118,7 +121,7 @@ function watchers() {
  * Gulp tasks
  */
 
-const clean = () => del(['dist', 'www'])
+const clean = () => del(['dist', 'build'])
 const build = gulp.series(clean, assets, content, styles, scripts)
 const start = gulp.series(build, gulp.parallel(watchers, server))
 
