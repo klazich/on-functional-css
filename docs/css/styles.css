@@ -5686,6 +5686,25 @@ code,
 /* @import './_debug'; */
 /* uncomment to debug styles */
 /* @import "../../node_modules/tachyons/src/_debug.css"; */
+#loggedOut,
+#loggedIn {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+input[type=search] {
+  width: 0px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+input[type=search]:focus {
+  width: 100%;
+  padding-left: 8px;
+  padding-left: 0.5rem;
+  cursor: auto;
+}
+
 .sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -5699,21 +5718,6 @@ p .link {
 
 p .link:hover {
   background-image: none;
-}
-
-#first-p::first-letter {
-  font-family: sans-serif;
-  font-family: 'Source Sans Pro';
-  font-size: 60.8px;
-  font-size: 3.8rem;
-  float: left;
-  margin-top: 12.8px;
-  margin-top: 0.8rem;
-  margin-right: 4px;
-  margin-right: 0.25rem;
-  margin-left: -4px;
-  margin-left: -0.25rem;
-  font-weight: 600;
 }
 
 .html code:before {
@@ -5746,20 +5750,13 @@ pre {
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-  overflow-x: auto;
 }
-/* code {
-  color: var(--white);
-  background-color: rgba(0, 0, 0, .8);
-  padding-left: .5rem;
-  padding-right: .5rem;
-  border-radius: 2px;
-} */
-/* #header {
-  background-color: rgba(255,255,255,0.4);
-	box-shadow: 0 0 1px rgba(0,0,0,0.25);
-	transition: background-color 0.3s ease-in-out;
-} */
+
+article * {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
 p {
   font-family: serif;
   font-family: 'PT Serif';
@@ -5784,6 +5781,10 @@ h6,
 .sans-serif {
   font-family: sans-serif;
   font-family: 'Source Sans Pro';
+}
+
+@page: first {
+  margin: 3cm;
 }
 
 @media screen and (min-width: 30em) {
@@ -7637,6 +7638,17 @@ h6,
 
   .v-btm-ns {
     vertical-align: bottom;
+  }
+
+  article #first-p::first-letter {
+    font-family: sans-serif;
+    font-family: 'Source Sans Pro';
+    font-size: 3.8rem;
+    float: left;
+    margin-top: 0.8rem;
+    margin-right: 0.25rem;
+    margin-left: -0.25rem;
+    font-weight: 600;
   }
 }
 
@@ -11349,9 +11361,32 @@ h6,
 }
 
 @media print {
+  a:after {
+    content: " (" attr(href) ") ";
+    text-decoration: none;
+    font-weight: lighter;
+    font-family: 'Fira Mono';
+    font-size: x-small;
+  }
+
   pre {
     overflow-x: visible;
     white-space: pre-wrap;
+  }
+
+  #authorCard,
+  #banner,
+  header,
+  footer,
+  aside,
+  form {
+    display: none;
+  }
+
+  article {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 }
 
