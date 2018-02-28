@@ -15,7 +15,7 @@
 
     <div class="inline-flex items-center h-100 pv3">
       <a class="flex items-center" href="https://medium.com">
-        <img src="img/medium-logos-master/monogram/Monogram.svg" class="o-80 h2 w2"/>
+        <img src="img/medium-logos-master/monogram/Monogram.svg" class="o-80 h2 w2" />
       </a>
     </div>
 
@@ -31,11 +31,34 @@
         Follow
       </button>
       <a href="#" class="link gray hover-black-80 mr2 dn di-l"><img
-        src="img/icons/twitter.svg"/></a>
-      <a href="#" class="link gray hover-black-80 dn di-l"><img src="img/icons/facebook.svg"/></a>
+        src="img/icons/twitter.svg" /></a>
+      <a href="#" class="link gray hover-black-80 dn di-l"><img src="img/icons/facebook.svg" /></a>
     </div>
 
-    <header-meta-block></header-meta-block>
+    <!---->
+
+    <div id="loggedOut" class="inline-flex items-center ml-auto h-100">
+      <a onclick="toggle.next()"  class="f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
+      <button type="button"
+        class="f6 link green pointer nowrap br2 ba b--green bg-white pv2 ph3 ml1 mv1">
+        Get started
+      </button>
+    </div>
+
+    <div id="loggedIn" class="inline-flex items-center ml-auto h-100">
+      <div class="inline-flex items-center ml-auto">
+        <a type="button" class="link pointer gray hover-black-80 mr2"><img
+          src="img/icons/search.svg"></a>
+        <input id="searchInput" type="text" class="f6 h2 w-100 b--none black-70 mr2"
+          placeholder="Search">
+      </div>
+
+      <a class="gray pointer hover-black-80 mh3 v-mid"><img src="img/icons/notification.svg"></a>
+
+      <a onclick="toggle.next()"><img src="img/avatar.png" class="br-100 h2 v-mid"></a>
+    </div>
+
+    <!---->
 
   </div>
 
@@ -45,7 +68,7 @@
   <div class="ma3 mt4-l">
     <div class="dtc w3 v-mid h-100">
       <img src="img/mrmrs-avatar.png" class="br-100 pa1 ba b--green bg-light-gray h3 w3"
-           alt="avatar"/>
+        alt="avatar" />
     </div>
     <div class="dtc v-mid pl3 h-100">
       <div class="flex items-center ma0 pa0">
@@ -103,8 +126,8 @@
       </p>
       <cite class="mt0">―
         <a class="f5 f4-ns link dim black"
-           href="https://twitter.com/thomasfuchs/status/493790680397803521"
-           title="Thomas Fuchs on Twitter">@thomasfuchs</a>
+          href="https://twitter.com/thomasfuchs/status/493790680397803521"
+          title="Thomas Fuchs on Twitter">@thomasfuchs</a>
       </cite>
     </blockquote>
 
@@ -363,23 +386,23 @@
     <ul class="list lh-copy pl0 mt0">
       <li>
         <a class="link underline dim black"
-           href="https://gist.github.com/mrmrs/786241f0a5fade0324e2"
-           title="GitHub">GitHub</a>
+          href="https://gist.github.com/mrmrs/786241f0a5fade0324e2"
+          title="GitHub">GitHub</a>
       </li>
       <li>
         <a class="link underline dim black"
-           href="https://gist.github.com/mrmrs/57705f9a9fdce4d3d6f7"
-           title="Pinterest">Pinterest</a>
+          href="https://gist.github.com/mrmrs/57705f9a9fdce4d3d6f7"
+          title="Pinterest">Pinterest</a>
       </li>
       <li>
         <a class="link underline dim black"
-           href="https://gist.github.com/mrmrs/07e2ad668bac33e2da67"
-           title="Medium">Medium</a>
+          href="https://gist.github.com/mrmrs/07e2ad668bac33e2da67"
+          title="Medium">Medium</a>
       </li>
       <li>
         <a class="link underline dim black"
-           href="https://gist.github.com/mrmrs/2d5592826adb45748bac"
-           title="Adobe">Adobe</a>
+          href="https://gist.github.com/mrmrs/2d5592826adb45748bac"
+          title="Adobe">Adobe</a>
       </li>
     </ul>
     <p class="lh-title lh-copy-ns mv3 mv4-ns f5 f4-ns fw3 black-80">
@@ -432,7 +455,7 @@
       Part of this code bloat is an attachment to authoring ‘content-semantic’ class names.
       Honestly I’m surprised you can find people that still think this isn’t the worst idea
       ever. <a class="link dim underline black"
-               href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">
+      href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">
       Nicolas Gallagher already wrote the mic drop piece on why this doesn’t work.</a> But for
       some reason you still find people arguing for its merits as a silver bullet solution.
       Personally I think most of the internet is unnecessarily broken. So I assume everything
@@ -505,7 +528,7 @@
       years. And special thanks to the trailblazers that had the guts to challenge existing
       best practices and gave me the courage to do the same. I'm looking at you
       <a class="link dim underline black"
-         href="http://twitter.com/stubbornella">@stubbornella</a>,
+        href="http://twitter.com/stubbornella">@stubbornella</a>,
       <a class="link dim underline black" href="http://twitter.com/necolas">@necolas</a>, and
       <a class="link dim underline black" href="http://twitter.com/dam">@dam</a>.
     </p>
