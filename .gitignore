@@ -3,3 +3,4 @@
 node_modules
 dist/
 tasks_es5/
+**/*.log
