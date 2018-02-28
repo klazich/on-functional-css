@@ -9,6 +9,22 @@
   --font-serif : 'PT Serif';
 }
 
+#loggedOut,
+#loggedIn {
+  transition: all .2s
+}
+
+input[type=search] {
+  width: 0px;
+  transition: all .5s;
+}
+
+input[type=search]:focus {
+  width: 100%;
+  padding-left: 0.5rem;
+  cursor: auto;
+}
+
 .sticky {
   position : sticky;
 }
@@ -22,14 +38,16 @@ p .link:hover {
   background-image: none;
 }
 
-#first-p::first-letter {
-  font-family  : var(--font-sans, sans-serif);
-  font-size    : 3.8rem;
-  float        : left;
-  margin-top   : 0.8rem;
-  margin-right : 0.25rem;
-  margin-left  : -0.25rem;
-  font-weight  : 600;
+@media screen and (min-width: 30em) {
+  article #first-p::first-letter {
+    font-family  : var(--font-sans, sans-serif);
+    font-size    : 3.8rem;
+    float        : left;
+    margin-top   : 0.8rem;
+    margin-right : 0.25rem;
+    margin-left  : -0.25rem;
+    font-weight  : 600;
+  }
 }
 
 .html code:before {
@@ -60,22 +78,11 @@ pre code {
 
 pre {
   tab-size   : 4;
-  overflow-x : auto;
 }
 
-/* code {
-  color: var(--white);
-  background-color: rgba(0, 0, 0, .8);
-  padding-left: .5rem;
-  padding-right: .5rem;
-  border-radius: 2px;
-} */
-
-/* #header {
-  background-color: rgba(255,255,255,0.4);
-	box-shadow: 0 0 1px rgba(0,0,0,0.25);
-	transition: background-color 0.3s ease-in-out;
-} */
+article * {
+  transition: all .3s
+}
 
 p {
   font-family : var(--font-serif, serif);
@@ -94,8 +101,36 @@ h1, h2, h3, h4, h5, h6, .sans-serif {
 }
 
 @media print {
-  pre {
-    overflow-x  : visible;
-    white-space : pre-wrap;
+  a:after {
+    content: " (" attr(href) ") ";
+    text-decoration: none;
+    font-weight: lighter;
+    font-family: var(--font-mono);
+    font-size: x-small;
   }
+}
+
+@media print {
+  pre {
+    overflow-x: visible;
+    white-space: pre-wrap;
+  }
+
+  #authorCard,
+  #banner,
+  header,
+  footer,
+  aside,
+  form {
+    display: none;
+  }
+  article {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@page: first {
+  margin: 3cm;
 }

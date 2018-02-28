@@ -1,3 +1,5 @@
+/* code snippet logic */
+
 let codeSnippets = [
   '/* Start of reusable styles here */',
   '.homepage-promos .grid-50 {\n    width: 100%\n}\n.homepage-promos .grid-33 {\n    width: 100%\n}\n.homepage-promos .grid-34 {\n    width: 100%\n}',
@@ -11,48 +13,39 @@ let codeSnippets = [
   '.ie6 #footer-content .flex-control-nav li a,\n.ie7 #footer-content .flex-control-nav li a,\n.ie8 #footer-content .flex-control-nav li a {\n    float: left;\n}\n\n#nav.challenger-a li.menu-products {\n    float: left;\n}',
   '.container-inner.promo-status',
   '.red {\n    color: #FF4136;\n}',
-  '<div class“red”>Some text</div>',
+  '&lt;div class=“red”&gt;Some text&lt;/div&gt;',
 ]
 
-const template =
-        codeBlock => `  <figure class="css br2 bg-light-gray mh0 mh4-l">\n    <pre class="pa3 pl4-ns f6 f5-ns"><code class="">${codeBlock}</code></pre>\n  </figure>`
+const template = codeBlock => `\n    <pre class="pa3 pl4-ns f6 f5-ns overflow-x-auto"><code class="">${codeBlock}</code></pre>\n`
 
-let snippetElements = document.querySelectorAll('div.snippet')
+let snippetElements = document.querySelectorAll('figure[type=snippet]')
 
 codeSnippets.forEach((value, index) => {
   snippetElements[index].innerHTML = template(value)
 })
 
-/* Login/logout component */
+/* login/logout component */
 
+let loggedOutView = document.getElementById('loggedOut')
+let loggedInView  = document.getElementById('loggedIn')
 
-function* ToggleState() {
-  let isLoggedIn   = false
-  let loggedInDiv  = document.getElementById('loggedIn')
-  let loggedOutDiv = document.getElementById('loggedOut')
+loggedOutView
+  .firstElementChild
+  .addEventListener('click', (event) => {
+    loggedInView.removeAttribute('style')
+    loggedOutView.style.display = 'none'
+  })
 
-  while ( true ) {
+loggedInView
+  .lastElementChild
+  .addEventListener('click', (event) => {
+    loggedOutView.removeAttribute('style')
+    loggedInView.style.display = 'none'
+  })
 
-    isLoggedIn
-      ? loggedInDiv.removeAttribute('style')
-      : loggedInDiv.style.display = 'none'
-    isLoggedIn
-      ? loggedOutDiv.style.display = 'none'
-      : loggedOutDiv.removeAttribute('style')
-    isLoggedIn = !isLoggedIn
+/* search-bar component */
 
-    yield
-  }
-}
-
-let toggle = ToggleState()
-toggle.next()
-
-
-
-
-
-
-
-
-
+document.querySelector('#search>a')
+  .addEventListener('click', (event) => {
+    event.currentTarget.nextElementSibling.focus()
+  })
