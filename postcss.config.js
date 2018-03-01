@@ -9,7 +9,10 @@ module.exports = {
     'postcss-svgo'            : {},
     'css-mqpacker'            : {},
     'postcss-sorting'         : env === 'production' ? {} : false,
-    'postcss-uncss'           : env === 'production' ? { html: ['src/index.html'] } : false,
+    'postcss-discard-comments': env === 'production' ? {} : false,
+    'postcss-uncss'           : env === 'production' 
+      ? { html: ['src/index.html'], ignore: ['.*hover.*, .*focus.*'] } 
+      : false,
     'postcss-browser-reporter': {},
   },
 }

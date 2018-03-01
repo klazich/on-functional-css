@@ -17,8 +17,8 @@ const webpack    = require('webpack')
 
 const noop = require('./noop')
 
-const env = process.env.NODE_ENV
-const dir = env === 'production' ? 'build' : 'dist'
+const env = process.env.NODE_ENV || 'development'
+const dir = env === 'production' ? 'docs' : 'dist'
 
 console.log(env, 'environment', `--> '${dir}/'`)
 
@@ -81,7 +81,7 @@ function styles() {
     .pipe(stylefmt())
 
   let min = css.pipe(clone())
-    .pipe(postcss(require('cssnano')({ discardComments: { removeAll: true }, autoprefixer: false }),))
+    .pipe(postcss(require('cssnano')({ autoprefixer: false }),))
     .pipe(rename({ suffix: '.min' }))
 
   return merge(css, min)
@@ -121,8 +121,8 @@ function watchers() {
  * Gulp tasks
  */
 
-const clean = () => del(['dist', 'build'])
-const build = gulp.series(clean, assets, content, styles, scripts)
+const clean = () => del([dir])
+const build = gulp.series(clean, assets, content, scripts, styles)
 const start = gulp.series(build, gulp.parallel(watchers, server))
 
 gulp.task('default', start)

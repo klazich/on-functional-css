@@ -1,5 +1,6 @@
 const path = require('path')
 
+const outputDir = process.env.NODE_ENV === 'production' ? 'docs' : 'dist'
 
 let config = {
   mode: process.env.NODE_ENV || 'development',
@@ -8,7 +9,7 @@ let config = {
 
   output: {
     filename  : 'bundle.js',
-    path      : path.resolve(__dirname, 'dist', 'js'),
+    path      : path.resolve(__dirname, outputDir, 'js'),
     publicPath: '/js/',
   },
 
@@ -20,10 +21,6 @@ let config = {
         test   : /\.js$/,
         loader : ['babel-loader'],
         exclude: /node_modules/,
-      },
-      {
-        test  : /\.vue$/,
-        loader: 'vue-loader',
       },
       {
         test   : /\.svg$/,
@@ -48,10 +45,6 @@ let config = {
         ],
       },
     ],
-  },
-
-  resolve: {
-    alias: { vue$: 'vue/dist/vue.esm.js', },
   },
 }
 
