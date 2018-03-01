@@ -2,14 +2,14 @@
 
 Recreating a [Medium](https://medium.com/) style article/blog post using [Tachyons](http://tachyons.io/), the css toolkit.
 
-<small>[**`CURRENT BUILD`**](https://klazich.github.io/on-functional-css/) ::arrow:: `https://klazich.github.io/on-functional-css/`</small>
+<small>[**`CURRENT BUILD`**](https://klazich.github.io/on-functional-css/) `https://klazich.github.io/on-functional-css/`</small>
 
 ## Table of Contents
 
 - [**Introduction**](#introduction)
   - [What is Functional CSS?](#what-is-functional-css)
   - [About this project](#about-this-project)
-- [**Clone & Install**](#clone-install)
+- [**Clone & Install**](#clone--install)
 - [**Features/Functionality**](#featuresfunctionality)
   - [Gulp](#gulp)
   - [PostCSS](#postcss)
