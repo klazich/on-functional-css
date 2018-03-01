@@ -3,7 +3,7 @@ const { resolve } = require('path')
 const gulp       = require('gulp')
 const newer      = require('gulp-newer')
 const imagemin   = require('gulp-imagemin')
-const htmlmin    = require('gulp-html-minifier')
+const htmlmin    = require('gulp-htmlmin')
 const sourcemaps = require('gulp-sourcemaps')
 const inline     = require('gulp-inline')
 const clone      = require('gulp-clone')
@@ -45,7 +45,7 @@ function content() {
   return gulp.src('src/index.html')
     // .pipe(newer(dir))
     .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css'] }))
-    .pipe(env === 'production' ? htmlmin() : noop())
+    .pipe(env === 'production' ? htmlmin({collapseWhitespace: true}) : noop())
     .pipe(gulp.dest(dir))
 }
 
