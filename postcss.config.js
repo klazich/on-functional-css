@@ -1,7 +1,7 @@
-env = process.env.NODE_ENV || 'development'
-dir = env === 'production' ? 'docs' : 'dist'
+const ENV = process.env.NODE_ENV || 'development'
+const OUTDIR = ENV === 'production' ? 'docs' : 'dist'
 
-module.exports = {
+let config = {
   plugins: {
     'postcss-import'          : {},
     'postcss-nested'          : {},
@@ -9,11 +9,11 @@ module.exports = {
     'postcss-font-magician'   : { display: 'fallback' },
     'postcss-svgo'            : {},
     'css-mqpacker'            : {},
-    'postcss-sorting'         : env === 'production' ? {} : false,
-    'postcss-discard-comments': env === 'production' ? {} : false,
-    'postcss-uncss'           : env === 'production'
-      ? { html: [`${dir}/index.html`], ignore: ['.*hover.*, .*focus.*'] }
-      : false,
+    'postcss-sorting'         : ENV === 'production' ? {} : false,
+    'postcss-discard-comments': ENV === 'production' ? {} : false,
+    'postcss-uncss'           : ENV === 'production' ? { html: [`${OUTDIR}/index.html`], ignore: ['.*hover.*, .*focus.*'] } : false,
     'postcss-browser-reporter': {},
   },
 }
+
+module.exports = config
