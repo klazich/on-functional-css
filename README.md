@@ -1,4 +1,5 @@
 # f(css)
+[*current build*](https://klazich.github.io/on-functional-css/)
 Recreating a medium article page with Tachyons (tachyons-bootstrap).
 
 Article: [Css and Scalability](http://mrmrs.github.io/writing/2016/03/24/scalable-css/)
@@ -14,4 +15,28 @@ Recreating page:
 $ git clone https://github.com/klazich/OnFCSS.git
 $ cd OnFCSS
 $ yarn
+```
+or
+```
+$ npm install
+```
+
+## Start development server
+> serves from `dist/`
+```
+$ yarn start
+```
+or
+```
+$ npm run start
+```
+
+## Build production files
+> builds files in `docs/`
+```
+$ yarn build
+```
+or
+```
+$ npm run build
 ```
