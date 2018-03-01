@@ -20,7 +20,7 @@ const noop = require('./noop')
 const env = process.env.NODE_ENV || 'development'
 const dir = env === 'production' ? 'docs' : 'dist'
 
-console.log(env, 'environment', `--> '${dir}/'`)
+console.log(env, 'environment', `build to: '${dir}/'`)
 
 
 /**
@@ -60,7 +60,6 @@ const browser     = Browser.create()
 function scripts() {
   return new Promise(resolve => {
     webpack(webpackConfig,
-
       (err, stats) => {
         if ( err ) console.log('WEBPACK', err)
         console.log(stats.toString({ colors: true }))
@@ -110,7 +109,6 @@ function watchers() {
   gulp.watch('src/img/**/*', images)
   gulp.watch('src/index.html', content)
   gulp.watch('src/js/*.js', scripts)
-  gulp.watch('src/components/*.vue', scripts)
   gulp.watch('src/css/styles.css', styles)
   gulp.watch('dist/index.html').on('change', () => browser.reload())
   gulp.watch('dist/js/bundle.js').on('change', () => browser.reload())
