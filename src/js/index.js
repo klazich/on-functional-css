@@ -16,7 +16,8 @@ let codeSnippets = [
   '&lt;div class=“red”&gt;Some text&lt;/div&gt;',
 ]
 
-const template = codeBlock => `\n    <pre class="pa3 pl4-ns f6 f5-ns overflow-x-auto"><code class="">${codeBlock}</code></pre>\n`
+const template =
+        codeBlock => `\n    <pre class="pa3 pl4-ns f7 f6-m f5-l overflow-x-auto"><code class="">${codeBlock}</code></pre>\n`
 
 let snippetElements = document.querySelectorAll('figure[type=snippet]')
 
@@ -31,14 +32,14 @@ let loggedInView  = document.getElementById('loggedIn')
 
 loggedOutView
   .firstElementChild
-  .addEventListener('click', (event) => {
+  .addEventListener('click', () => {
     loggedInView.removeAttribute('style')
     loggedOutView.style.display = 'none'
   })
 
 loggedInView
   .lastElementChild
-  .addEventListener('click', (event) => {
+  .addEventListener('click', () => {
     loggedOutView.removeAttribute('style')
     loggedInView.style.display = 'none'
   })

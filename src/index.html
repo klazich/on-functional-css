@@ -6,7 +6,7 @@
   <title>On Functional CSS</title>
   <link href="css/styles.css" rel="stylesheet">
   <script defer src="js/bundle.js"></script>
-  <!-- <script defer src="js/index.js"></script> -->
+  <script defer src="js/index.js"></script>
 </head>
 
 <body class="w-100 sans-serif">
@@ -14,14 +14,12 @@
   <div class="flex items-center mw8 h3 ph3 mr-auto ml-auto">
 
     <div class="inline-flex items-center h-100 pv3">
-      <a class="flex items-center" href="https://medium.com">
-        <img src="img/medium-logos-master/monogram/Monogram.svg" class="o-80 h2 w2" />
-      </a>
+      <a href="#"><img src="img/medium-logos-master/monogram/Monogram.svg" class="o-80 h2 w2" /></a>
     </div>
 
-    <div class="inline-flex items-center h-100 mr3">
-      <span class="mh3 pa0 br b--black-20 h-50 dn dib-ns"></span>
-      <a href="#" class="link ml2">
+    <div class="inline-flex items-center h-100 mr3-ns">
+      <span class="mh3 pa0 br b--black-20 h-50 dib"></span>
+      <a href="#" class="link ml2-ns">
         <span class="f3 f4-l b black-60 nowrap">On Functional CSS</span>
       </a>
     </div>
@@ -44,14 +42,16 @@
     </div>
 
     <div id="loggedIn" style="display: none" class="inline-flex items-center ml-auto h-100">
-      <div id="search" class="inline-flex items-center ml-auto">
-        <a type="button" class="link pointer gray hover-black-80 ml-auto"><img
+      <div id="search" class="dn inline-flex-ns items-center ml-auto h-100">
+        <a class="link pointer gray hover-black-80 ml-auto"><img
           src="img/icons/search.svg"></a>
         <input type="search" class="f6 pointer h2 b--none black-70" placeholder="Search">
       </div>
-      <a class="gray pointer hover-black-80 mh3 v-mid"><img
+
+      <a class="gray dn inline-flex-ns pointer hover-black-80 mh3 v-mid"><img
         src="img/icons/notification.svg"></a>
-      <a><img src="img/avatar.png" class="pointer br-100 h2 v-mid"></a>
+
+      <a><img src="img/avatar.png" class="pointer br-100 h2 w2 mw2 v-mid"></a>
     </div>
   </div>
 
@@ -66,7 +66,7 @@
     </div>
     <div class="dtc v-mid pl3 h-100">
       <div class="flex items-center ma0 pa0">
-        <h1 class="f7 f6-ns fw5 fs-normal black mv0">Adam Morse
+        <h1 class="f6 fw5 fs-normal black mv0">Adam Morse
           <button type="button" class="f7 pointer br2 ba green b--green bg-white ph2 ml2 dn di-l">
             Follow
           </button>
@@ -92,7 +92,7 @@
 
     <h1 class="f3 f2-ns black-90">
       Css and Scalability<br class="dn-m">
-      <small class="fw4 gray f3-m">by Adam Morse</small>
+      <small class="fw4 gray f3-m nowrap">by Adam Morse</small>
     </h1>
 
     <p id="first-p" class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
@@ -172,37 +172,37 @@
       Some of the code made me laugh:
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       Some of the code made me cry.
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       Some of it made me laugh and cry at the same time.
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       Some of it made me wonder where numbers come from
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       Some of it made me thankful that I have read the spec
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       Eventually, I stumbled across this class of code.
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       I saw this class and thought - well at least you know what it does. Unlike some of the
@@ -213,13 +213,13 @@
       I kept reading and stumbled across this:
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       …followed by this very similar block of code…
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       I found myself wondering what the story was behind this next code block. Is it for
@@ -227,14 +227,14 @@
       class .header-nav-container?
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       Here we start to see a mixture of content-semantic (<code>.submenu</code>) with visually
       semantic class names (-3col).
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       Css is interesting because unlike other types of code, you are most likely to find the
@@ -276,7 +276,7 @@
       So if I ran into the above example:
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       That means I would have to find elements that had both of those classes (but not limited
@@ -291,7 +291,7 @@
       On the flip side think about this example:
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       I’d presume that this would make an element have red text. I was traditionally told this
@@ -304,7 +304,7 @@
       And if I saw this block of html:
     </p>
 
-    <figure type="snippet" class="css br2 bg-light-gray mh0 mh4-l"></figure>
+    <figure type="snippet" class="css br2 bg-light-gray mh0 mh2-m mh4-l"></figure>
 
     <p class="lh-copy mv3 mv4-ns f5 f4-ns fw3 black-80">
       I’d know without looking at the css what was going to happen. This is what I call a

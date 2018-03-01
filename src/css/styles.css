@@ -16,13 +16,15 @@
 
 input[type=search] {
   width: 0px;
-  transition: all .5s;
+  transition: all .5s ease-in-out;
+  color: transparent;
 }
 
 input[type=search]:focus {
   width: 100%;
   padding-left: 0.5rem;
   cursor: auto;
+  color: initial;
 }
 
 .sticky {
@@ -108,9 +110,7 @@ h1, h2, h3, h4, h5, h6, .sans-serif {
     font-family: var(--font-mono);
     font-size: x-small;
   }
-}
 
-@media print {
   pre {
     overflow-x: visible;
     white-space: pre-wrap;
