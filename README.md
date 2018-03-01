@@ -4,7 +4,7 @@
 
 ###### [current build](https://klazich.github.io/on-functional-css/) `https://klazich.github.io/on-functional-css/`
 
-<small>A front-end project created during [Code Louisville](https://www.codelouisville.org/)'s front-end developer track.</small>
+*<small>A front-end project created during [Code Louisville](https://www.codelouisville.org/)'s front-end developer track.</small>*
 
 
 
