@@ -1,5 +1,5 @@
 {
-  "name": "OnFCSS",
+  "name": "on-functional-css",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/klazich/OnFCSS.git",
@@ -36,7 +36,6 @@
     "postcss-sorting": "^3.1.0",
     "postcss-svgo": "^2.1.6",
     "postcss-uncss": "^0.16.1",
-    "postcss-url": "^7.3.0",
     "tachyons": "^4.9.1",
     "through2": "^2.0.3",
     "uncss": "^0.16.1",
