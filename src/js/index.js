@@ -1,3 +1,5 @@
+require('./fontLoader.js')
+
 /* code snippet logic */
 
 let codeSnippets = [
