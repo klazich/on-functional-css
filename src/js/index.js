@@ -1,6 +1,10 @@
+const zip = require('lodash/zip')
+
 require('./fontLoader.js')
 
-/* code snippet logic */
+/**
+ * code snippet logic
+ */
 
 let codeSnippets = [
   '/* Start of reusable styles here */',
@@ -18,19 +22,42 @@ let codeSnippets = [
   '&lt;div class=“red”&gt;Some text&lt;/div&gt;',
 ]
 
-const template =
-        codeBlock => `\n    <pre class="pa3 pl4-ns f7 f6-m f5-l overflow-x-auto"><code class="">${codeBlock}</code></pre>\n`
+// zip(codeSnippets.map(document.createExpression))
 
-let snippetElements = document.querySelectorAll('figure[type=snippet]')
 
-codeSnippets.forEach((value, index) => {
-  snippetElements[index].innerHTML = template(value)
-})
+let figureElements = document.querySelectorAll('figure[type=snippet]')
 
-/* login/logout component */
+codeSnippets
+  .map(text => document.createTextNode(text))
+  .map(node => {
+    code = document.createElement('code')
+    code.appendChild(node)
+    return code
+  })
+  .map(element => {
+    pre = document.createElement('pre')
+    pre.setAttribute('class', 'pa3 pl4-ns f7 f6-m f5-l overflow-x-auto')
+    pre.appendChild(element)
+    return pre
+  })
+  .forEach((element, index) => {
+    figureElements[index].setAttribute('class', 'css br2 bg-light-gray mh1 mh3-m mh5-l')
+    figureElements[index].removeAttribute('type')
+    figureElements[index].insertAdjacentElement('afterbegin', element)
+  })
+
+// const template = codeBlock => `\n    <pre class="pa3 pl4-ns f7 f6-m f5-l overflow-x-auto"><code class="">${codeBlock}</code></pre>\n`
+
+// codeSnippets.forEach((value, index) => {
+//   elements[index].insertAdjacentHTML('afterbegin', template(value))
+// })
+
+/**
+ * login/logout component
+ */
 
 let loggedOutView = document.getElementById('loggedOut')
-let loggedInView  = document.getElementById('loggedIn')
+let loggedInView = document.getElementById('loggedIn')
 
 loggedOutView
   .firstElementChild
@@ -46,7 +73,9 @@ loggedInView
     loggedInView.style.display = 'none'
   })
 
-/* search-bar component */
+/**
+ * search-bar component
+ */
 
 document.querySelector('#search>a')
   .addEventListener('click', (event) => {
