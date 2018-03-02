@@ -45,7 +45,7 @@ function content() {
   return gulp.src('src/index.html')
     // .pipe(newer(dir))
     .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css'] }))
-    .pipe(env === 'production' ? htmlmin({collapseWhitespace: true}) : noop())
+    .pipe(env === 'production' ? htmlmin({ collapseWhitespace: true }) : noop())
     .pipe(gulp.dest(dir))
 }
 
