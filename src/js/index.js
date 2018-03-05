@@ -1,6 +1,13 @@
-const zip = require('lodash/zip')
 
+/**
+ * Google Font loader
+ */
 require('./fontLoader.js')
+
+/**
+ * pin/unpin header with headroom.js
+ */
+
 
 /**
  * code snippet logic
@@ -22,35 +29,15 @@ let codeSnippets = [
   '&lt;div class=“red”&gt;Some text&lt;/div&gt;',
 ]
 
-// zip(codeSnippets.map(document.createExpression))
-
-
 let figureElements = document.querySelectorAll('figure[type=snippet]')
 
-codeSnippets
-  .map(text => document.createTextNode(text))
-  .map(node => {
-    code = document.createElement('code')
-    code.appendChild(node)
-    return code
-  })
-  .map(element => {
-    pre = document.createElement('pre')
-    pre.setAttribute('class', 'pa3 pl4-ns f7 f6-m f5-l overflow-x-auto')
-    pre.appendChild(element)
-    return pre
-  })
-  .forEach((element, index) => {
-    figureElements[index].setAttribute('class', 'css br2 bg-light-gray mh1 mh3-m mh5-l')
-    figureElements[index].removeAttribute('type')
-    figureElements[index].insertAdjacentElement('afterbegin', element)
-  })
+figureElements.forEach(figure => figure.className += ' br1 bg-moon-gray mh0 mh4-l')
 
-// const template = codeBlock => `\n    <pre class="pa3 pl4-ns f7 f6-m f5-l overflow-x-auto"><code class="">${codeBlock}</code></pre>\n`
+const template = codeBlock => `\n    <pre class="pa4 f7 f6-m f5-l overflow-x-auto"><code class="near-black lh-title">${codeBlock}</code></pre>\n`
 
-// codeSnippets.forEach((value, index) => {
-//   elements[index].insertAdjacentHTML('afterbegin', template(value))
-// })
+codeSnippets.forEach((value, index) => {
+  figureElements[index].insertAdjacentHTML('afterbegin', template(value))
+  })
 
 /**
  * login/logout component

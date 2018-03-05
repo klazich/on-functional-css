@@ -9,14 +9,25 @@
   --font-serif : 'PT Serif';
 }
 
+/* .headroom {
+  will-change: transform;
+  transition: transform 200ms linear;
+}
+.headroom--pinned {
+  transform: translateY(0%);
+}
+.headroom--unpinned {
+  transform: translateY(-100%);
+} */
+
 #loggedOut,
 #loggedIn {
-  transition: all .2s
+  transition: all .1s
 }
 
 input[type=search] {
   width: 0px;
-  transition: all .5s ease-in-out;
+  transition: all .3s ease-in-out;
   color: transparent;
 }
 
@@ -42,19 +53,12 @@ input[type=search]:focus {
 .html code:before,
 .css code:before {
   float          : right;
-  top            : 0;
-  right          : 0;
-  color          : #B8B8B8;
+  color          : whitesmoke;
   text-align     : right;
   font-size      : 0.75em;
-  margin-top     : -10px;
-  height         : 15px;
-  font-weight    : 900;
-}
-
-pre code {
-  color       : #525252;
-  line-height : 1.5em;
+  margin-top     : -25px;
+  margin-right   : -20px;
+  font-weight    : 700;
 }
 
 pre {
