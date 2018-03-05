@@ -34,7 +34,7 @@ let codeSnippets = [
 let figureElements = document.querySelectorAll('figure[type=snippet]')
 
 codeSnippets.forEach((value, index) => {
-  figureElements[index].className += ' bg-black-10 shadow-5 mh0 mh4-l'
+  figureElements[index].className += ' bg-black-10 nl3 nr3 mh4-l'
   figureElements[index].insertAdjacentHTML('afterbegin', value)
 })
 
