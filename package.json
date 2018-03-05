@@ -26,6 +26,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylefmt": "^1.1.0",
+    "lodash": "^4.17.5",
     "merge2": "^1.2.1",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-cssnext": "^3.1.0",
