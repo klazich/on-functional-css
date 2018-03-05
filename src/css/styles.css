@@ -20,9 +20,14 @@
   transform: translateY(-100%);
 } */
 
+#upgrade,
 #loggedOut,
 #loggedIn {
-  transition: all .1s
+  transition: all .2s
+}
+
+#upgrade:hover {
+  border-color: gray;
 }
 
 input[type=search] {
@@ -53,8 +58,8 @@ input[type=search]:focus {
 .html code:before,
 .css code:before {
   float          : right;
-  color          : whitesmoke;
-  text-align     : right;
+  color          : rgba(0, 0, 0, .1);
+  text-align     : center;
   font-size      : 0.75em;
   margin-top     : -25px;
   margin-right   : -20px;

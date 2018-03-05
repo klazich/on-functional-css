@@ -4,6 +4,8 @@
  */
 require('./fontLoader.js')
 
+const comp = (f, g) => x => f(g(x))
+
 /**
  * pin/unpin header with headroom.js
  */
@@ -27,41 +29,53 @@ let codeSnippets = [
   '.container-inner.promo-status',
   '.red {\n    color: #FF4136;\n}',
   '&lt;div class=“red”&gt;Some text&lt;/div&gt;',
-]
+].map(text => `\n    <pre class="pa4 f7 f6-m f5-l overflow-x-auto"><code class="dark-gray lh-copy">${text}</code></pre>\n`)
 
 let figureElements = document.querySelectorAll('figure[type=snippet]')
 
-figureElements.forEach(figure => figure.className += ' br1 bg-moon-gray mh0 mh4-l')
-
-const template = codeBlock => `\n    <pre class="pa4 f7 f6-m f5-l overflow-x-auto"><code class="near-black lh-title">${codeBlock}</code></pre>\n`
-
 codeSnippets.forEach((value, index) => {
-  figureElements[index].insertAdjacentHTML('afterbegin', template(value))
-  })
+  figureElements[index].className += ' bg-black-10 shadow-5 mh0 mh4-l'
+  figureElements[index].insertAdjacentHTML('afterbegin', value)
+})
 
 /**
- * login/logout component
+ * Make Standard/Alternative Header Toggling
  */
 
-let loggedOutView = document.getElementById('loggedOut')
-let loggedInView = document.getElementById('loggedIn')
+let altToggle = document.querySelector('[name="alt"] [name="toggle"]')
+let stdToggle = document.querySelector('[name="std"] [name="toggle"]')
 
-loggedOutView
-  .firstElementChild
+altToggle.addEventListener('click', () => {
+  document.querySelectorAll('[name="alt"]').forEach(elm => elm.style.display = 'none')
+  document.querySelectorAll('[name="std"]').forEach(elm => elm.removeAttribute('style'))
+})
+
+stdToggle.addEventListener('click', () => {
+  document.querySelectorAll('[name="std"]').forEach(elm => elm.style.display = 'none')
+  document.querySelectorAll('[name="alt"]').forEach(elm => elm.removeAttribute('style'))
+})
+
+/**
+ * Make Login/Logout Metabar Toggling
+ */
+
+let loggedOut = document.getElementById('loggedOut')
+let loggedIn = document.getElementById('loggedIn')
+
+loggedOut.querySelector('[name=toggle]')
   .addEventListener('click', () => {
-    loggedInView.removeAttribute('style')
-    loggedOutView.style.display = 'none'
+    loggedIn.removeAttribute('style')
+    loggedOut.style.display = 'none'
   })
 
-loggedInView
-  .lastElementChild
+loggedIn.querySelector('[name=toggle]')
   .addEventListener('click', () => {
-    loggedOutView.removeAttribute('style')
-    loggedInView.style.display = 'none'
+    loggedOut.removeAttribute('style')
+    loggedIn.style.display = 'none'
   })
 
 /**
- * search-bar component
+ * Search-Bar Component
  */
 
 document.querySelector('#search>a')

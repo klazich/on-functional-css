@@ -10,21 +10,31 @@
 </head>
 
 <body class="w-100 sans-serif">
-<header class="sticky top-0 block w-100 bg-white h3 z-5 o-90">
-  <!-- <div class="flex items-center mw8 h3 ph3 mr-auto ml-auto">
+<header class="sticky top-0 block bg-white h3 z-5 o-90">
+  <div class="flex items-center mw8 h3 ph3 center">
 
-    <div class="flex items-center h-100 mr3">
-      <img src="img/medium-logos-master/monogram/Monogram.svg" class="pointer o-80 h2 w2 v-mid" />
+    <div name="alt" class="flex items-center h-100 z-1">
+      <button id="upgrade" type="button" class="f6 link black-70 pointer nowrap ba br2 b--black-20 bg-white pv2 ph3 dn di-ns">
+        Upgrade
+      </button>
     </div>
 
-    <div class="flex items-center h-100 mr3-ns">
+    <div name="alt" class="absolute-ns left-0-ns right-0-ns flex items-center h-100">
+      <img name="toggle" src="img/medium-logos-master/wordmark/Wordmark_Black.svg" class="pointer center w4 h-100" />
+    </div>
+
+    <div name="std" style="display: none" class="flex items-center h-100 mr3">
+      <img name="toggle" src="img/medium-logos-master/monogram/Monogram.svg" class="pointer h2 w2 v-mid" />
+    </div>
+
+    <div name="std" style="display: none" class="flex items-center h-100 mr3-ns">
       <span class="mr3 pa0 br b--black-20 h-50 v-mid"></span>
       <a class="pointer link ml2-ns">
         <span class="f3 f4-l b black-60 nowrap">On Functional CSS</span>
       </a>
     </div>
 
-    <div class="flex items-center h-100">
+    <div name="std" style="display: none" class="flex items-center h-100">
       <button type="button" class="pointer f7 fw2 br2 ba green b--green bg-white ph2 mr2 dn di-l">
         Follow
       </button>
@@ -36,41 +46,10 @@
       </a>
     </div>
 
-    <div id="loggedOut" class="inline-flex items-center ml-auto h-100">
-      <a class="f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
-      <button type="button" class="f6 link green pointer nowrap br2 ba b--green bg-white pv2 ph3 ml1 mv1">
-        Get started
-      </button>
-    </div>
-
-    <div id="loggedIn" style="display: none" class="inline-flex items-center ml-auto h-100">
-      <div id="search" class="dn inline-flex-ns items-center ml-auto h-100 pl3">
-        <a class="link pointer gray hover-black-80 ml-auto"><img class="v-mid" src="img/icons/search.svg"></a>
-        <input type="search" class="f6 pointer h2 b--none black-70" placeholder="Search">
-      </div>
-      <a class="gray dn inline-flex-ns pointer hover-black-80 mh3 v-mid"><img src="img/icons/notification.svg"></a>
-      <a><img src="img/avatar.png" class="pointer br-100 h2 w2 mw2 v-mid"></a>
-    </div>
-
-  </div> -->
-
-  <div class="flex items-center justify-between h3 w-100 center">
-
-    <div class="flex items-center h-100 center w-100 absolute">
-      <img src="img/medium-logos-master/wordmark/Wordmark_Black.svg" class="pointer center w4 v-mid" />
-    </div>
-
-    <div class="relative flex mw8 w-100 h-100 bg-transparent center">
-
-      <div class="flex items-center h-100 mr-auto">
-        <button type="button" class="f6 link green pointer nowrap br2 ba b--green bg-white pv2 ph3 mv1">
-          Get started
-        </button>
-      </div>
-
-      <div id="loggedOut" class="flex items-center h-100 ml-auto">
-        <a class="f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
-        <button type="button" class="f6 link green pointer nowrap br2 ba b--green bg-white pv2 ph3 ml1 mv1">
+    <div class="flex items-center ml-auto h-100 z-1">
+      <div id="loggedOut" class="inline-flex items-center ml-auto h-100">
+        <a name="toggle" class="f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
+        <button type="button" class="f6 link green pointer nowrap br2 ba b--green bg-white pv2 ph3">
           Get started
         </button>
       </div>
@@ -80,10 +59,9 @@
           <a class="link pointer gray hover-black-80 ml-auto"><img class="v-mid" src="img/icons/search.svg"></a>
           <input type="search" class="f6 pointer h2 b--none black-70" placeholder="Search">
         </div>
-        <a class="gray dn inline-flex-ns pointer hover-black-80 mh3 v-mid"><img src="img/icons/notification.svg"></a>
-        <a><img src="img/avatar.png" class="pointer br-100 h2 w2 mw2 v-mid"></a>
+        <a class="gray dn inline-flex-ns pointer hover-black-80 mh3 v-mid"><img class="v-mid" src="img/icons/notification.svg"></a>
+        <a name="toggle"><img src="img/avatar.png" class="pointer br-100 h2 w2 mw2 v-mid"></a>
       </div>
-
     </div>
 
   </div>
@@ -94,26 +72,27 @@
 
   <div id="authorCard" class="ma3 mt4-l">
     <div class="dtc h-100">
-      <img src="img/mrmrs-avatar.png" class="br-100 pa1 ba b--moon-gray h2 w2 v-mid" alt="avatar" />
+      <img src="img/mrmrs-avatar.png" class="br-100 pa1 ba b--moon-gray h2 h3-l w2 w3-l v-mid" alt="avatar" />
     </div>
 
     <div class="dtc v-mid h-100 pl2">
       <div class="flex items-center ma0 pa0">
-        <h1 class="f6 fw5 fs-normal black mv0 fw6">Adam Morse
-          <button type="button" class="f7 pointer br2 ba green b--green bg-white ph2 ml2 fw1">
+        <h1 class="f6 fw5 fs-normal black mv0">Adam Morse
+          <button type="button" class="f7 pointer br2 ba green b--green bg-white ph2 ml2 fw1 v-top">
             Follow
           </button>
         </h1>
       </div>
 
-      <!-- <div class="flex items-center mt1">
-        <h2 class="f6 fw4 mv0 black-60">Designer in London; Trying to make the web: fast, readable, and easy to
+      <div class="items-center mt1 dn db-l">
+        <h2 class="f6 fw4 mv0 black-60">Trying to make the web: fast, readable, and easy to
           navigate.</h2>
-      </div> -->
+      </div>
 
       <div class="flex items-center pt1">
         <h2 class="f6 fw4 mv0 black-60">
           <time datetime="2016-03-24 00:00:00 +0000">March 24, 2016</time>
+          &#8226; 10 min read
         </h2>
       </div>
     </div>
@@ -125,8 +104,8 @@
 
   <article class="ph3">
 
-    <h1 class="f3 f2-ns black-90 nowrap">Css and Scalability<br class="dn-m">
-      <small class="fw4 gray f3-m nowrap">by Adam Morse</small>
+    <h1 class="f3 f2-ns black-90 nowrap">Css and Scalability<br>
+      <small class="fw4 gray f4 f3-ns nowrap">by Adam Morse</small>
     </h1>
 
     <p id="first-p" class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
@@ -136,7 +115,7 @@
       about concepts of maintainability when working with teams on large web apps.
     </p>
     <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
-      Css zen garden was a highly influential demo 'back in the day.' Most of my colleagues and I thought this did a
+      Css zen garden was a highly influential demo '<em>back in the day</em>.' Most of my colleagues and I thought this did a
       perfect job at illustrating the power of the cascade. You could drastically alter a site's visual design without
       touching even a bit of html.
     </p>
@@ -170,7 +149,7 @@
       talk I could get my hands on. There are a number of suggested 'best practices' around how sass/less/stylus etc.
       will help you build maintainable css. How mixins can make your code more
       <abbr title="Don't Repeat Yourself">DRY</abbr>. How extends will keep your markup clean and pretty to look at. How
-      BEM will make your code so perfect you want to cry.
+      <abbr title="Block Element Modifier">BEM</abbr> will make your code so perfect you want to cry.
     </p>
     <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
       But what is reality? What actually gets shipped to production? What do all of these tips and tricks do to our
