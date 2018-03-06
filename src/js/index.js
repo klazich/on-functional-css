@@ -3,12 +3,28 @@
  * Google Font loader
  */
 require('./fontLoader.js')
+const Headroom = require('headroom.js')
 
 const comp = (f, g) => x => f(g(x))
 
 /**
  * pin/unpin header with headroom.js
  */
+
+ // grab an element
+var myElement = document.querySelector("header");
+// construct an instance of Headroom, passing the element
+var headroom  = new Headroom(myElement, {
+  "offset": 205,
+  "tolerance": 5,
+  "classes": {
+    "initial": "animated",
+    "pinned": "slideDown",
+    "unpinned": "slideUp"
+  }
+});
+// initialise
+headroom.init();
 
 
 /**
@@ -34,7 +50,7 @@ let codeSnippets = [
 let figureElements = document.querySelectorAll('figure[type=snippet]')
 
 codeSnippets.forEach((value, index) => {
-  figureElements[index].className += ' bg-black-10 shadow-5 mh0 mh4-l'
+  figureElements[index].className += ' bg-black-10 nl3 nr3 mh4-l'
   figureElements[index].insertAdjacentHTML('afterbegin', value)
 })
 

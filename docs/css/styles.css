@@ -11,6 +11,7 @@ body {
 }
 
 article,
+aside,
 header {
   display: block;
 }
@@ -123,6 +124,7 @@ html,
 body,
 div,
 article,
+aside,
 main,
 header,
 pre,
@@ -154,8 +156,17 @@ img {
   border-right-width: 1px;
 }
 
+.bb {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
 .b--moon-gray {
   border-color: #ccc;
+}
+
+.b--light-gray {
+  border-color: #eee;
 }
 
 .b--black-20 {
@@ -176,15 +187,6 @@ img {
 
 .b--none {
   border-style: none;
-}
-
-.shadow-5 {
-  -webkit-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, .2);
-  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, .2);
-}
-
-.top-0 {
-  top: 0;
 }
 
 .dn {
@@ -211,6 +213,12 @@ img {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.justify-start {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 .sans-serif {
@@ -277,6 +285,10 @@ code {
 
 .tracked {
   letter-spacing: .1em;
+}
+
+.tracked-tight {
+  letter-spacing: -.05em;
 }
 
 .lh-copy {
@@ -357,10 +369,6 @@ code {
   overflow-x: auto;
 }
 
-.o-90 {
-  opacity: .9;
-}
-
 .o-60 {
   opacity: .6;
 }
@@ -405,6 +413,10 @@ code {
   background-color: rgba(0, 0, 0, .1);
 }
 
+.bg-light-gray {
+  background-color: #eee;
+}
+
 .bg-white {
   background-color: #fff;
 }
@@ -417,6 +429,14 @@ code {
   color: rgba(0, 0, 0, .8);
 }
 
+.hover-bg-black-20:hover {
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.hover-bg-black-20:focus {
+  background-color: rgba(0, 0, 0, .2);
+}
+
 .pa0 {
   padding: 0;
 }
@@ -424,6 +444,11 @@ code {
 .pa1 {
   padding: 4px;
   padding: .25rem;
+}
+
+.pa2 {
+  padding: 8px;
+  padding: .5rem;
 }
 
 .pa4 {
@@ -443,6 +468,11 @@ code {
 .pl3 {
   padding-left: 16px;
   padding-left: 1rem;
+}
+
+.pb4 {
+  padding-bottom: 32px;
+  padding-bottom: 2rem;
 }
 
 .pt1 {
@@ -541,6 +571,13 @@ code {
   margin-bottom: 1rem;
 }
 
+.mv4 {
+  margin-top: 32px;
+  margin-top: 2rem;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+}
+
 .mh0 {
   margin-left: 0;
   margin-right: 0;
@@ -551,6 +588,16 @@ code {
   margin-left: 1rem;
   margin-right: 16px;
   margin-right: 1rem;
+}
+
+.nl3 {
+  margin-left: -16px;
+  margin-left: -1rem;
+}
+
+.nr3 {
+  margin-right: -16px;
+  margin-right: -1rem;
 }
 
 .underline {
@@ -593,10 +640,6 @@ code {
 .center {
   margin-right: auto;
   margin-left: auto;
-}
-
-.mr-auto {
-  margin-right: auto;
 }
 
 .ml-auto {
@@ -642,10 +685,6 @@ code {
   z-index: 1;
 }
 
-.z-5 {
-  z-index: 5;
-}
-
 #upgrade,
 #loggedOut,
 #loggedIn {
@@ -671,11 +710,6 @@ input[type=search]:focus {
   cursor: auto;
   color: #000;
   color: initial;
-}
-
-.sticky {
-  position: -webkit-sticky;
-  position: sticky;
 }
 
 .html code:before {
@@ -860,7 +894,8 @@ h3,
 
   #authorCard,
   #banner,
-  header {
+  header,
+  aside {
     display: none;
   }
 
