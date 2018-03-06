@@ -13,7 +13,7 @@ let config = {
     'postcss-discard-comments': ENV === 'production' ? {} : false,
     'postcss-uncss'           : ENV === 'production' ? { html: [`${OUTDIR}/index.html`], ignore: ['.*hover.*, .*focus.*'] } : false,
     'postcss-reporter'        : { clearMessages: true, throwError: false },
-    'postcss-browser-reporter': {},
+    'postcss-browser-reporter': ENV === 'production' ? false : {},
   },
 }
 
