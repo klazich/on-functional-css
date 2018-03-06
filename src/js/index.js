@@ -3,12 +3,28 @@
  * Google Font loader
  */
 require('./fontLoader.js')
+const Headroom = require('headroom.js')
 
 const comp = (f, g) => x => f(g(x))
 
 /**
  * pin/unpin header with headroom.js
  */
+
+ // grab an element
+var myElement = document.querySelector("header");
+// construct an instance of Headroom, passing the element
+var headroom  = new Headroom(myElement, {
+  "offset": 205,
+  "tolerance": 5,
+  "classes": {
+    "initial": "animated",
+    "pinned": "slideDown",
+    "unpinned": "slideUp"
+  }
+});
+// initialise
+headroom.init();
 
 
 /**
