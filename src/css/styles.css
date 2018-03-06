@@ -97,11 +97,11 @@ code {
   font-family : var(--font-mono, monospace);
 }
 
-.serif {
+.override-serif {
   font-family : var(--font-serif, serif);
 }
 
-h1, h2, h3, h4, h5, h6, .sans-serif {
+h1, h2, h3, h4, h5, h6, .override-sans-serif {
   font-family : var(--font-sans, sans-serif);
 }
 
