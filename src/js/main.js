@@ -43,8 +43,8 @@ function headerPinUnpin() {
     if (!queued) requestAnimationFrame(update)
     queued = true
   }
-
-  document.addEventListener('scroll', onScroll, false)
+  window.onscroll = onScroll
+  // document.addEventListener('scroll', onScroll, false)
 }
 
 
@@ -121,7 +121,6 @@ function focusOnSearchInput() {
  * onload
  */
 const init = () => {
-  googleFontLoader()
   injectSnippets()
   headerStyleToggling()
   metabarToggling()
@@ -129,4 +128,9 @@ const init = () => {
   headerPinUnpin()
 }
 
+/**
+ * Execute javascript functions
+ */
+
+googleFontLoader()
 window.onload = init
