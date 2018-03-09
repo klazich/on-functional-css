@@ -12,15 +12,16 @@ const stylefmt   = require('gulp-stylefmt')
 const rename     = require('gulp-rename')
 const merge      = require('merge2')
 const del        = require('del')
+const cleanCSS   = require('gulp-clean-css')
 const Browser    = require('browser-sync')
 const webpack    = require('webpack')
 
 const noop = require('./noop')
 
-const env = process.env.NODE_ENV || 'development'
-const dir = env === 'production' ? 'docs' : 'dist'
+const ENV = process.env.NODE_ENV || 'development'
+const DIR = ENV === 'production' ? 'docs' : 'dist'
 
-console.log(env, 'environment', `build to: '${dir}/'`)
+console.log(ENV, 'environment', `build to: '${DIR}/'`)
 
 
 /**
@@ -29,9 +30,9 @@ console.log(env, 'environment', `build to: '${dir}/'`)
 
 function images() {
   return gulp.src('src/img/**/*')
-    .pipe(newer(resolve(dir, 'img')))
+    .pipe(newer(resolve(DIR, 'img')))
     .pipe(imagemin({ optimizationLevel: 5 }))
-    .pipe(gulp.dest(resolve(dir, 'img')))
+    .pipe(gulp.dest(resolve(DIR, 'img')))
 }
 
 const assets = gulp.parallel(images, /* fonts */)
@@ -43,10 +44,10 @@ const assets = gulp.parallel(images, /* fonts */)
 
 function content() {
   return gulp.src('src/index.html')
-    // .pipe(newer(dir))
+    .pipe(newer(DIR))
     .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css'] }))
-    .pipe(env === 'production' ? htmlmin({ collapseWhitespace: true }) : noop())
-    .pipe(gulp.dest(dir))
+    .pipe(ENV === 'production' ? htmlmin({ collapseWhitespace: true }) : noop())
+    .pipe(gulp.dest(DIR))
 }
 
 
@@ -80,18 +81,18 @@ function styles() {
     .pipe(stylefmt())
 
   let min = css.pipe(clone())
-    .pipe(postcss(require('cssnano')({ autoprefixer: false }),))
+    .pipe(cleanCSS())
     .pipe(rename({ suffix: '.min' }))
 
   return merge(css, min)
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(resolve(dir, 'css')))
+    .pipe(gulp.dest(resolve(DIR, 'css')))
     .pipe(browser.stream())
 }
 
 
 /**
- * Server (browser-sync, webpack)
+ * Server (browser-sync)
  */
 
 function server() {
@@ -109,7 +110,8 @@ function watchers() {
   gulp.watch('src/img/**/*', images)
   gulp.watch('src/index.html', content)
   gulp.watch('src/js/*.js', scripts)
-  gulp.watch('src/css/styles.css', styles)
+  gulp.watch('src/css/*.css', styles)
+  // reload browser on changes
   gulp.watch('dist/index.html').on('change', () => browser.reload())
   gulp.watch('dist/js/bundle.js').on('change', () => browser.reload())
 }
@@ -119,7 +121,7 @@ function watchers() {
  * Gulp tasks
  */
 
-const clean = () => del([dir])
+const clean = () => del([DIR])
 const build = gulp.series(clean, assets, content, scripts, styles)
 const start = gulp.series(build, gulp.parallel(watchers, server))
 
