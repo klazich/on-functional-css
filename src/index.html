@@ -5,36 +5,146 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>On Functional CSS</title>
-  <link href="css/styles.css" rel="stylesheet">
-  <script defer src="js/bundle.js"></script>
+  <link rel="preload" href="css/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.min.css"></noscript>
+  <script>
+    /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+    (function( w ){
+      "use strict";
+      // rel=preload support test
+      if( !w.loadCSS ){
+        w.loadCSS = function(){};
+      }
+      // define on the loadCSS obj
+      var rp = loadCSS.relpreload = {};
+      // rel=preload feature support test
+      // runs once and returns a function for compat purposes
+      rp.support = (function(){
+        var ret;
+        try {
+          ret = w.document.createElement( "link" ).relList.supports( "preload" );
+        } catch (e) {
+          ret = false;
+        }
+        return function(){
+          return ret;
+        };
+      })();
+    
+      // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+      // then change that media back to its intended value on load
+      rp.bindMediaToggle = function( link ){
+        // remember existing media attr for ultimate state, or default to 'all'
+        var finalMedia = link.media || "all";
+    
+        function enableStylesheet(){
+          link.media = finalMedia;
+        }
+    
+        // bind load handlers to enable media
+        if( link.addEventListener ){
+          link.addEventListener( "load", enableStylesheet );
+        } else if( link.attachEvent ){
+          link.attachEvent( "onload", enableStylesheet );
+        }
+    
+        // Set rel and non-applicable media type to start an async request
+        // note: timeout allows this to happen async to let rendering continue in IE
+        setTimeout(function(){
+          link.rel = "stylesheet";
+          link.media = "only x";
+        });
+        // also enable media after 3 seconds,
+        // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+        setTimeout( enableStylesheet, 3000 );
+      };
+    
+      // loop through link elements in DOM
+      rp.poly = function(){
+        // double check this to prevent external calls from running
+        if( rp.support() ){
+          return;
+        }
+        var links = w.document.getElementsByTagName( "link" );
+        for( var i = 0; i < links.length; i++ ){
+          var link = links[ i ];
+          // qualify links to those with rel=preload and as=style attrs
+          if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+            // prevent rerunning on link
+            link.setAttribute( "data-loadcss", true );
+            // bind listeners to toggle media back
+            rp.bindMediaToggle( link );
+          }
+        }
+      };
+    
+      // if unsupported, run the polyfill
+      if( !rp.support() ){
+        // run once at least
+        rp.poly();
+    
+        // rerun poly on an interval until onload
+        var run = w.setInterval( rp.poly, 500 );
+        if( w.addEventListener ){
+          w.addEventListener( "load", function(){
+            rp.poly();
+            w.clearInterval( run );
+          } );
+        } else if( w.attachEvent ){
+          w.attachEvent( "onload", function(){
+            rp.poly();
+            w.clearInterval( run );
+          } );
+        }
+      }
+    
+    
+      // commonjs
+      if( typeof exports !== "undefined" ){
+        exports.loadCSS = loadCSS;
+      }
+      else {
+        w.loadCSS = loadCSS;
+      }
+    }( typeof global !== "undefined" ? global : this ) );
+  </script>
+  <script async src="js/bundle.js"></script>
+  
 </head>
 
 <body class="w-100 override-sans-serif">
-<header class="sticky top-0 block bg-white h3 z-5 bb b--light-gray">
-  <div class="flex items-center mw8 h3 ph3 center">
 
-    <div name="alt" class="flex items-center h-100 z-1">
-      <button id="upgrade" type="button" class="f6 link black-70 pointer nowrap ba br2 b--black-20 bg-white pv2 ph3 dn di-ns">
+  <!-- <h6 class="dn db-l fixed left-2 mt6 ml6 f7 ttu normal">
+    <a href="http://mrmrs.github.io/writing/2016/03/24/scalable-css/" class="link moon-gray">Original</a>
+  </h6> -->
+
+<header class="sticky top-0 block bg-white h3 z-5 bb b--light-gray">
+
+  <div class="flex items-center mw8 h3 ph3 center">
+    <div class="--alt flex items-center h-100 z-1">
+      <button id="upgrade"
+        type="button"
+        class="f6 link black-70 pointer nowrap ba br2 b--black-20 bg-white pv2 ph3 dn di-ns">
         Upgrade
       </button>
     </div>
 
-    <div name="alt" class="absolute-ns left-0-ns right-0-ns flex items-center h-100">
-      <img name="toggle" src="img/medium-logos-master/wordmark/Wordmark_Black.svg" class="pointer center w4 h-100" />
+    <div class="--alt absolute-ns left-0-ns right-0-ns flex items-center h-100">
+      <img src="img/medium-logos-master/wordmark/Wordmark_Black.svg" class="--toggle pointer center w4 h-100" />
     </div>
 
-    <div name="std" style="display: none" class="flex items-center h-100 mr3">
-      <img name="toggle" src="img/medium-logos-master/monogram/Monogram.svg" class="pointer h2 w2 v-mid" />
+    <div style="display: none" class="--std flex items-center h-100 mr3">
+      <img src="img/medium-logos-master/monogram/Monogram.svg" class="--toggle pointer h2 w2 v-mid" />
     </div>
 
-    <div name="std" style="display: none" class="flex items-center h-100 mr3-ns">
+    <div style="display: none" class="--std flex items-center h-100 mr3-ns">
       <span class="mr3 pa0 br b--black-20 h-50 v-mid"></span>
       <a class="pointer link ml2-ns">
         <span class="f3 f4-l b black-60 nowrap">On Functional CSS</span>
       </a>
     </div>
 
-    <div name="std" style="display: none" class="flex items-center h-100">
+    <div style="display: none" class="--std flex items-center h-100">
       <button type="button" class="pointer f7 fw2 br2 ba green b--green bg-white ph2 mr2 dn di-l">
         Follow
       </button>
@@ -48,27 +158,27 @@
 
     <div class="flex items-center ml-auto h-100 z-1">
       <div id="loggedOut" class="inline-flex items-center ml-auto h-100">
-        <a name="toggle" class="f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
+        <a class="--toggle f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
         <button type="button" class="f6 link green pointer nowrap br2 ba b--green bg-white pv2 ph3">
           Get started
         </button>
       </div>
 
       <div id="loggedIn" style="display: none" class="inline-flex items-center ml-auto h-100">
-        <div id="search" class="dn inline-flex-ns items-center ml-auto h-100 pl3">
+        <div id="search" class="dn inline-flex-l items-center ml-auto h-100 pl3">
           <a class="link pointer gray hover-black-80 ml-auto"><img class="v-mid" src="img/icons/search.svg"></a>
-          <input type="search" class="f6 pointer h2 b--none black-70" placeholder="Search">
+          <input id="input" class="f6 pointer h2 b--none" placeholder="Search Medium">
         </div>
-        <a class="gray dn inline-flex-ns pointer hover-black-80 mh3 v-mid"><img class="v-mid" src="img/icons/notification.svg"></a>
-        <a name="toggle"><img src="img/avatar.png" class="pointer br-100 h2 w2 mw2 v-mid"></a>
+        <a class="gray dn inline-flex-ns pointer hover-black-80 mh3 v-mid"><img class="v-mid"
+          src="img/icons/notification.svg"></a>
+        <a class="--toggle"><img src="img/avatar.png" class="pointer br-100 h2 w2 mw2 v-mid"></a>
       </div>
     </div>
-
   </div>
 
 </header>
 
-<main class="mw7 mh3 mb6 center">
+<main class="mw7 mh3 mb5 center">
 
   <div id="authorCard" class="ma3 mt4-l">
     <div class="dtc h-100">
@@ -85,8 +195,7 @@
       </div>
 
       <div class="items-center mt1 dn db-l">
-        <h2 class="f6 fw4 mv0 black-60">Trying to make the web: fast, readable, and easy to
-          navigate.</h2>
+        <h2 class="f6 fw4 mv0 black-60">Trying to make the web: fast, readable, and easy to navigate.</h2>
       </div>
 
       <div class="flex items-center pt1">
@@ -98,8 +207,8 @@
     </div>
   </div>
 
-  <div id="banner" class="mw6 center ph3 mb4 mt3 o-60 red">
-    <img src="./img/tachyons-cleaned-flat.svg" class="mw-100">
+  <div id="banner" class="mw6 center ph3 mv5">
+    <img src="./img/tachyons-cleaned-flat.svg" class="light-red">
   </div>
 
   <article class="ph3">
@@ -115,9 +224,9 @@
       about concepts of maintainability when working with teams on large web apps.
     </p>
     <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
-      Css zen garden was a highly influential demo '<em>back in the day</em>.' Most of my colleagues and I thought this did a
-      perfect job at illustrating the power of the cascade. You could drastically alter a site's visual design without
-      touching even a bit of html.
+      Css zen garden was a highly influential demo '<em>back in the day</em>.' Most of my colleagues and I thought this
+      did a perfect job at illustrating the power of the cascade. You could drastically alter a site's visual design
+      without touching even a bit of html.
     </p>
     <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
       In the beginning, that’s what people sold me as a feature. By writing css, you could make a change in one place
@@ -128,12 +237,11 @@
 
     <blockquote class="ph0 mh0 f4 f3-m f2-l black-90 measure-narrow">
       <p class="lh-copy lh-title-ns fw9 mb1 mb2-m mb3-l">
-        Two css properties walk into a bar.
-        <br class="dn db-ns"> A barstool in a completely different bar falls over.
+        Two css properties walk into a bar. <br class="dn db-ns"> A barstool in a completely different bar falls over.
       </p>
       <cite class="f5 f4-l">―<a class=" link dim black"
-           href="https://twitter.com/thomasfuchs/status/493790680397803521"
-           title="Thomas Fuchs on Twitter">@thomasfuchs</a>
+        href="https://twitter.com/thomasfuchs/status/493790680397803521"
+        title="Thomas Fuchs on Twitter">@thomasfuchs</a>
       </cite>
     </blockquote>
 
@@ -436,10 +544,10 @@
     </p>
     <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
       This is where we come to the crux of the problem I have with any system that requires you to map visual styles to
-      components in your css. Content semantics have <b class="fw6 ttu override-sans-serif tracked">nothing to do with visual
-      styles</b>. When I used to build things with Legos I never thought ‘oh this is a piece for an engine block’ I
-      thought ‘oh cool this is a 1x4 blue lego and I can do anything I want with it’. It didn't matter if I was building
-      an underwater aquanauts base or an airplane - I knew exactly how to use that lego block.
+      components in your css. Content semantics have <b class="fw6 ttu override-sans-serif tracked">nothing to do with
+      visual styles</b>. When I used to build things with Legos I never thought ‘oh this is a piece for an engine block’
+      I thought ‘oh cool this is a 1x4 blue lego and I can do anything I want with it’. It didn't matter if I was
+      building an underwater aquanauts base or an airplane - I knew exactly how to use that lego block.
     </p>
     <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
       It’s all about lego bits. Because I never needed to re-contextualize my understanding of lego blocks. I could use
@@ -497,22 +605,32 @@
       <a class="link dim underline black override-sans-serif" href="http://twitter.com/dam">@dam</a>.
     </p>
 
-    <aside class="flex items-center justify-start black-70 mv4 bb b--light-gray pb4">
-      <button type="button" class="pointer black-70 f6 tracked-tight override-sans-serif bg-light-gray hover-bg-black-20 ba b--none br2 pa2 mr2">
+    <aside class="flex flex-wrap items-center justify-start black-70 mv4">
+      <button type="button"
+        class="pointer black-70 f6 tracked-tight override-sans-serif nowrap bg-light-gray hover-bg-black-20 ba b--none br2 pa2 mr2 mv1">
         Web Development
       </button>
-      <button type="button" class="pointer black-70 f6 tracked-tight override-sans-serif bg-light-gray hover-bg-black-20 ba b--none br2 pa2 mr2">
+      <button type="button"
+        class="pointer black-70 f6 tracked-tight override-sans-serif nowrap bg-light-gray hover-bg-black-20 ba b--none br2 pa2 mr2 mv1">
         Functional CSS
       </button>
-      <button type="button" class="pointer black-70 f6 tracked-tight override-sans-serif bg-light-gray hover-bg-black-20 ba b--none br2 pa2 mr2">
+      <button type="button"
+        class="pointer black-70 f6 tracked-tight override-sans-serif nowrap bg-light-gray hover-bg-black-20 ba b--none br2 pa2 mr2 mv1">
         Tachyons
       </button>
-      <button type="button" class="pointer black-70 f6 tracked-tight override-sans-serif bg-light-gray hover-bg-black-20 ba b--none br2 pa2 mr2">
+      <button type="button"
+        class="pointer black-70 f6 tracked-tight override-sans-serif nowrap bg-light-gray hover-bg-black-20 ba b--none br2 pa2 mr2 mv1">
         Front-End
       </button>
     </aside>
 
   </article>
 </main>
+
+<footer class="flex items-center justify-center h5 bg-washed-green">
+  <a href="https://kevinlazich.com" class="br b--black"><img src="img/logo.png" alt="kl-logo" class="w2 pa2 dim" /></a>
+  <h6 class="f7 normal ttu pa2">built with<span class="tracked b no-underline">
+    <a href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
+</footer>
 </body>
 </html>

@@ -7,37 +7,37 @@
 }
 
 header {
-  will-change: transform;
-  transition: transform 0.25s ease-in-out;
-}
-.--pinned {
-  transform: translateY(0%);
-}
-.--unpinned {
-  transform: translateY(-100%);
+  will-change : transform;
+  transition  : transform 0.25s ease-in-out;
 }
 
-#upgrade,
-#loggedOut,
-#loggedIn {
-  transition: all .2s;
+/* uncss:ignore */
+.--pinned {
+  transform : translateY(0%);
 }
+
+/* uncss:ignore */
+.--unpinned {
+  transform : translateY(-100%);
+}
+
+
 
 #upgrade:hover {
-  border-color: gray;
+  border-color : gray;
 }
 
-input[type=search] {
-  width: 0px;
-  transition: all .3s ease-in-out;
-  color: transparent;
+input#input {
+  width      : 0px;
+  transition : all .3s ease-in-out;
+  color      : transparent;
 }
 
-input[type=search]:focus {
-  width: 100%;
-  padding-left: 0.5rem;
-  cursor: auto;
-  color: initial;
+input#input:focus {
+  width        : 100%;
+  padding-left : 0.5rem;
+  cursor       : auto;
+  color        : gray;
 }
 
 .sticky {
@@ -54,21 +54,21 @@ input[type=search]:focus {
 
 .html code:before,
 .css code:before {
-  float          : right;
-  color          : rgba(0, 0, 0, .1);
-  text-align     : center;
-  font-size      : 0.75em;
-  margin-top     : -25px;
-  margin-right   : -20px;
-  font-weight    : 700;
+  float        : right;
+  color        : rgba(0, 0, 0, .1);
+  text-align   : center;
+  font-size    : 0.75em;
+  margin-top   : -25px;
+  margin-right : -20px;
+  font-weight  : 700;
 }
 
 pre {
-  tab-size   : 4;
+  tab-size : 4;
 }
 
 article * {
-  transition: all .2s
+  transition : all .2s
 }
 
 p {
@@ -89,16 +89,16 @@ h1, h2, h3, h4, h5, h6, .override-sans-serif {
 
 @media print {
   a:after {
-    content: " (" attr(href) ") ";
-    text-decoration: none;
-    font-weight: lighter;
-    font-family: var(--font-mono);
-    font-size: x-small;
+    content         : " (" attr(href) ") ";
+    text-decoration : none;
+    font-weight     : lighter;
+    font-family     : var(--font-mono);
+    font-size       : x-small;
   }
 
   pre {
-    overflow-x: visible;
-    white-space: pre-wrap;
+    overflow-x  : visible;
+    white-space : pre-wrap;
   }
 
   #authorCard,
@@ -107,15 +107,12 @@ h1, h2, h3, h4, h5, h6, .override-sans-serif {
   footer,
   aside,
   form {
-    display: none;
+    display : none;
   }
-  article {
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-}
 
-@page: first {
-  margin: 3cm;
+  article {
+    width   : 100% !important;
+    padding : 0 !important;
+    margin  : 0 !important;
+  }
 }
