@@ -6,7 +6,7 @@ const OUTDIR  = ENV === 'production' ? 'docs' : 'dist'
 let config = {
   mode: ENV,
 
-  entry: path.resolve(__dirname, 'src/js/index.js'),
+  entry: path.resolve(__dirname, 'src/js/main.js'),
 
   output: {
     filename  : 'bundle.js',
