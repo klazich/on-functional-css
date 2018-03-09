@@ -151,6 +151,10 @@ img {
   border-bottom-width: 1px;
 }
 
+.b--black {
+  border-color: #000;
+}
+
 .b--moon-gray {
   border-color: #ccc;
 }
@@ -389,16 +393,12 @@ code {
   color: #777;
 }
 
+.light-red {
+  color: #ff725c;
+}
+
 .green {
   color: #19a974;
-}
-
-.navy {
-  color: #001b44;
-}
-
-.blue {
-  color: #357edd;
 }
 
 .bg-light-gray {
