@@ -1,6 +1,4 @@
-/** @format */
-
-var through = require('through2')
+let through = require('through2')
 
 function NoopPlugin(file, encoding, done) {
   this.push(file)

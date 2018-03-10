@@ -26,7 +26,6 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylefmt": "^1.1.0",
     "immutable-css": "^1.1.2",
-    "lodash": "^4.17.5",
     "merge2": "^1.2.1",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-cssnext": "^3.1.0",
@@ -40,10 +39,11 @@
     "tachyons": "^4.9.1",
     "through2": "^2.0.3",
     "uncss": "^0.16.1",
-    "webfontloader": "^1.6.28",
     "webpack": "^4.0.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "webfontloader": "^1.6.28"
+  },
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp start",
     "build": "cross-env NODE_ENV=production gulp build"

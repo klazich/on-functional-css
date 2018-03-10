@@ -1,19 +1,49 @@
 const ENV = process.env.NODE_ENV || 'development'
 const OUTDIR = ENV === 'production' ? 'docs' : 'dist'
 
-let config = {
+const config = {
   plugins: {
-    'postcss-import'          : {},
-    'immutable-css'           : {},
-    'postcss-nested'          : {},
-    'postcss-cssnext'         : {},
-    'postcss-svgo'            : {},
-    'css-mqpacker'            : {},
-    'postcss-sorting'         : ENV === 'production' ? {} : false,
-    'postcss-uncss'           : ENV === 'production' ? { html: [`${OUTDIR}/index.html`] } : false,
-    'postcss-discard-comments': ENV === 'production' ? {} : false,
-    'postcss-reporter'        : { clearMessages: true, throwError: false },
-    'postcss-browser-reporter': ENV === 'production' ? false : {},
+    'postcss-import': {
+      /* options */
+    },
+    'immutable-css': {
+      /* options */
+    },
+    'postcss-nested': {
+      /* options */
+    },
+    'postcss-cssnext': {
+      /* options */
+    },
+    'postcss-svgo': {
+      /* options */
+    },
+    'css-mqpacker': {
+      /* options */
+    },
+    'postcss-sorting': ENV === 'production'
+      ? {
+        /* options */
+      }
+      : false,
+    'postcss-uncss': ENV === 'production'
+      ? {
+        html: [`${OUTDIR}/index.html`],
+      }
+      : false,
+    'postcss-discard-comments': ENV === 'production'
+      ? {
+        /* options */
+      }
+      : false,
+    'postcss-reporter': {
+      clearMessages: true, throwError: false,
+    },
+    'postcss-browser-reporter': ENV === 'production'
+      ? false
+      : {
+        /* options */
+      },
   },
 }
 
