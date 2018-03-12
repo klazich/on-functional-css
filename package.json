@@ -46,6 +46,8 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp start",
-    "build": "cross-env NODE_ENV=production gulp build"
+    "build": "cross-env NODE_ENV=production gulp build",
+    "git:pub": "git add docs/ && git commit -m \"docs: Build site\" && git push",
+    "git:oops": "git reset HEAD~"
   }
 }
