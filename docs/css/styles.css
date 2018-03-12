@@ -198,6 +198,16 @@ img {
   top: 0;
 }
 
+.right-1 {
+  right: 16px;
+  right: 1rem;
+}
+
+.bottom-1 {
+  bottom: 16px;
+  bottom: 1rem;
+}
+
 .absolute--fill {
   top: 0;
   right: 0;
@@ -217,12 +227,6 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-.inline-flex {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 .flex-wrap {
@@ -435,6 +439,10 @@ code {
   background-color: #eee;
 }
 
+.bg-near-white {
+  background-color: #f4f4f4;
+}
+
 .bg-white {
   background-color: #fff;
 }
@@ -558,6 +566,11 @@ code {
 .mt1 {
   margin-top: 4px;
   margin-top: .25rem;
+}
+
+.mt5 {
+  margin-top: 64px;
+  margin-top: 4rem;
 }
 
 .mv0 {
@@ -759,9 +772,9 @@ code {
 }
 
 .blur {
-  filter: url('data:image/svg+xml;charset=utf-8, <svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="5" /><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.44882000000000005 0.50064 0.05054 0 0 0.14882 0.80064 0.05054 0 0 0.14882 0.50064 0.35054 0 0 0 0 0 1 0" /></filter></svg>#filter');
-  -webkit-filter: blur(5px) grayscale(70%);
-  filter: blur(5px) grayscale(70%);
+  filter: url('data:image/svg+xml;charset=utf-8, <svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="4" /></filter></svg>#filter');
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
 }
 
 header {
@@ -939,10 +952,10 @@ h6,
     display: block;
   }
 
-  .inline-flex-l {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
+  .flex-l {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 
   .h3-l {
