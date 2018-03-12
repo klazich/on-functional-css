@@ -6,6 +6,21 @@
   --font-serif : 'PT Serif';
 }
 
+.intro {
+  font-family : var(--font-mono);
+  top         : 50%;
+  left        : 50%;
+  transform   : translate(-50%, -50%);
+  width       : 800px;
+  max-width   : 100%;
+  height      : 600px;
+  max-height  : 90%;
+}
+
+.blur {
+  filter : blur(5px) grayscale(70%);
+}
+
 header {
   will-change : transform;
   transition  : transform 0.25s ease-in-out;
@@ -21,14 +36,16 @@ header {
   transform : translateY(-100%);
 }
 
-
+#upgrade {
+  transition : .2s ease-in-out;
+}
 
 #upgrade:hover {
   border-color : gray;
 }
 
 input#input {
-  width      : 0px;
+  width      : 0;
   transition : all .3s ease-in-out;
   color      : transparent;
 }
@@ -67,13 +84,9 @@ pre {
   tab-size : 4;
 }
 
-article * {
-  transition : all .2s
-}
-
-p {
+/*p {
   font-family : var(--font-serif, serif);
-}
+}*/
 
 code {
   font-family : var(--font-mono, monospace);

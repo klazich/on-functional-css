@@ -1,6 +1,5 @@
 function googleFontLoader() {
   const WebFont = require('webfontloader')
-
   WebFont.load({
     google: {
       families: [
@@ -14,33 +13,36 @@ function googleFontLoader() {
 
 function headerPinUnpin() {
   let previousScrollY = 0
-  let queued = false
+  let queued          = false
 
   const pin = (query) => {
-    let elem = document.querySelector(query)
+    const elem = document.querySelector(query)
     elem.classList.remove('--unpinned')
     elem.classList.add('--pinned')
   }
 
   const unpin = (query) => {
-    let elem = document.querySelector(query)
+    const elem = document.querySelector(query)
     elem.classList.remove('--pinned')
     elem.classList.add('--unpinned')
   }
 
   const update = () => {
-    let dy = window.scrollY - previousScrollY  // Δy is change in y
+    const dy = window.scrollY - previousScrollY // Δy is change in y
 
-    dy > 0 ? unpin('header')    // (Δy > 0) scroll movement down -> hide header
-      : dy < 0 ? pin('header')  // (Δy < 0) scroll movement up   -> show header
-        : null                  // (Δy = 0) no scroll movement   -> do nothing
+    // (Δy > 0) scroll movement down -> hide header
+    // (Δy < 0) scroll movement up   -> show header
+    // (Δy = 0) no scroll movement   -> do nothing
+
+    if ( dy > 0 ) unpin('header')
+    if ( dy < 0 ) pin('header')
 
     previousScrollY = window.scrollY
-    queued = false
+    queued          = false
   }
 
-  const onScroll = () => {
-    if (!queued) requestAnimationFrame(update)
+  const onScroll  = () => {
+    if ( !queued ) requestAnimationFrame(update)
     queued = true
   }
   window.onscroll = onScroll
@@ -49,8 +51,8 @@ function headerPinUnpin() {
 
 
 function injectSnippets() {
-  let figureElements = document.querySelectorAll('figure[type=snippet]')
-  let codeSnippets = [
+  const figureElements = document.querySelectorAll('figure[type=snippet]')
+  const codeSnippets   = [
     '/* Start of reusable styles here */',
     '.homepage-promos .grid-50 {\n    width: 100%\n}\n.homepage-promos .grid-33 {\n    width: 100%\n}\n.homepage-promos .grid-34 {\n    width: 100%\n}',
     '#seo-container {\n    display: none;\n}',
@@ -76,38 +78,45 @@ function injectSnippets() {
 }
 
 function headerStyleToggling() {
-  let stdElements = document.querySelectorAll('.--std')
-  let altElements = document.querySelectorAll('.--alt')
+  const stdElements = document.querySelectorAll('.--std')
+  const altElements = document.querySelectorAll('.--alt')
 
   document.querySelector('.--alt .--toggle')
     .addEventListener('click', () => {
-      altElements.forEach(elem => elem.style.display = 'none')
+      altElements.forEach(elem => elem.setAttribute('style', 'display:none'))
       stdElements.forEach(elem => elem.removeAttribute('style'))
     })
 
   document.querySelector('.--std .--toggle')
     .addEventListener('click', () => {
-      stdElements.forEach(elem => elem.style.display = 'none')
+      stdElements.forEach(elem => elem.setAttribute('style', 'display:none'))
       altElements.forEach(elem => elem.removeAttribute('style'))
     })
 }
 
 function metabarToggling() {
-  let loggedOut = document.getElementById('loggedOut')
-  let loggedIn = document.getElementById('loggedIn')
+  const loggedOut = document.getElementById('loggedOut')
+  const loggedIn  = document.getElementById('loggedIn')
 
   loggedOut.querySelector('.--toggle')
     .addEventListener('click', () => {
-      loggedOut.style.display = 'none'
+      loggedOut.setAttribute('style', 'display:none')
       loggedIn.removeAttribute('style')
     })
 
   loggedIn.querySelector('.--toggle')
     .addEventListener('click', () => {
-      loggedIn.style.display = 'none'
+      loggedIn.setAttribute('style', 'display:none')
       loggedOut.removeAttribute('style')
     })
 }
+
+/**
+ * focusOnSearchInput
+ *
+ * This function attaches an event listener on the search icon that will
+ * set focus on the text input field when the icon is clicked.
+ */
 
 function focusOnSearchInput() {
   document.querySelector('#search>a')
@@ -118,19 +127,33 @@ function focusOnSearchInput() {
 
 
 /**
- * onload
+ *
  */
+
+function closeIntro() {
+  document.querySelector('.intro .--closer')
+    .addEventListener('click', () => {
+      document.querySelector('.blur').classList.remove('blur')
+      document.querySelector('.intro').classList.add('dn')
+    })
+}
+
+/**
+ * Execute all functions from init
+ */
+
 const init = () => {
+  googleFontLoader()
   injectSnippets()
   headerStyleToggling()
   metabarToggling()
   focusOnSearchInput()
   headerPinUnpin()
+  closeIntro()
 }
 
 /**
  * Execute javascript functions
  */
 
-googleFontLoader()
 window.onload = init
