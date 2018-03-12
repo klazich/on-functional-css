@@ -1,3 +1,6 @@
+import { toggleElem } from './toggle.js'
+
+
 function googleFontLoader() {
   const WebFont = require('webfontloader')
   WebFont.load({
@@ -77,38 +80,41 @@ function injectSnippets() {
     })
 }
 
+/**
+ * Toggling
+ *
+ * do -> change-------on--------when
+ *       |class names |element  |event
+ *       how                    what
+ *       |add/remove            |click
+ *                              on
+ *                              |element
+ */
+
 function headerStyleToggling() {
-  const stdElements = document.querySelectorAll('.--std')
-  const altElements = document.querySelectorAll('.--alt')
+  const stdElem = document.querySelectorAll('.--std')
+  const altElem = document.querySelectorAll('.--alt')
 
-  document.querySelector('.--alt .--toggle')
-    .addEventListener('click', () => {
-      altElements.forEach(elem => elem.setAttribute('style', 'display:none'))
-      stdElements.forEach(elem => elem.removeAttribute('style'))
-    })
+  const onClick = () =>{
+    stdElem.forEach(toggleElem)
+    altElem.forEach(toggleElem)
+  }
 
-  document.querySelector('.--std .--toggle')
-    .addEventListener('click', () => {
-      stdElements.forEach(elem => elem.setAttribute('style', 'display:none'))
-      altElements.forEach(elem => elem.removeAttribute('style'))
-    })
+  document.querySelector('.--alt .--toggle').addEventListener('click', onClick)
+  document.querySelector('.--std .--toggle').addEventListener('click', onClick)
 }
 
 function metabarToggling() {
-  const loggedOut = document.getElementById('loggedOut')
+  const loggedOt = document.getElementById('loggedOut')
   const loggedIn  = document.getElementById('loggedIn')
 
-  loggedOut.querySelector('.--toggle')
-    .addEventListener('click', () => {
-      loggedOut.setAttribute('style', 'display:none')
-      loggedIn.removeAttribute('style')
-    })
+  const onClick = () => {
+    toggleElem(loggedIn)
+    toggleElem(loggedOt)
+  }
 
-  loggedIn.querySelector('.--toggle')
-    .addEventListener('click', () => {
-      loggedIn.setAttribute('style', 'display:none')
-      loggedOut.removeAttribute('style')
-    })
+  loggedOt.querySelector('.--toggle').addEventListener('click', onClick)
+  loggedIn.querySelector('.--toggle').addEventListener('click', onClick)
 }
 
 /**
@@ -131,10 +137,11 @@ function focusOnSearchInput() {
  */
 
 function closeIntro() {
-  document.querySelector('.intro .--closer')
+  let isOpen = true
+  document.querySelector('#intro-content .--closer')
     .addEventListener('click', () => {
       document.querySelector('.blur').classList.remove('blur')
-      document.querySelector('.intro').classList.add('dn')
+      document.querySelector('#intro').classList.add('dn')
     })
 }
 

@@ -7,7 +7,6 @@
   <title>On Functional CSS</title>
   <script async src="js/bundle.js"></script>
   <link rel="stylesheet" href="css/styles.min.css" />
-  <link rel="stylesheet" href="../dist/css/styles.css" />
 </head>
 
 <body class="override-serif w-100 z-5">
@@ -29,19 +28,19 @@
           class="--toggle pointer center w4 h-100" />
       </div>
 
-      <div style="display: none" class="--std flex items-center h-100 mr3">
+      <div class="--std items-center h-100 mr3 dn">
         <img src="img/medium-logos-master/monogram/Monogram.svg"
           class="--toggle pointer h2 w2 v-mid" />
       </div>
 
-      <div style="display: none" class="--std flex items-center h-100 mr3-ns">
+      <div class="--std items-center h-100 mr3-ns dn">
         <span class="mr3 pa0 br b--black-20 h-50 v-mid"></span>
         <a class="pointer link ml2-ns">
           <span class="f3 f4-l b black-60 nowrap">On Functional CSS</span>
         </a>
       </div>
 
-      <div style="display: none" class="--std flex items-center h-100">
+      <div class="--std items-center h-100 dn">
         <a class="pointer link gray hover-black-80 mr2 dn di-l">
           <img class="v-mid" src="img/icons/twitter.svg" />
         </a>
@@ -51,7 +50,7 @@
       </div>
 
       <div class="flex items-center ml-auto h-100 z-1">
-        <div id="loggedOut" class="inline-flex items-center ml-auto h-100">
+        <div id="loggedOut" class="flex items-center ml-auto h-100">
           <a class="--toggle f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
           <button type="button"
             class="f6 link green pointer nowrap br2 ba b--green bg-white pv2 ph3">
@@ -59,8 +58,8 @@
           </button>
         </div>
 
-        <div id="loggedIn" style="display: none" class="inline-flex items-center ml-auto h-100">
-          <div id="search" class="dn inline-flex-l items-center ml-auto h-100 pl3">
+        <div id="loggedIn" class="dn items-center ml-auto h-100">
+          <div id="search" class="dn flex-l items-center ml-auto h-100 pl3">
             <a class="link pointer gray hover-black-80 ml-auto"><img class="v-mid"
               src="img/icons/search.svg"></a>
             <input id="input" class="f6 pointer h2 b--none" placeholder="Search Medium">
@@ -582,8 +581,8 @@
 
 </main>
 
-<div class="intro fixed bg-washed-green br1 shadow-5">
-  <div class="absolute--fill overflow-auto w-100 h-100 pa4 pa5-l">
+<aside id="intro" class="intro fixed bg-washed-green br1 shadow-5">
+  <div id="intro-content" class="absolute--fill overflow-auto w-100 h-100 pa4 pa5-l">
 
     <p class="f6 f5-ns lh-copy tj center dark-gray mt0">
       When considering what to create for a <a class="link dim dark-gray underline"
@@ -601,9 +600,9 @@
       article is "<a href="http://mrmrs.github.io/writing/2016/03/24/scalable-css/"
       class="link dim dark-gray underline">Css and Scalability</a>" written by <a
       href="http://mrmrs.cc/" class="link dim dark-gray underline">Adam Morse</a> (the creator of
-      Tachyons himself!) in 2016. It was his article that first introduced me to Functional/Atomic CSS. With
-      Tachyons, when I'm designing UI for a page or project I actually get to spend that time <em>designing</em>,
-      and not figuring out how to design.
+      Tachyons himself!) in 2016. It was his article that first introduced me to Functional/Atomic
+      CSS. With Tachyons, when I'm designing UI for a page or project I actually get to spend that
+      time <em>designing</em>, and not figuring out how to design.
     </p>
     <p class="f6 f5-ns i lh-copy tj center dark-gray">
       For additional information on Functional CSS and what it is, check out this projects <a
@@ -612,8 +611,7 @@
     </p>
 
     <div class="flex items-center  bg-washed-green">
-      <a href="https://kevinlazich.com" class="br b--black"><img src="img/logo.png"
-        alt="kl-logo"
+      <a href="https://kevinlazich.com" class="br b--black"><img src="img/logo.png" alt="kl-logo"
         class="w2 pa2 dim" /></a>
       <h6 class="f7 normal ttu pa2">built with <span class="tracked b no-underline"><a
         href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
@@ -621,7 +619,10 @@
     </div>
 
   </div>
-</div>
+</aside>
+
+<button id="intro-toggle" class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray dim pa2 mt5 v-mid ba b--none bg-near-white shadow-5">
+  Introduction</button>
 
 </body>
 </html>
