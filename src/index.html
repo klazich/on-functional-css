@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>On Functional CSS</title>
-  <script async src="js/bundle.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Fira+Mono:200,400,700|PT+Serif:200,400,700">
+  <script defer src="js/bundle.js"></script>
   <link rel="stylesheet" href="css/styles.min.css" />
 </head>
 
@@ -85,9 +86,9 @@
 
       <div class="dtc v-mid h-100 pl2">
         <div class="flex items-center ma0 pa0">
-          <h1 class="f6 fw5 fs-normal black mv0">Adam Morse
+          <h1 class="f6 fw4 fs-normal black mv0">Adam Morse
             <button type="button"
-              class="f7 pointer br2 ba green b--green bg-white ph2 ml2 fw1 v-top">
+              class="f7 pointer tracked-tight br2 ba green b--green bg-white ph2 ml2 v-top">
               Follow
             </button>
           </h1>
@@ -191,37 +192,37 @@
         Some of the code made me laugh:
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Some of the code made me cry.
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Some of it made me laugh and cry at the same time.
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Some of it made me wonder where numbers come from
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Some of it made me thankful that I have read the spec
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Eventually, I stumbled across this class of code.
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         I saw this class and thought - well at least you know what it does. Unlike some of the other
@@ -231,13 +232,13 @@
         I kept reading and stumbled across this:
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         …followed by this very similar block of code…
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         I found myself wondering what the story was behind this next code block. Is it for elements
@@ -245,14 +246,14 @@
         .header-nav-container?
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Here we start to see a mixture of content-semantic (<code>.submenu</code>) with visually
         semantic class names (-3col).
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Css is interesting because unlike other types of code, you are most likely to find the most
@@ -294,7 +295,7 @@
         ran into the above example:
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         That means I would have to find elements that had both of those classes (but not limited to)
@@ -307,7 +308,7 @@
         On the flip side think about this example:
       </p>
 
-      <figure type="snippet" class="css"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         I’d presume that this would make an element have red text. I was traditionally told this is
@@ -319,7 +320,7 @@
         And if I saw this block of html:
       </p>
 
-      <figure type="snippet" class="html"></figure>
+      <figure type="snippet" class="html bg-light-gray nl3 nr3 mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         I’d know without looking at the css what was going to happen. This is what I call a two-way
@@ -477,7 +478,7 @@
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         This is where we come to the crux of the problem I have with any system that requires you to
         map visual styles to components in your css. Content semantics have <b
-        class="fw6 ttu override-sans-serif tracked">nothing to do with visual styles</b>. When I
+        class="override-sans-serif fw7 ttu tracked">nothing to do with visual styles</b>. When I
         used to build things with Legos I never thought ‘oh this is a piece for an engine block’ I
         thought ‘oh cool this is a 1x4 blue lego and I can do anything I want with it’. It didn't
         matter if I was building an underwater aquanauts base or an airplane - I knew exactly how to
@@ -610,18 +611,18 @@
       readme</a>.
     </p>
 
-    <div class="flex items-center  bg-washed-green">
+    <div class="flex items-center bg-washed-green pb0 mt5">
       <a href="https://kevinlazich.com" class="br b--black"><img src="img/logo.png" alt="kl-logo"
-        class="w2 pa2 dim" /></a>
-      <h6 class="f7 normal ttu pa2">built with <span class="tracked b no-underline"><a
+        class="dim w2 pa2" /></a>
+      <h6 class="f7 normal ttu pa2 mv0">built with <span class="tracked b no-underline"><a
         href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
-      <h6 class="--closer pointer f6 black-70 fw6 ttu tracked dim ml-auto pa2 ba shadow-hover">close</h6>
+      <h6 class="--closer pointer f6 black-70 fw6 ttu tracked dim ml-auto pa2 mv0 ba shadow-hover">close</h6>
     </div>
 
   </div>
 </aside>
 
-<button id="intro-toggle" class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray dim pa2 mt5 v-mid ba b--none bg-near-white shadow-5">
+<button id="intro-toggle" class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray dim pa2 v-mid ba b--none bg-near-white shadow-5">
   Introduction</button>
 
 </body>

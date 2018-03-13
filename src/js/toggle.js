@@ -4,11 +4,11 @@
 
 const getElemBy = method => query => document[method](query)
 
-export const toggleElem = (elem) => {
+export const toggleDnFlex = (elem) => {
   elem.classList.toggle('dn')
   elem.classList.toggle('flex')
 }
 
 function toggleElements (...elements) {
-  elements.forEach(toggleElem)
+  elements.forEach(toggleDnFlex)
 }

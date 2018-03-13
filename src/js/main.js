@@ -1,22 +1,8 @@
-import { toggleElem } from './toggle.js'
-
-
-function googleFontLoader() {
-  const WebFont = require('webfontloader')
-  WebFont.load({
-    google: {
-      families: [
-        'Source Sans Pro:200,300,400,500,600,700,800',
-        'Fira Mono:200,300,400,500,600,700,800',
-        'PT Serif:200,300,400,500,600,700,800',
-      ],
-    },
-  })
-}
+import { toggleDnFlex } from './toggle.js'
 
 function headerPinUnpin() {
   let previousScrollY = 0
-  let queued          = false
+  let queued = false
 
   const pin = (query) => {
     const elem = document.querySelector(query)
@@ -37,15 +23,15 @@ function headerPinUnpin() {
     // (Δy < 0) scroll movement up   -> show header
     // (Δy = 0) no scroll movement   -> do nothing
 
-    if ( dy > 0 ) unpin('header')
-    if ( dy < 0 ) pin('header')
+    if (dy > 0) unpin('header')
+    if (dy < 0) pin('header')
 
     previousScrollY = window.scrollY
-    queued          = false
+    queued = false
   }
 
-  const onScroll  = () => {
-    if ( !queued ) requestAnimationFrame(update)
+  const onScroll = () => {
+    if (!queued) requestAnimationFrame(update)
     queued = true
   }
   window.onscroll = onScroll
@@ -55,7 +41,7 @@ function headerPinUnpin() {
 
 function injectSnippets() {
   const figureElements = document.querySelectorAll('figure[type=snippet]')
-  const codeSnippets   = [
+  const codeSnippets = [
     '/* Start of reusable styles here */',
     '.homepage-promos .grid-50 {\n    width: 100%\n}\n.homepage-promos .grid-33 {\n    width: 100%\n}\n.homepage-promos .grid-34 {\n    width: 100%\n}',
     '#seo-container {\n    display: none;\n}',
@@ -74,10 +60,7 @@ function injectSnippets() {
   codeSnippets
     .map(text => `<code class="black-70 lh-copy fw3">${text}</code>`)
     .map(code => `\n    <pre class="pa4 f7 f6-m f5-l overflow-x-auto">${code}</pre>\n`)
-    .forEach((pre, index) => {
-      figureElements[index].className += ' bg-light-gray nl3 nr3 mh4-l'
-      figureElements[index].insertAdjacentHTML('afterbegin', pre)
-    })
+    .forEach((pre, index) => figureElements[index].insertAdjacentHTML('afterbegin', pre))
 }
 
 /**
@@ -95,9 +78,9 @@ function headerStyleToggling() {
   const stdElem = document.querySelectorAll('.--std')
   const altElem = document.querySelectorAll('.--alt')
 
-  const onClick = () =>{
-    stdElem.forEach(toggleElem)
-    altElem.forEach(toggleElem)
+  const onClick = () => {
+    stdElem.forEach(toggleDnFlex)
+    altElem.forEach(toggleDnFlex)
   }
 
   document.querySelector('.--alt .--toggle').addEventListener('click', onClick)
@@ -106,11 +89,11 @@ function headerStyleToggling() {
 
 function metabarToggling() {
   const loggedOt = document.getElementById('loggedOut')
-  const loggedIn  = document.getElementById('loggedIn')
+  const loggedIn = document.getElementById('loggedIn')
 
   const onClick = () => {
-    toggleElem(loggedIn)
-    toggleElem(loggedOt)
+    toggleDnFlex(loggedIn)
+    toggleDnFlex(loggedOt)
   }
 
   loggedOt.querySelector('.--toggle').addEventListener('click', onClick)
@@ -140,9 +123,27 @@ function closeIntro() {
   let isOpen = true
   document.querySelector('#intro-content .--closer')
     .addEventListener('click', () => {
-      document.querySelector('.blur').classList.remove('blur')
-      document.querySelector('#intro').classList.add('dn')
+      document.querySelector('main').classList.toggle('blur')
+      document.querySelector('#intro').classList.toggle('hide')
     })
+}
+
+function toggleIntro() {
+  const element = document.querySelector('#intro-toggle')
+  const introduction = document.querySelector('#intro')
+  const main = document.querySelector('main')
+
+  const toggleBlur = elem => {
+    elem.classList.toggle('blur')
+  }
+  const toggleHide = elem => {
+    elem.classList.toggle('hide')
+  }
+
+  element.addEventListener('click', () => {
+    toggleBlur(main)
+    toggleHide(intro)
+  })
 }
 
 /**
@@ -150,17 +151,19 @@ function closeIntro() {
  */
 
 const init = () => {
-  googleFontLoader()
   injectSnippets()
   headerStyleToggling()
   metabarToggling()
   focusOnSearchInput()
   headerPinUnpin()
   closeIntro()
+  toggleIntro()
 }
 
 /**
  * Execute javascript functions
  */
 
-window.onload = init
+window.onload = () => {
+  init()
+}

@@ -13,8 +13,29 @@
   transform   : translate(-50%, -50%);
   width       : 800px;
   max-width   : 100%;
-  height      : 600px;
+  height      : 625px;
   max-height  : 90%;
+  will-change : transform;
+  transition  : all 0.5s ease;
+
+}
+
+/* #intro:target {
+  transform   : translate(-50%, -50%);
+  will-change : transform;
+  transition  : transform 0.25s ease-in-out;
+  opacity     : 1;
+  filter      : unset;
+} */
+
+main {
+  transition : filter 0.4s ease;
+}
+
+.hide {
+  transform  : translate(-50%, 100%);
+  opacity    : 0;
+
 }
 
 .blur {
@@ -32,8 +53,8 @@ header {
 }
 
 /* uncss:ignore */
-.--unpinned {
-  transform : translateY(-100%);
+.--unpinned, {
+  transform : translateY(-200%);
 }
 
 #upgrade {
