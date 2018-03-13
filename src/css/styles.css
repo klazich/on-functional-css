@@ -20,18 +20,13 @@
 
 }
 
-/* #intro:target {
-  transform   : translate(-50%, -50%);
-  will-change : transform;
-  transition  : transform 0.25s ease-in-out;
-  opacity     : 1;
-  filter      : unset;
-} */
+
 
 main {
   transition : filter 0.4s ease;
 }
 
+/* uncss:ignore */
 .hide {
   transform  : translate(-50%, 100%);
   opacity    : 0;
