@@ -12,6 +12,9 @@ const config = {
     'postcss-nested': {
       /* options */
     },
+    'postcss-font-magician':{
+      /* options */
+    },
     'postcss-cssnext': {
       /* options */
     },
