@@ -87,7 +87,6 @@ function styles() {
   return merge(css, min)
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(resolve(DIR, 'css')))
-    .pipe(browser.stream())
 }
 
 
@@ -97,7 +96,15 @@ function styles() {
 
 function server() {
   browser.init({
-    server: { baseDir: 'dist' },
+    server: {
+      baseDir: 'dist',
+      directory: true
+    },
+    files:[
+      'dist/js/*.js',
+      'dist/css/*.min.css',
+      'dist/index.html'
+    ] ,
   })
 }
 
@@ -111,9 +118,6 @@ function watchers() {
   gulp.watch('src/index.html', content)
   gulp.watch('src/js/*.js', scripts)
   gulp.watch('src/css/*.css', styles)
-  // reload browser on changes
-  gulp.watch('dist/index.html').on('change', () => browser.reload())
-  gulp.watch('dist/js/bundle.js').on('change', () => browser.reload())
 }
 
 
