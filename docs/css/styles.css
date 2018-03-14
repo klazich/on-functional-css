@@ -870,7 +870,7 @@ code {
   z-index: 5;
 }
 
-.intro {
+.modal {
   font-family: 'Fira Mono';
   top: 50%;
   left: 50%;
@@ -881,15 +881,15 @@ code {
   height: 625px;
   max-height: 90%;
   will-change: transform;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
-main {
-  -webkit-transition: -webkit-filter 0.4s ease;
-  transition: -webkit-filter 0.4s ease;
-  transition: filter 0.4s ease;
-  transition: filter 0.4s ease, -webkit-filter 0.4s ease;
+body > section {
+  -webkit-transition: -webkit-filter 0.4s ease-in-out;
+  transition: -webkit-filter 0.4s ease-in-out;
+  transition: filter 0.4s ease-in-out;
+  transition: filter 0.4s ease-in-out, -webkit-filter 0.4s ease-in-out;
 }
 
 .hide {
@@ -899,9 +899,9 @@ main {
 }
 
 .blur {
-  filter: url('data:image/svg+xml;charset=utf-8, <svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="4" /></filter></svg>#filter');
-  -webkit-filter: blur(4px);
-  filter: blur(4px);
+  filter: url('data:image/svg+xml;charset=utf-8, <svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="3" /><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" /></filter></svg>#filter');
+  -webkit-filter: blur(3px) grayscale(1);
+  filter: blur(3px) grayscale(1);
 }
 
 header {
@@ -917,8 +917,7 @@ header {
   transform: translateY(0%);
 }
 
-.--unpinned,
- {
+.--unpinned {
   -webkit-transform: translateY(-200%);
   transform: translateY(-200%);
 }
