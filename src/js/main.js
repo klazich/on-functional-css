@@ -63,17 +63,6 @@ function injectSnippets() {
     .forEach((pre, index) => figureElements[index].insertAdjacentHTML('afterbegin', pre))
 }
 
-/**
- * Toggling
- *
- * do -> change-------on--------when
- *       |class names |element  |event
- *       how                    what
- *       |add/remove            |click
- *                              on
- *                              |element
- */
-
 function headerStyleToggling() {
   const stdElem = document.querySelectorAll('.--std')
   const altElem = document.querySelectorAll('.--alt')
@@ -100,13 +89,6 @@ function metabarToggling() {
   loggedIn.querySelector('.--toggle').addEventListener('click', onClick)
 }
 
-/**
- * focusOnSearchInput
- *
- * This function attaches an event listener on the search icon that will
- * set focus on the text input field when the icon is clicked.
- */
-
 function focusOnSearchInput() {
   document.querySelector('#search>a')
     .addEventListener('click', (event) => {
@@ -114,24 +96,21 @@ function focusOnSearchInput() {
     })
 }
 
+// ----- MODAL
 
-/**
- *
- */
-
-function closeIntro() {
+function closeModal() {
   let isOpen = true
-  document.querySelector('#intro-content .--closer')
+  document.querySelector('#modal-content .modal-closer')
     .addEventListener('click', () => {
-      document.querySelector('main').classList.toggle('blur')
-      document.querySelector('#intro').classList.toggle('hide')
+      document.querySelector('#wrap').classList.toggle('blur')
+      document.querySelector('#modal').classList.toggle('hide')
     })
 }
 
-function toggleIntro() {
-  const element = document.querySelector('#intro-toggle')
-  const introduction = document.querySelector('#intro')
-  const main = document.querySelector('main')
+function toggleModal() {
+  const element = document.querySelector('#modal-toggle')
+  const modal = document.querySelector('#modal')
+  const wrap = document.querySelector('#wrap')
 
   const toggleBlur = elem => {
     elem.classList.toggle('blur')
@@ -141,14 +120,20 @@ function toggleIntro() {
   }
 
   element.addEventListener('click', () => {
-    toggleBlur(main)
-    toggleHide(intro)
+    toggleBlur(wrap)
+    toggleHide(modal)
+    element.blur()
   })
 }
 
 /**
  * Execute all functions from init
  */
+const modal = document.querySelector('#modal')
+
+window.addEventListener('click', () => {
+
+})
 
 const init = () => {
   injectSnippets()
@@ -156,14 +141,9 @@ const init = () => {
   metabarToggling()
   focusOnSearchInput()
   headerPinUnpin()
-  closeIntro()
-  toggleIntro()
+  closeModal()
+  toggleModal()
 }
 
-/**
- * Execute javascript functions
- */
 
-window.onload = () => {
-  init()
-}
+init()

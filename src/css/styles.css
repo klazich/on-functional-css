@@ -6,7 +6,7 @@
   --font-serif : 'PT Serif';
 }
 
-.intro {
+.modal {
   font-family : var(--font-mono);
   top         : 50%;
   left        : 50%;
@@ -16,12 +16,12 @@
   height      : 625px;
   max-height  : 90%;
   will-change : transform;
-  transition  : all 0.5s ease;
+  transition  : all 0.5s ease-in-out;
 
 }
 
-main {
-  transition : filter 0.4s ease;
+body > section {
+  transition : filter 0.4s ease-in-out;
 }
 
 /* uncss:ignore */
@@ -31,7 +31,7 @@ main {
 }
 
 .blur {
-  filter : blur(4px);
+  filter   : blur(3px) grayscale(1);
 }
 
 header {

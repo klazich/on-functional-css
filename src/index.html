@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>On Functional CSS</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Fira+Mono:200,400,700|PT+Serif:200,400,700">
   <script defer src="js/bundle.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Fira+Mono:200,400,700|PT+Serif:200,400,700">
   <link rel="stylesheet" href="css/styles.min.css" />
 </head>
 
 <body class="override-serif w-100 z-5">
 
-<main class="blur">
+<section id="wrap" class="blur">
 
   <header class="sticky override-sans-serif top-0 block bg-white h3 z-5 bb b--light-gray">
 
@@ -75,7 +75,7 @@
 
   </header>
 
-  <section class="mw7 mh3 mb5 center">
+  <main class="mw7 mh3 mb5 center">
 
     <div id="authorCard" class="ma3 mt4-l">
       <div class="dtc h-100">
@@ -570,7 +570,7 @@
       </aside>
 
     </article>
-  </section>
+  </main>
 
   <footer class="flex items-center justify-center h5 bg-washed-green">
     <a href="https://kevinlazich.com" class="br b--black"><img src="img/logo.png"
@@ -580,10 +580,10 @@
     <a href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
   </footer>
 
-</main>
+</section>>
 
-<aside id="intro" class="intro fixed bg-washed-green br1 shadow-5">
-  <div id="intro-content" class="absolute--fill overflow-auto w-100 h-100 pa4 pa5-l">
+<section id="modal" class="modal fixed bg-washed-green br1 shadow-5">
+  <div id="modal-content" class="absolute--fill overflow-auto w-100 h-100 pa4 pa5-l">
 
     <p class="f6 f5-ns lh-copy tj center dark-gray mt0">
       When considering what to create for a <a class="link dim dark-gray underline"
@@ -616,13 +616,13 @@
         class="dim w2 pa2" /></a>
       <h6 class="f7 normal ttu pa2 mv0">built with <span class="tracked b no-underline"><a
         href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
-      <h6 class="--closer pointer f6 black-70 fw6 ttu tracked dim ml-auto pa2 mv0 ba shadow-hover">close</h6>
+      <h6 class="modal-closer pointer f6 black-70 fw6 ttu tracked dim ml-auto pa2 mv0 ba shadow-hover">close</h6>
     </div>
 
   </div>
-</aside>
+</section>
 
-<button id="intro-toggle" class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray dim pa2 v-mid ba b--none bg-near-white shadow-5">
+<button id="modal-toggle" class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray pa2 ba b--none bg-near-white shadow-5">
   Introduction</button>
 
 </body>
