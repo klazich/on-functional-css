@@ -20,8 +20,6 @@
 
 }
 
-
-
 main {
   transition : filter 0.4s ease;
 }
@@ -30,7 +28,6 @@ main {
 .hide {
   transform  : translate(-50%, 100%);
   opacity    : 0;
-
 }
 
 .blur {
@@ -48,7 +45,7 @@ header {
 }
 
 /* uncss:ignore */
-.--unpinned, {
+.--unpinned {
   transform : translateY(-200%);
 }
 
