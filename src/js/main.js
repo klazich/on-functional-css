@@ -34,8 +34,8 @@ function headerPinUnpin() {
     if (!queued) requestAnimationFrame(update)
     queued = true
   }
-  window.onscroll = onScroll
-  // document.addEventListener('scroll', onScroll, false)
+
+  document.addEventListener('scroll', onScroll, false)
 }
 
 
@@ -76,7 +76,7 @@ function headerStyleToggling() {
   document.querySelector('.--std .--toggle').addEventListener('click', onClick)
 }
 
-function metabarToggling() {
+function loginViewToggling() {
   const loggedOt = document.getElementById('loggedOut')
   const loggedIn = document.getElementById('loggedIn')
 
@@ -98,19 +98,13 @@ function focusOnSearchInput() {
 
 // ----- MODAL
 
-function closeModal() {
-  let isOpen = true
-  document.querySelector('#modal-content .modal-closer')
-    .addEventListener('click', () => {
-      document.querySelector('#wrap').classList.toggle('blur')
-      document.querySelector('#modal').classList.toggle('hide')
-    })
-}
-
 function toggleModal() {
-  const element = document.querySelector('#modal-toggle')
-  const modal = document.querySelector('#modal')
-  const wrap = document.querySelector('#wrap')
+
+  const toggle = document.querySelector('#modal-toggle'),
+        bttn   = document.querySelector('#modal-bttn'),
+        modal  = document.querySelector('#modal'),
+        wrap   = document.querySelector('#wrap'),
+        body   = document.body
 
   const toggleBlur = elem => {
     elem.classList.toggle('blur')
@@ -118,30 +112,40 @@ function toggleModal() {
   const toggleHide = elem => {
     elem.classList.toggle('hide')
   }
+  const noScroll = elem => {
+    elem.classList.toggle('noscroll', !modal.classList.contains('hide'))
+  }
 
-  element.addEventListener('click', () => {
+  toggle.addEventListener('click', () => {
     toggleBlur(wrap)
     toggleHide(modal)
-    element.blur()
+    noScroll(body)
+  })
+  bttn.addEventListener('click', () => {
+    toggleBlur(wrap)
+    toggleHide(modal)
+    noScroll(body)
   })
 }
 
 /**
  * Execute all functions from init
  */
-const modal = document.querySelector('#modal')
 
-window.addEventListener('click', () => {
+window.addEventListener('click', (event) => {
+const modal = document.querySelector('#modal')
+  const wrap  = document.querySelector('#wrap')
+  if (event.target === modal) {
+  }
 
 })
 
 const init = () => {
   injectSnippets()
   headerStyleToggling()
-  metabarToggling()
+  loginViewToggling()
   focusOnSearchInput()
   headerPinUnpin()
-  closeModal()
   toggleModal()
 }
 

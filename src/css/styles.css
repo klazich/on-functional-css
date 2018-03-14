@@ -30,6 +30,10 @@ body > section {
   opacity    : 0;
 }
 
+.noscroll {
+  overflow: hidden;
+}
+
 .blur {
   filter   : blur(3px) grayscale(1);
 }
