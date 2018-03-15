@@ -601,6 +601,11 @@ code {
   padding-left: 1rem;
 }
 
+.pr3 {
+  padding-right: 16px;
+  padding-right: 1rem;
+}
+
 .pb0 {
   padding-bottom: 0;
 }
@@ -870,6 +875,10 @@ code {
   z-index: 5;
 }
 
+.z-999 {
+  z-index: 999;
+}
+
 .modal {
   font-family: 'Fira Mono';
   top: 50%;
@@ -896,6 +905,10 @@ body > section {
   -webkit-transform: translate(-50%, 100%);
   transform: translate(-50%, 100%);
   opacity: 0;
+}
+
+.noscroll {
+  overflow: hidden;
 }
 
 .blur {
