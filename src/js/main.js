@@ -1,5 +1,7 @@
 import { toggleDnFlex } from './toggle.js'
 
+const pipe = (...fns) => x => fns.reduce((v, f) => f(v), x);
+
 function headerPinUnpin() {
   let previousScrollY = 0
   let queued = false
@@ -90,8 +92,7 @@ function loginViewToggling() {
 }
 
 function focusOnSearchInput() {
-  document.querySelector('#search>a')
-    .addEventListener('click', (event) => {
+  document.querySelector('#search>a').addEventListener('click', event => {
       event.currentTarget.nextElementSibling.focus()
     })
 }
@@ -112,33 +113,31 @@ function toggleModal() {
   const toggleHide = elem => {
     elem.classList.toggle('hide')
   }
-  const noScroll = elem => {
+  const toggleScroll = elem => {
     elem.classList.toggle('noscroll', !modal.classList.contains('hide'))
+  }
+  const toggleMargin = () => {
+    body.classList.toggle('pr3')
+    toggle.classList.toggle('mr3-ns')
   }
 
   toggle.addEventListener('click', () => {
     toggleBlur(wrap)
     toggleHide(modal)
-    noScroll(body)
+    toggleScroll(body)
+    toggleMargin()
   })
   bttn.addEventListener('click', () => {
     toggleBlur(wrap)
     toggleHide(modal)
-    noScroll(body)
+    toggleScroll(body)
+    toggleMargin()
   })
 }
 
 /**
  * Execute all functions from init
  */
-
-window.addEventListener('click', (event) => {
-const modal = document.querySelector('#modal')
-  const wrap  = document.querySelector('#wrap')
-  if (event.target === modal) {
-  }
-
-})
 
 const init = () => {
   injectSnippets()

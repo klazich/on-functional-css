@@ -10,7 +10,47 @@
   <link rel="stylesheet" href="css/styles.min.css" />
 </head>
 
-<body class="override-serif w-100 z-5">
+<body class="override-serif w-100 pr3 z-5 noscroll">
+
+  <section id="modal" class="modal fixed bg-washed-green br1 z-999 shadow-5">
+    <div id="modal-content" class="absolute--fill overflow-auto w-100 h-100 pa4 pa5-l">
+  
+      <p class="f6 f5-ns lh-copy tj center dark-gray mt0">
+        When considering what to create for a <a class="link dim dark-gray underline"
+        href="https://www.codelouisville.org/">Code Louisville</a> front-end project, my first idea
+        was to make something about cats. But, I decided to go with my second idea: create something
+        informative about front-end development. As a topic I wanted to share Functional CSS. But I
+        suck at writing and after coming across <a class="link dim dark-gray underline"
+        href="https://github.com/dwyl/learn-tachyons/issues/13">this</a>, I decided to <em>show</em>
+        rather than <em>tell</em>.
+      </p>
+      <p class="f6 f5-ns lh-copy tj center dark-gray">
+        For my project I recreated a <a class="link dim dark-gray underline"
+        href="https://medium.com/">Medium</a> blog post using the amazing <a
+        class="link dim dark-gray underline" href="http://tachyons.io/">Tachyons</a> css toolkit. The
+        article is "<a href="http://mrmrs.github.io/writing/2016/03/24/scalable-css/"
+        class="link dim dark-gray underline">Css and Scalability</a>" written by <a
+        href="http://mrmrs.cc/" class="link dim dark-gray underline">Adam Morse</a> (the creator of
+        Tachyons himself!) in 2016. It was his article that first introduced me to Functional/Atomic
+        CSS. With Tachyons, when I'm designing UI for a page or project I actually get to spend that
+        time <em>designing</em>, and not figuring out how to design.
+      </p>
+      <p class="f6 f5-ns i lh-copy tj center dark-gray">
+        For additional information on Functional CSS and what it is, check out this projects <a
+        href="https://github.com/klazich/on-functional-css" class="link dim dark-gray underline">
+        readme</a>.
+      </p>
+  
+      <div class="flex items-center bg-washed-green pb0 mt5">
+        <a href="https://kevinlazich.com" class="br b--black"><img src="img/logo.png" alt="kl-logo"
+          class="dim w2 pa2 v-mid" /></a>
+        <h6 class="f7 normal ttu pa2 mv0">built with <span class="tracked b no-underline"><a
+          href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
+        <h6 id="modal-bttn" class="pointer f6 black-70 fw6 ttu tracked dim ml-auto pa2 mv0 ba shadow-hover">close</h6>
+      </div>
+  
+    </div>
+  </section>
 
 <section id="wrap" class="blur">
 
@@ -582,47 +622,7 @@
 
 </section>
 
-<section id="modal" class="modal fixed bg-washed-green br1 shadow-5">
-  <div id="modal-content" class="absolute--fill overflow-auto w-100 h-100 pa4 pa5-l">
-
-    <p class="f6 f5-ns lh-copy tj center dark-gray mt0">
-      When considering what to create for a <a class="link dim dark-gray underline"
-      href="https://www.codelouisville.org/">Code Louisville</a> front-end project, my first idea
-      was to make something about cats. But, I decided to go with my second idea: create something
-      informative about front-end development. As a topic I wanted to share Functional CSS. But I
-      suck at writing and after coming across <a class="link dim dark-gray underline"
-      href="https://github.com/dwyl/learn-tachyons/issues/13">this</a>, I decided to <em>show</em>
-      rather than <em>tell</em>.
-    </p>
-    <p class="f6 f5-ns lh-copy tj center dark-gray">
-      For my project I recreated a <a class="link dim dark-gray underline"
-      href="https://medium.com/">Medium</a> blog post using the amazing <a
-      class="link dim dark-gray underline" href="http://tachyons.io/">Tachyons</a> css toolkit. The
-      article is "<a href="http://mrmrs.github.io/writing/2016/03/24/scalable-css/"
-      class="link dim dark-gray underline">Css and Scalability</a>" written by <a
-      href="http://mrmrs.cc/" class="link dim dark-gray underline">Adam Morse</a> (the creator of
-      Tachyons himself!) in 2016. It was his article that first introduced me to Functional/Atomic
-      CSS. With Tachyons, when I'm designing UI for a page or project I actually get to spend that
-      time <em>designing</em>, and not figuring out how to design.
-    </p>
-    <p class="f6 f5-ns i lh-copy tj center dark-gray">
-      For additional information on Functional CSS and what it is, check out this projects <a
-      href="https://github.com/klazich/on-functional-css" class="link dim dark-gray underline">
-      readme</a>.
-    </p>
-
-    <div class="flex items-center bg-washed-green pb0 mt5">
-      <a href="https://kevinlazich.com" class="br b--black"><img src="img/logo.png" alt="kl-logo"
-        class="dim w2 pa2 v-mid" /></a>
-      <h6 class="f7 normal ttu pa2 mv0">built with <span class="tracked b no-underline"><a
-        href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
-      <h6 id="modal-bttn" class="pointer f6 black-70 fw6 ttu tracked dim ml-auto pa2 mv0 ba shadow-hover">close</h6>
-    </div>
-
-  </div>
-</section>
-
-<span id="modal-toggle" class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray pa2 ba b--none bg-near-white shadow-5">
+<span id="modal-toggle" class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray pa2 mr3-ns ba b--none bg-near-white shadow-5">
   Introduction</span>
 
 </body>
