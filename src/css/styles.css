@@ -1,113 +1,118 @@
-@import 'tachyons';
+@import "tachyons";
 
 :root {
-  --font-mono  : 'Fira Mono';
-  --font-sans  : 'Source Sans Pro';
-  --font-serif : 'PT Serif';
+  --font-mono: "Fira Mono";
+  --font-sans: "Source Sans Pro";
+  --font-serif: "PT Serif";
+  --scrollbar-width: calc(100vw - 100%);
+}
+
+body {
+  margin: 0;
 }
 
 #modal {
-
-  /* top         : 50%; */
-  /* left        : 50%; */
-  /* transform   : translate(-50%, -50%); */
-  /* height      : 625px; */
-  /* max-height  : calc(100% - 100px); */
   position: fixed;
   top: 0;
   left: 0;
-  will-change : transform;
-  transition  : all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   overflow-y: auto;
 }
 
 #modal-content {
-  font-family : var(--font-mono);
-  width       : 700px;
-  max-width   : 90%;
-  margin      : 50px auto;
-  overflow-y  : auto;
+  font-family: var(--font-mono);
+  width: 700px;
+  max-width: 90%;
+  margin: 50px auto;
+  overflow-y: auto;
 }
 
 body > section {
-  transition : filter 0.4s ease-in-out;
+  transition: filter 0.4s ease-in-out;
 }
 
 /* uncss:ignore */
 .hide {
-  transform  : translate(0%, 100%);
-  opacity    : 0;
+  transform: translate(0%, 100%);
+  opacity: 0;
 }
 
+/* uncss:ignore */
 .noscroll {
   overflow: hidden;
 }
 
+/* uncss:ignore */
+.mr-scrollbar-width {
+  margin-right: 17px;
+}
+
+/* uncss:ignore */
 .blur {
-  filter   : blur(3px) grayscale(1);
+  filter: blur(3px) grayscale(1);
 }
 
 header {
-  will-change : transform;
-  transition  : transform 0.25s ease-in-out;
+  will-change: transform;
+  transition: transform 0.25s ease-in-out;
 }
 
 /* uncss:ignore */
 .--pinned {
-  transform : translateY(0%);
+  transform: translateY(0%);
 }
 
 /* uncss:ignore */
 .--unpinned {
-  transform : translateY(-200%);
+  transform: translateY(-200%);
 }
 
 #upgrade {
-  transition : .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 #upgrade:hover {
-  border-color : gray;
+  border-color: gray;
 }
 
 input#input {
-  width      : 0;
-  transition : all .3s ease-in-out;
-  color      : transparent;
+  width: 0;
+  transition: all 0.3s ease-in-out;
+  color: transparent;
 }
 
 input#input:focus {
-  width        : 100%;
-  padding-left : 0.5rem;
-  cursor       : auto;
-  color        : gray;
+  width: 100%;
+  padding-left: 0.5rem;
+  cursor: auto;
+  color: gray;
 }
 
 .sticky {
-  position : sticky;
+  position: sticky;
 }
 
 .html code:before {
-  content : 'HTML';
+  content: "HTML";
 }
 
 .css code:before {
-  content : 'CSS';
+  content: "CSS";
 }
 
 .html code:before,
 .css code:before {
-  float        : right;
-  color        : rgba(0, 0, 0, .1);
-  text-align   : center;
-  font-size    : 0.75em;
-  margin-top   : -25px;
-  margin-right : -20px;
-  font-weight  : 700;
+  float: right;
+  color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 0.75em;
+  margin-top: -25px;
+  margin-right: -20px;
+  font-weight: 700;
 }
 
 pre {
-  tab-size : 4;
+  tab-size: 4;
 }
 
 /*p {
@@ -115,29 +120,35 @@ pre {
 }*/
 
 code {
-  font-family : var(--font-mono, monospace);
+  font-family: var(--font-mono, monospace);
 }
 
 .override-serif {
-  font-family : var(--font-serif, serif);
+  font-family: var(--font-serif, serif);
 }
 
-h1, h2, h3, h4, h5, h6, .override-sans-serif {
-  font-family : var(--font-sans, sans-serif);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.override-sans-serif {
+  font-family: var(--font-sans, sans-serif);
 }
 
 @media print {
   a:after {
-    content         : " (" attr(href) ") ";
-    text-decoration : none;
-    font-weight     : lighter;
-    font-family     : var(--font-mono);
-    font-size       : x-small;
+    content: " (" attr(href) ") ";
+    text-decoration: none;
+    font-weight: lighter;
+    font-family: var(--font-mono);
+    font-size: x-small;
   }
 
   pre {
-    overflow-x  : visible;
-    white-space : pre-wrap;
+    overflow-x: visible;
+    white-space: pre-wrap;
   }
 
   #authorCard,
@@ -146,12 +157,12 @@ h1, h2, h3, h4, h5, h6, .override-sans-serif {
   footer,
   aside,
   form {
-    display : none;
+    display: none;
   }
 
   article {
-    width   : 100% !important;
-    padding : 0 !important;
-    margin  : 0 !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 }
