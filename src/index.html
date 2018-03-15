@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="css/styles.min.css" />
 </head>
 
-<body class="override-serif w-100 pr3 z-5 noscroll">
+<body class="override-serif w-100 pr3-ns z-5 noscroll">
 
-  <section id="modal" class="modal fixed bg-washed-green br1 z-999 shadow-5">
-    <div id="modal-content" class="absolute--fill overflow-auto w-100 h-100 pa4 pa5-l">
-  
+  <section id="modal" class="absolute bg-white-10 br1 w-100 h-100 z-3">
+    <div id="modal-content" class="bg-washed-green pa4 pa5-l z-4 shadow-5">
+
       <p class="f6 f5-ns lh-copy tj center dark-gray mt0">
         When considering what to create for a <a class="link dim dark-gray underline"
         href="https://www.codelouisville.org/">Code Louisville</a> front-end project, my first idea
@@ -35,12 +35,12 @@
         CSS. With Tachyons, when I'm designing UI for a page or project I actually get to spend that
         time <em>designing</em>, and not figuring out how to design.
       </p>
-      <p class="f6 f5-ns i lh-copy tj center dark-gray">
+      <p class="f6 f5-ns i lh-copy measure tc center dark-gray mt5">
         For additional information on Functional CSS and what it is, check out this projects <a
         href="https://github.com/klazich/on-functional-css" class="link dim dark-gray underline">
         readme</a>.
       </p>
-  
+
       <div class="flex items-center bg-washed-green pb0 mt5">
         <a href="https://kevinlazich.com" class="br b--black"><img src="img/logo.png" alt="kl-logo"
           class="dim w2 pa2 v-mid" /></a>
@@ -48,11 +48,11 @@
           href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
         <h6 id="modal-bttn" class="pointer f6 black-70 fw6 ttu tracked dim ml-auto pa2 mv0 ba shadow-hover">close</h6>
       </div>
-  
+
     </div>
   </section>
 
-<section id="wrap" class="blur">
+<section id="wrap" class="blur pr3-ns">
 
   <header class="sticky override-sans-serif top-0 block bg-white h3 z-5 bb b--light-gray">
 
@@ -620,10 +620,10 @@
     <a href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
   </footer>
 
-</section>
+  <span id="modal-toggle" class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray pa2 mr3-ns bg-near-white shadow-5">
+    Introduction</span>
 
-<span id="modal-toggle" class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray pa2 mr3-ns ba b--none bg-near-white shadow-5">
-  Introduction</span>
+</section>
 
 </body>
 </html>

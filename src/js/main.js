@@ -1,4 +1,6 @@
-import { toggleDnFlex } from './toggle.js'
+import {
+  toggleDnFlex
+} from './toggle.js'
 
 const pipe = (...fns) => x => fns.reduce((v, f) => f(v), x);
 
@@ -93,47 +95,34 @@ function loginViewToggling() {
 
 function focusOnSearchInput() {
   document.querySelector('#search>a').addEventListener('click', event => {
-      event.currentTarget.nextElementSibling.focus()
-    })
-}
-
-// ----- MODAL
-
-function toggleModal() {
-
-  const toggle = document.querySelector('#modal-toggle'),
-        bttn   = document.querySelector('#modal-bttn'),
-        modal  = document.querySelector('#modal'),
-        wrap   = document.querySelector('#wrap'),
-        body   = document.body
-
-  const toggleBlur = elem => {
-    elem.classList.toggle('blur')
-  }
-  const toggleHide = elem => {
-    elem.classList.toggle('hide')
-  }
-  const toggleScroll = elem => {
-    elem.classList.toggle('noscroll', !modal.classList.contains('hide'))
-  }
-  const toggleMargin = () => {
-    body.classList.toggle('pr3')
-    toggle.classList.toggle('mr3-ns')
-  }
-
-  toggle.addEventListener('click', () => {
-    toggleBlur(wrap)
-    toggleHide(modal)
-    toggleScroll(body)
-    toggleMargin()
-  })
-  bttn.addEventListener('click', () => {
-    toggleBlur(wrap)
-    toggleHide(modal)
-    toggleScroll(body)
-    toggleMargin()
+    event.currentTarget.nextElementSibling.focus()
   })
 }
+
+/**
+ * Modal introduction toggling
+ */
+// let scrollBarWidth = window.innerWidth - document.body.offsetWidth;
+const
+  toggle = document.querySelector('#modal-toggle'),
+  bttn   = document.querySelector('#modal-bttn'),
+  modal  = document.querySelector('#modal'),
+  wrap   = document.querySelector('#wrap'),
+  body   = document.body
+
+const modalIsOpen = !modal.classList.contains('hide');
+
+[toggle, bttn].forEach(elem => {
+  elem.addEventListener('click', () => {
+    wrap.classList.toggle('blur')
+    modal.classList.toggle('hide')
+    body.classList.toggle('noscroll', modalIsOpen)
+
+    if (modalIsOpen) document.body.style.margin =
+      `0px ${window.innerWidth - document.body.offsetWidth}px 0px 0px`
+  })
+})
+
 
 /**
  * Execute all functions from init
@@ -145,8 +134,6 @@ const init = () => {
   loginViewToggling()
   focusOnSearchInput()
   headerPinUnpin()
-  toggleModal()
 }
-
 
 init()

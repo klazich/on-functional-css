@@ -6,18 +6,27 @@
   --font-serif : 'PT Serif';
 }
 
-.modal {
-  font-family : var(--font-mono);
-  top         : 50%;
-  left        : 50%;
-  transform   : translate(-50%, -50%);
-  width       : 800px;
-  max-width   : 100%;
-  height      : 625px;
-  max-height  : 90%;
+#modal {
+
+  /* top         : 50%; */
+  /* left        : 50%; */
+  /* transform   : translate(-50%, -50%); */
+  /* height      : 625px; */
+  /* max-height  : calc(100% - 100px); */
+  position: fixed;
+  top: 0;
+  left: 0;
   will-change : transform;
   transition  : all 0.5s ease-in-out;
+  overflow-y: auto;
+}
 
+#modal-content {
+  font-family : var(--font-mono);
+  width       : 700px;
+  max-width   : 90%;
+  margin      : 50px auto;
+  overflow-y  : auto;
 }
 
 body > section {
@@ -26,7 +35,7 @@ body > section {
 
 /* uncss:ignore */
 .hide {
-  transform  : translate(-50%, 100%);
+  transform  : translate(0%, 100%);
   opacity    : 0;
 }
 
