@@ -1,5 +1,7 @@
 @import "tachyons";
 
+/* http://www.developerdrive.com/2017/09/using-postcss-with-images/ */
+
 :root {
   --font-mono: "Fira Mono";
   --font-sans: "Source Sans Pro";
@@ -7,34 +9,49 @@
   --scrollbar-width: calc(100vw - 100%);
 }
 
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:--heading,
+.override-sans-serif {
+  font-family: var(--font-sans, sans-serif);
+}
+
 body {
   margin: 0;
+}
+
+code {
+  font-family: var(--font-mono, monospace);
+}
+
+pre {
+  tab-size: 4;
 }
 
 #modal {
   position: fixed;
   top: 0;
   left: 0;
-  transition: all 0.5s ease-in-out;
   overflow-y: auto;
 }
 
 #modal-content {
   font-family: var(--font-mono);
-  width: 700px;
+  width: 720px;
   max-width: 90%;
   margin: 50px auto;
   overflow-y: auto;
 }
 
 body > section {
-  transition: filter 0.4s ease-in-out;
+  /*transition: opacity 0.4s ease-in-out;*/
 }
 
 /* uncss:ignore */
 .hide {
-  transform: translate(0%, 100%);
   opacity: 0;
+  visibility: hidden;
+  overflow : hidden;
 }
 
 /* uncss:ignore */
@@ -53,7 +70,6 @@ body > section {
 }
 
 header {
-  will-change: transform;
   transition: transform 0.25s ease-in-out;
 }
 
@@ -111,31 +127,11 @@ input#input:focus {
   font-weight: 700;
 }
 
-pre {
-  tab-size: 4;
-}
-
-/*p {
-  font-family : var(--font-serif, serif);
-}*/
-
-code {
-  font-family: var(--font-mono, monospace);
-}
-
 .override-serif {
   font-family: var(--font-serif, serif);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.override-sans-serif {
-  font-family: var(--font-sans, sans-serif);
-}
+
 
 @media print {
   a:after {
