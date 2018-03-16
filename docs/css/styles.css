@@ -875,46 +875,57 @@ code {
   z-index: 3;
 }
 
-.z-4 {
-  z-index: 4;
-}
-
 .z-5 {
   z-index: 5;
+}
+
+h1,
+h2,
+h3,
+h6,
+.override-sans-serif {
+  font-family: sans-serif;
+  font-family: "Source Sans Pro";
 }
 
 body {
   margin: 0;
 }
 
+code {
+  font-family: monospace;
+  font-family: "Fira Mono";
+}
+
+pre {
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+}
+
 #modal {
   position: fixed;
   top: 0;
   left: 0;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
   overflow-y: auto;
 }
 
 #modal-content {
   font-family: "Fira Mono";
-  width: 700px;
+  width: 720px;
   max-width: 90%;
   margin: 50px auto;
   overflow-y: auto;
 }
 
 body > section {
-  -webkit-transition: -webkit-filter 0.4s ease-in-out;
-  transition: -webkit-filter 0.4s ease-in-out;
-  transition: filter 0.4s ease-in-out;
-  transition: filter 0.4s ease-in-out, -webkit-filter 0.4s ease-in-out;
+  -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
 .hide {
-  -webkit-transform: translate(0%, 100%);
-  transform: translate(0%, 100%);
   opacity: 0;
+  visibility: hidden;
 }
 
 .noscroll {
@@ -932,7 +943,6 @@ body > section {
 }
 
 header {
-  will-change: transform;
   -webkit-transition: -webkit-transform 0.25s ease-in-out;
   transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
@@ -997,29 +1007,9 @@ input#input:focus {
   font-weight: 700;
 }
 
-pre {
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-}
-
-code {
-  font-family: monospace;
-  font-family: "Fira Mono";
-}
-
 .override-serif {
   font-family: serif;
   font-family: "PT Serif";
-}
-
-h1,
-h2,
-h3,
-h6,
-.override-sans-serif {
-  font-family: sans-serif;
-  font-family: "Source Sans Pro";
 }
 
 @media screen and (min-width: 30em) {
