@@ -919,13 +919,12 @@ pre {
 }
 
 body > section {
-  -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
 .hide {
   opacity: 0;
   visibility: hidden;
+  overflow: hidden;
 }
 
 .noscroll {
