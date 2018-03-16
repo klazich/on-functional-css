@@ -1,0 +1,27 @@
+{
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "rules": {
+    "semi": "off",
+    "no-nested-ternary": "off",
+    "global-require": "off",
+    "linebreak-style": "off",
+    "max-len": [1, 100, 2, { "ignoreUrls": true, "comments": 80 }],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "all",
+        "semi": false 
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": ["prettier"]
+}
