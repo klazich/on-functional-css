@@ -903,22 +903,19 @@ pre {
   tab-size: 4;
 }
 
-#modal {
+.js-modal {
   position: fixed;
   top: 0;
   left: 0;
   overflow-y: auto;
 }
 
-#modal-content {
+.js-modal-content {
   font-family: "Fira Mono";
   width: 720px;
   max-width: 90%;
   margin: 50px auto;
   overflow-y: auto;
-}
-
-body > section {
 }
 
 .hide {
@@ -941,40 +938,42 @@ body > section {
   filter: blur(3px) grayscale(1);
 }
 
-header {
-  -webkit-transition: -webkit-transform 0.25s ease-in-out;
-  transition: -webkit-transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+.filter-animate,
+.filter-animate:hover,
+.filter-animate:focus {
+  -webkit-transition: -webkit-filter .15s ease-in-out;
+  transition: -webkit-filter .15s ease-in-out;
+  transition: filter .15s ease-in-out;
+  transition: filter .15s ease-in-out, -webkit-filter .15s ease-in-out;
 }
 
-.--pinned {
+.all-animate,
+.all-animate:hover,
+.all-animate:focus {
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+}
+
+.js-pinned {
   -webkit-transform: translateY(0%);
   transform: translateY(0%);
 }
 
-.--unpinned {
+.js-unpinned {
   -webkit-transform: translateY(-200%);
   transform: translateY(-200%);
 }
 
-#upgrade {
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-
-#upgrade:hover {
+.hover-b--gray:hover {
   border-color: gray;
 }
 
-input#input {
+input {
   width: 0;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
   color: transparent;
 }
 
-input#input:focus {
+input:focus {
   width: 100%;
   padding-left: 8px;
   padding-left: 0.5rem;
@@ -1075,6 +1074,11 @@ input#input:focus {
 @media screen and (min-width: 30em) and (max-width: 60em) {
   .mb2-m {
     margin-bottom: .5rem;
+  }
+
+  .mh1-m {
+    margin-left: .25rem;
+    margin-right: .25rem;
   }
 
   .f3-m {
