@@ -9,6 +9,7 @@
   --scrollbar-width: calc(100vw - 100%);
 }
 
+/* prettier-ignore */
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 :--heading,
@@ -28,23 +29,19 @@ pre {
   tab-size: 4;
 }
 
-#modal {
+.js-modal {
   position: fixed;
   top: 0;
   left: 0;
   overflow-y: auto;
 }
 
-#modal-content {
+.js-modal-content {
   font-family: var(--font-mono);
   width: 720px;
   max-width: 90%;
   margin: 50px auto;
   overflow-y: auto;
-}
-
-body > section {
-  /*transition: opacity 0.4s ease-in-out;*/
 }
 
 /* uncss:ignore */
@@ -69,35 +66,34 @@ body > section {
   filter: blur(3px) grayscale(1);
 }
 
-header {
-  transition: transform 0.25s ease-in-out;
+.filter-animate, .filter-animate:hover, .filter-animate:focus {
+  transition: filter .15s ease-in-out;
+}
+
+.all-animate, .all-animate:hover, .all-animate:focus {
+  transition: all .15s ease-in-out;
 }
 
 /* uncss:ignore */
-.--pinned {
+.js-pinned {
   transform: translateY(0%);
 }
 
 /* uncss:ignore */
-.--unpinned {
+.js-unpinned {
   transform: translateY(-200%);
 }
 
-#upgrade {
-  transition: 0.2s ease-in-out;
+.hover-b--gray:hover {
+  border-color: var(--gray, gray);
 }
 
-#upgrade:hover {
-  border-color: gray;
-}
-
-input#input {
+input {
   width: 0;
-  transition: all 0.3s ease-in-out;
   color: transparent;
 }
 
-input#input:focus {
+input:focus {
   width: 100%;
   padding-left: 0.5rem;
   cursor: auto;
@@ -130,8 +126,6 @@ input#input:focus {
 .override-serif {
   font-family: var(--font-serif, serif);
 }
-
-
 
 @media print {
   a:after {

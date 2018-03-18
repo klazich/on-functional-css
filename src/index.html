@@ -11,11 +11,11 @@
   <link rel="stylesheet" href="css/styles.min.css" />
 </head>
 
-<body class="override-serif w-100 z-5 noscroll">
+<body class="override-serif w-100 z-5">
 
-<section id="modal" class="absolute bg-white-10 br1 w-100 h-100 z-3">
+<section class="absolute w-100 h-100 z-3 all-animate br1 bg-white-10 js-modal hide">
 
-  <div id="modal-content" class="bg-washed-green pa4 pa5-l shadow-5">
+  <div class="pa4 pa5-l bg-washed-green shadow-5 js-modal-content">
 
     <p class="f6 f5-ns lh-copy tj center dark-gray mt0">
       When considering what to create for a <a class="link dim dark-gray underline"
@@ -34,8 +34,8 @@
       class="link dim dark-gray underline">Css and Scalability</a>" written by
       <a href="http://mrmrs.cc/" class="link dim dark-gray underline">Adam Morse</a> (the creator of
       Tachyons himself!) in 2016. It was his article that first introduced me to Functional/Atomic
-      CSS. With Tachyons, when I'm designing UI for a page or project I actually get to spend that
-      time <em>designing</em>, and not figuring out how to design.
+      CSS. With Tachyons, I actually get to spend more time <em>designing</em>, than figuring out
+      how to design.
     </p>
     <p class="f6 f5-ns i lh-copy measure tc center dark-gray mt5">
       For additional information on Functional CSS and what it is, check out this projects
@@ -51,44 +51,46 @@
       <h6 class="f7 normal ttu pa2 mv0">built with <span class="tracked b no-underline">
             <a href="http://tachyons.io/" class="link black dim">tachyons</a></span></h6>
 
-      <h6 id="modal-bttn"
-        class="pointer f6 black-70 fw6 ttu tracked dim ml-auto pa2 mv0 ba shadow-hover">close</h6>
+      <h6
+        class="pointer f6 black-70 fw6 ttu tracked dim ml-auto pa2 mv0 ba shadow-hover js-modal-bttn">
+        close</h6>
     </div>
   </div>
 
 </section>
 
-<section id="wrap" class="blur mr-scrollbar-width">
+<section class="js-wrap filter-animate">
 
-  <header class="sticky override-sans-serif top-0 block bg-white h3 bb b--light-gray">
+  <header class="override-sans-serif top-0 block sticky h3 bg-white bb b--light-gray all-animate">
 
     <div class="flex items-center mw8 h3 ph3 center">
-      <div class="--alt flex items-center h-100 z-1">
-        <button id="upgrade" type="button"
-          class="f6 link black-70 pointer nowrap ba br2 b--black-20 bg-white pv2 ph3 dn di-ns">
+      <div class="js-std flex items-center h-100 z-1">
+        <button type="button"
+          class="f6 link black-70 pointer nowrap ba br2 b--black-20 hover-b--gray bg-white pv2 ph3 dn di-ns all-animate">
           Upgrade
         </button>
       </div>
 
-      <div class="--alt absolute-ns left-0-ns right-0-ns flex items-center h-100">
+      <!-- Medium wordmark -->
+      <div class="js-std absolute-ns left-0-ns right-0-ns flex items-center h-100">
         <img src="img/medium-logos-master/wordmark/Wordmark_Black.svg"
-          class="--toggle pointer center w4 h-100"
-        />
+          class="js-toggle pointer center w4 h-100" />
       </div>
 
-      <div class="--std items-center h-100 mr3 dn">
+      <!-- Medium monogram -->
+      <div class="js-alt items-center h-100 mr3 dn">
         <img src="img/medium-logos-master/monogram/Monogram.svg"
-          class="--toggle pointer h2 w2 v-mid" />
+          class="js-toggle pointer h2 w2 v-mid" />
       </div>
 
-      <div class="--std items-center h-100 mr3-ns dn">
+      <div class="js-alt items-center h-100 mr3-ns dn">
         <span class="mr3 pa0 br b--black-20 h-50 v-mid"></span>
         <a class="pointer link ml2-ns">
           <span class="f3 f4-l b black-60 nowrap">On Functional CSS</span>
         </a>
       </div>
 
-      <div class="--std items-center h-100 dn">
+      <div class="js-alt items-center h-100 dn">
         <a class="pointer link gray hover-black-80 mr2 dn di-l">
           <img class="v-mid" src="img/icons/twitter.svg" />
         </a>
@@ -99,7 +101,7 @@
 
       <div class="flex items-center ml-auto h-100 z-1">
         <div id="loggedOut" class="flex items-center ml-auto h-100">
-          <a class="--toggle f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
+          <a class="js-toggle f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
           <button type="button"
             class="f6 link green pointer nowrap br2 ba b--green bg-white pv2 ph3">
             Get started
@@ -108,15 +110,18 @@
 
         <div id="loggedIn" class="dn items-center ml-auto h-100">
           <div id="search" class="dn flex-l items-center ml-auto h-100 pl3">
-            <a class="link pointer gray hover-black-80 ml-auto">
+            <a class="link pointer gray hover-black-80 ml-auto all-animate">
               <img class="v-mid" src="img/icons/search.svg">
             </a>
-            <input id="input" class="f6 pointer h2 b--none" placeholder="Search Medium">
+
+            <input class="f6 pointer h2 b--none all-animate" placeholder="Search Medium">
           </div>
-          <a class="gray dn inline-flex-ns pointer hover-black-80 mh3 v-mid">
+
+          <a class="gray dn inline-flex-ns pointer hover-black-80 mh3 v-mid all-animate">
             <img class="v-mid" src="img/icons/notification.svg">
           </a>
-          <a class="--toggle">
+
+          <a class="js-toggle">
             <img src="img/avatar.png" class="pointer br-100 h2 w2 mw2 v-mid">
           </a>
         </div>
@@ -245,37 +250,37 @@
         Some of the code made me laugh:
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Some of the code made me cry.
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Some of it made me laugh and cry at the same time.
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Some of it made me wonder where numbers come from
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Some of it made me thankful that I have read the spec
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Eventually, I stumbled across this class of code.
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         I saw this class and thought - well at least you know what it does. Unlike some of the other
@@ -285,13 +290,13 @@
         I kept reading and stumbled across this:
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         …followed by this very similar block of code…
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         I found myself wondering what the story was behind this next code block. Is it for elements
@@ -299,14 +304,14 @@
         class <code>.header-nav-container</code>?
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Here we start to see a mixture of content-semantic (<code>.submenu</code>) with visually
         semantic class names (-3col).
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         Css is interesting because unlike other types of code, you are most likely to find the most
@@ -348,7 +353,7 @@
         ran into the above example:
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         That means I would have to find elements that had both of those classes (but not limited to)
@@ -361,7 +366,7 @@
         On the flip side think about this example:
       </p>
 
-      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="css bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         I’d presume that this would make an element have red text. I was traditionally told this is
@@ -373,7 +378,7 @@
         And if I saw this block of html:
       </p>
 
-      <figure type="snippet" class="html bg-light-gray nl3 nr3 mh4-l"></figure>
+      <figure type="snippet" class="html bg-light-gray nl3 nr3 mh1-m mh4-l"></figure>
 
       <p class="lh-copy f5 f4-ns fw3 black-80 mv3 mv4-ns">
         I’d know without looking at the css what was going to happen. This is what I call a two-way
@@ -624,16 +629,18 @@
   </main>
 
   <footer class="flex items-center justify-center h5 bg-washed-green">
-    <a href="https://kevinlazich.com" class="br b--black">
+    <!--
+    <a href="https://kevinlazich.com" class="br b&#45;&#45;black">
       <img src="img/logo.png" alt="kl-logo" class="w2 pa2 dim" />
     </a>
     <h6 class="f7 normal ttu pa2">built with <span class="tracked b no-underline">
           <a href="http://tachyons.io/" class="link black dim">tachyons</a></span>
     </h6>
+    -->
   </footer>
 
-  <span id="modal-toggle"
-    class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray pa2 mr3-ns bg-near-white shadow-5">
+  <span
+    class="fixed pointer bottom-1 right-1 f7 override-sans-serif ttu tracked gray pa2 mr3-ns bg-near-white shadow-5 js-modal-toggle">
       Introduction</span>
 
 </section>
