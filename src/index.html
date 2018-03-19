@@ -4,11 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="#e8fdf5" name="theme-color">
+  <meta content="Kevin Lazich" name="author">
   <title>On Functional CSS</title>
   <script defer src="js/bundle.js"></script>
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Fira+Mono:200,400,700|PT+Serif:200,400,700">
-  <link rel="stylesheet" href="css/styles.min.css" />
+  <link rel="stylesheet" href="css/styles.min.css">
+  <link rel="icon" href="img/kl-logo.svg" type="img/svg">
 </head>
 
 <body class="override-serif w-100 z-5">
@@ -28,9 +32,9 @@
     </p>
     <p class="f6 f5-ns lh-copy tj center dark-gray">
       For my project I recreated a <a class="link dim dark-gray underline"
-      href="https://medium.com/">Medium</a> blog post using the amazing <a
-      class="link dim dark-gray underline" href="http://tachyons.io/">Tachyons</a> css toolkit. The
-      article is "<a href="http://mrmrs.github.io/writing/2016/03/24/scalable-css/"
+      href="https://medium.com/">Medium</a> blog post using the amazing
+      <a href="http://tachyons.io/" class="link dim dark-gray underline">Tachyons</a> css toolkit.
+      The article is "<a href="http://mrmrs.github.io/writing/2016/03/24/scalable-css/"
       class="link dim dark-gray underline">Css and Scalability</a>" written by
       <a href="http://mrmrs.cc/" class="link dim dark-gray underline">Adam Morse</a> (the creator of
       Tachyons himself!) in 2016. It was his article that first introduced me to Functional/Atomic
@@ -40,12 +44,12 @@
     <p class="f6 f5-ns i lh-copy measure tc center dark-gray mt5">
       For additional information on Functional CSS and what it is, check out this projects
       <a href="https://github.com/klazich/on-functional-css"
-        class="link dim dark-gray underline"> readme</a>.
+        class="link dim dark-gray underline">readme</a>.
     </p>
 
     <div class="flex items-center bg-washed-green pb0 mt5">
       <a href="https://kevinlazich.com" class="br b--black">
-        <img src="img/logo.png" alt="kl-logo" class="dim w2 pa2 v-mid" />
+        <img src="img/kl-logo.svg" alt="kl-logo" class="black dim w2 pa2 v-mid" />
       </a>
 
       <h6 class="f7 normal ttu pa2 mv0">built with <span class="tracked b no-underline">
@@ -71,18 +75,19 @@
         </button>
       </div>
 
-      <!-- Medium wordmark -->
+      <!-- Medium wordmark (default header view) -->
       <div class="js-std absolute-ns left-0-ns right-0-ns flex items-center h-100">
-        <img src="img/medium-logos-master/wordmark/Wordmark_Black.svg"
-          class="js-toggle pointer center w4 h-100" />
+        <img src="img/medium-logos-master/wordmark/Wordmark_Black.svg" alt="medium wordmark"
+          width="128" class="js-toggle pointer center w4 h-100" />
       </div>
 
-      <!-- Medium monogram -->
+      <!-- Medium monogram (alternative header view) -->
       <div class="js-alt items-center h-100 mr3 dn">
-        <img src="img/medium-logos-master/monogram/Monogram.svg"
+        <img src="img/medium-logos-master/monogram/Monogram.svg" alt="medium monogram"
           class="js-toggle pointer h2 w2 v-mid" />
       </div>
 
+      <!-- Medium like blog name (alternative header view) -->
       <div class="js-alt items-center h-100 mr3-ns dn">
         <span class="mr3 pa0 br b--black-20 h-50 v-mid"></span>
         <a class="pointer link ml2-ns">
@@ -90,16 +95,21 @@
         </a>
       </div>
 
+      <!-- Social bar (alternative header view) -->
       <div class="js-alt items-center h-100 dn">
+        <!-- Twitter icon -->
         <a class="pointer link gray hover-black-80 mr2 dn di-l">
-          <img class="v-mid" src="img/icons/twitter.svg" />
+          <img src="img/icons/twitter.svg" alt="twitter" class="v-mid" width="25" height="25" />
         </a>
+        <!-- Facebook icon -->
         <a class="pointer link gray hover-black-80 dn di-l">
-          <img class="v-mid" src="img/icons/facebook.svg" />
+          <img src="img/icons/facebook.svg" alt="facebook" class="v-mid" width="25" height="25" />
         </a>
       </div>
 
+      <!-- Metabar nav items -->
       <div class="flex items-center ml-auto h-100 z-1">
+        <!-- Logged out metabar view -->
         <div id="loggedOut" class="flex items-center ml-auto h-100">
           <a class="js-toggle f6 pointer link nowrap green mr3 dn di-ns">Sign in</a>
           <button type="button"
@@ -108,21 +118,24 @@
           </button>
         </div>
 
+        <!-- Logged in metabar view -->
         <div id="loggedIn" class="dn items-center ml-auto h-100">
+          <!-- Search nav items -->
           <div id="search" class="dn flex-l items-center ml-auto h-100 pl3">
             <a class="link pointer gray hover-black-80 ml-auto all-animate">
-              <img class="v-mid" src="img/icons/search.svg">
+              <img src="img/icons/search.svg" alt="magnifying glass" width="25" height="25"
+                class="v-mid">
             </a>
-
             <input class="f6 pointer h2 b--none all-animate" placeholder="Search Medium">
           </div>
 
           <a class="gray dn inline-flex-ns pointer hover-black-80 mh3 v-mid all-animate">
-            <img class="v-mid" src="img/icons/notification.svg">
+            <img src="img/icons/notification.svg" alt="bell" width="25" height="25" class="v-mid">
           </a>
 
           <a class="js-toggle">
-            <img src="img/avatar.png" class="pointer br-100 h2 w2 mw2 v-mid">
+            <img src="img/avatar-32.png" alt="avatar" width="32" height="32"
+              class="pointer br-100 h2 w2 mw2 v-mid">
           </a>
         </div>
       </div>
@@ -134,8 +147,8 @@
 
     <div id="authorCard" class="ma3 mt4-l">
       <div class="dtc h-100">
-        <img src="img/mrmrs-avatar.png" class="br-100 pa1 ba b--moon-gray h2 h3-l w2 w3-l v-mid"
-          alt="avatar" />
+        <img src="img/mrmrs-avatar-64.png" alt="avatar"
+          class="br-100 pa1 ba b--moon-gray h2 h3-l w2 w3-l v-mid" />
       </div>
 
       <div class="dtc v-mid h-100 pl2">
@@ -164,7 +177,7 @@
     </div>
 
     <div id="banner" class="mw6 center ph3 mv5">
-      <img src="./img/tachyons-cleaned-flat.svg" class="light-red">
+      <img src="img/tachyons-cleaned-flat.svg" class="light-red">
     </div>
 
     <article class="ph3">
@@ -629,14 +642,12 @@
   </main>
 
   <footer class="flex items-center justify-center h5 bg-washed-green">
-    <!--
-    <a href="https://kevinlazich.com" class="br b&#45;&#45;black">
-      <img src="img/logo.png" alt="kl-logo" class="w2 pa2 dim" />
+    <a href="https://kevinlazich.com" class="br b--black">
+      <img src="img/kl-logo.svg" alt="kl-logo" class="black w2 pa2 dim" />
     </a>
     <h6 class="f7 normal ttu pa2">built with <span class="tracked b no-underline">
           <a href="http://tachyons.io/" class="link black dim">tachyons</a></span>
     </h6>
-    -->
   </footer>
 
   <span
