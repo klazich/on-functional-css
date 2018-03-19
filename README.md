@@ -74,18 +74,18 @@ Run `yarn build` or `npm run build`.
 ## Additional Information
 
 ### Functional CSS
-- [The Case for Atomic CSS](https://johnpolacek.github.io/the-case-for-atomic-css/) (<small>A great collection of links</small>)
+- [The Case for Atomic CSS](https://johnpolacek.github.io/the-case-for-atomic-css/) (A great collection of links)
 
 #### Frameworks/Tool-kits
-- [Tachyons](http://tachyons.io/)          (<small>[**GitHub**](https://github.com/tachyons-css/tachyons/)</small>)
-- [Basscss](http://basscss.com/)           (<small>[**GitHub**](https://github.com/basscss/basscss/)</small>)
-- [Solid CSS](https://solid.buzzfeed.com/) (<small>[**GitHub**](https://github.com/buzzfeed/solid)</small>)
-- [Tailwind CSS](https://tailwindcss.com/) (<small>[**GitHub**](https://github.com/tailwindcss/tailwindcss)</small>)
-- [Atomic CSS](https://acss.io/)           (<small>[**GitHub**](https://github.com/acss-io/atomizer)</small>)
+- [Tachyons](http://tachyons.io/)          ([**GitHub**](https://github.com/tachyons-css/tachyons/))
+- [Basscss](http://basscss.com/)           ([**GitHub**](https://github.com/basscss/basscss/))
+- [Solid CSS](https://solid.buzzfeed.com/) ([**GitHub**](https://github.com/buzzfeed/solid))
+- [Tailwind CSS](https://tailwindcss.com/) ([**GitHub**](https://github.com/tailwindcss/tailwindcss))
+- [Atomic CSS](https://acss.io/)           ([**GitHub**](https://github.com/acss-io/atomizer))
 
 #### Writings
 - [Challenging CSS Best Practices](https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/)
-- [Css and Scalability](http://mrmrs.github.io/writing/2016/03/24/scalable-css/) <small>by **Adam Morse**</small>
+- [Css and Scalability](http://mrmrs.github.io/writing/2016/03/24/scalable-css/) by **Adam Morse**
 - [Full re-write in 10 days with tachyons and functional CSS: A case study](https://hackernoon.com/full-re-write-with-tachyons-and-functional-css-a-case-study-part-1-635ccb5fb00b)
 - [Rationalizing Functional CSS](https://marcelosomers.com/writing/rationalizing-functional-css/)
 
