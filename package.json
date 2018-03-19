@@ -37,12 +37,13 @@
     "postcss-sorting": "^3.1.0",
     "postcss-svgo": "^2.1.6",
     "postcss-uncss": "^0.16.1",
-    "tachyons": "^4.9.1",
     "through2": "^2.0.3",
     "uncss": "^0.16.1",
     "webpack": "^4.0.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tachyons": "^4.9.1"
+  },
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp start",
     "build": "cross-env NODE_ENV=production gulp build",
