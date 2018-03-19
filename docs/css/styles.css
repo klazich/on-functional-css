@@ -954,16 +954,6 @@ pre {
   transition: all .15s ease-in-out;
 }
 
-.js-pinned {
-  -webkit-transform: translateY(0%);
-  transform: translateY(0%);
-}
-
-.js-unpinned {
-  -webkit-transform: translateY(-200%);
-  transform: translateY(-200%);
-}
-
 .hover-b--gray:hover {
   border-color: gray;
 }
