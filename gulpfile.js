@@ -29,13 +29,18 @@ console.log(ENV, 'environment', `build to: '${DIR}/'`)
  */
 
 function images() {
-  return gulp.src('src/img/**/*')
+  return gulp.src('src/**/*.{jpeg,jpg,png,svg}')
     .pipe(newer(resolve(DIR, 'img')))
     .pipe(imagemin({ optimizationLevel: 5 }))
-    .pipe(gulp.dest(resolve(DIR, 'img')))
+    .pipe(gulp.dest(DIR))
 }
 
-const assets = gulp.parallel(images, /* fonts */)
+function misc() {
+  return gulp.src(['src/favicon.ico', 'src/manifest.json'])
+    .pipe(gulp.dest(DIR))
+}
+
+const assets = gulp.parallel(images, misc)
 
 
 /**
@@ -45,7 +50,7 @@ const assets = gulp.parallel(images, /* fonts */)
 function content() {
   return gulp.src('src/index.html')
     .pipe(newer(DIR))
-    .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css'] }))
+    .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css', 'img'] }))
     .pipe(ENV === 'production' ? htmlmin({ collapseWhitespace: true }) : noop())
     .pipe(gulp.dest(DIR))
 }
@@ -97,14 +102,14 @@ function styles() {
 function server() {
   browser.init({
     server: {
-      baseDir: 'dist',
-      directory: true
+      baseDir  : 'dist',
+      directory: true,
     },
-    files:[
+    files : [
       'dist/js/*.js',
       'dist/css/*.min.css',
-      'dist/index.html'
-    ] ,
+      'dist/index.html',
+    ],
   })
 }
 
@@ -115,6 +120,8 @@ function server() {
 
 function watchers() {
   gulp.watch('src/img/**/*', images)
+  gulp.watch(['src/favicon.ico',
+              'src/manifest.json'], misc)
   gulp.watch('src/index.html', content)
   gulp.watch('src/js/*.js', scripts)
   gulp.watch('src/css/*.css', styles)
@@ -132,5 +139,5 @@ const start = gulp.series(build, gulp.parallel(watchers, server))
 gulp.task('default', start)
 
 module.exports = {
-  images, /*fonts,*/ assets, content, styles, scripts, clean, build, start, server, watchers,
+  images, misc, assets, content, styles, scripts, clean, build, start, server, watchers,
 }
