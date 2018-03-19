@@ -1,40 +1,74 @@
+
+// const compose = (...fns) => x => fns.reduceRight((y, f) => f(y), x)
+// const trace = label => value => {
+//   console.log(`${ label }: ${ value }`);
+//   return value;
+// };
+// const composeM = chainMethod => (...ms) => (
+//   ms.reduce((f, g) => x => g(x)[chainMethod](f))
+// );
+// const composePromises = composeM('then');
+
 /**
  * Header pin/unpin on scrolling
  */
 
-let previousScrollY = 0
-let queued          = false
+{
 
-const pin = query => {
-  const elem = document.querySelector(query)
-  elem.classList.remove('js-unpinned')
-  elem.classList.add('js-pinned')
+  let y = 0
+  let painting = false
+  const header = document.querySelector('header')
+
+  window.addEventListener('scroll', throttle(() => {
+    const dy = window.scrollY - y
+
+    // Δy > 0 -> scroll down -> hide header
+    if (dy > 0) header.style = 'transform: translateY(-200%);'
+    // Δy < 0 -> scroll up   -> show header
+    if (dy < 0) header.style = 'transform: translateY(0%);'
+
+    y = window.scrollY
+  }))
+
 }
 
-const unpin = query => {
-  const elem = document.querySelector(query)
-  elem.classList.remove('js-pinned')
-  elem.classList.add('js-unpinned')
+function throttle(handle) {
+  let painting = false    // to flag if painting
+  let savedEvent          // to keep track of the last scrollY
+
+  const runOnRepaint = () => { // fired only when screen has refreshed
+    painting = false           // repaint is over
+    handle(savedEvent)         // passed event to handle
+  }
+
+  return event => {    // the actual event handler
+    savedEvent = event // save our event at each call
+    if (!painting) {   // only if we weren't already doing it
+      painting = true  // repainting is starting
+      requestAnimationFrame(runOnRepaint) // wait for next screen refresh
+    }
+  }
 }
 
-const update = () => {
-  const dy = window.scrollY - previousScrollY // Δy is change in y
-  // (Δy > 0) scroll movement down -> hide header
-  // (Δy < 0) scroll movement up   -> show header
-  // (Δy = 0) no scroll movement   -> do nothing
-  if ( dy > 0 ) unpin('header')
-  if ( dy < 0 ) pin('header')
 
-  previousScrollY = window.scrollY
-  queued          = false
-}
 
-const onScroll = () => {
-  if ( !queued ) requestAnimationFrame(update)
-  queued = true
-}
+// const update = () => {
+//   const dy = window.scrollY - prevScrollY // Δy is change in y
 
-document.addEventListener('scroll', onScroll, false)
+//   if ( dy > 0 ) header.style = 'transform: translateY(-200%);' // scroll down -> hide header
+//   if ( dy < 0 ) header.style = 'transform: translateY(0%);'    // scroll up -> show header
+
+//   painting = false             // frame painted, ready for next
+//   prevScrollY = window.scrollY // hold on to scrollY value for next event
+// }
+
+// const onScroll = () => {
+//   // see: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+//   if ( !painting ) requestAnimationFrame(update)
+//   painting = true
+// }
+
+// document.addEventListener('scroll', onScroll, false)
 
 
 /**
@@ -99,14 +133,15 @@ headerStyleElementToggles.forEach(elem => {
  * Logged in & Logged out views toggling
  */
 
-const loggedViewsElements = [document.querySelector('#loggedOut'), document.querySelector('#loggedIn')]
-const loggedViewsToggles  = loggedViewsElements.map(elem => elem.querySelector('.js-toggle'))
+const queries = ['#loggedOut', '#loggedIn']
+const parents = queries.map(query => document.querySelector(query))
 
-loggedViewsToggles.forEach(elem => {
-  elem.addEventListener('click', () => {
-    loggedViewsElements.forEach(toggleDnFlex)
+parents.map(parent => parent.querySelector('.js-toggle'))
+  .forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      parents.forEach(toggleDnFlex)
+    })
   })
-})
 
 
 /**
@@ -121,7 +156,6 @@ document.querySelector('#search>a').addEventListener('click', event => {
 /**
  * Introduction Modal toggling
  */
-
 
 const modal = document.querySelector('.js-modal')
 const wrap  = document.querySelector('.js-wrap')

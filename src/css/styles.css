@@ -74,16 +74,6 @@ pre {
   transition: all .15s ease-in-out;
 }
 
-/* uncss:ignore */
-.js-pinned {
-  transform: translateY(0%);
-}
-
-/* uncss:ignore */
-.js-unpinned {
-  transform: translateY(-200%);
-}
-
 .hover-b--gray:hover {
   border-color: var(--gray, gray);
 }
