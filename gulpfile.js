@@ -83,7 +83,6 @@ function styles() {
   let css = gulp.src('src/css/styles.css')
     .pipe(sourcemaps.init())
     .pipe(postcss())
-    .pipe(stylefmt())
 
   let min = css.pipe(clone())
     .pipe(cleanCSS())
