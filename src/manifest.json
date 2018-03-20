@@ -1,7 +1,7 @@
 {
   "short_name": "f(css)",
   "name": "On Functional CSS",
-  "start_url": "index.html",
+  "start_url": "index.html?utm_source=homescreen",
   "icons": [
     {
       "src": "/img/kl-logo/kl-logo-144.png",
@@ -32,6 +32,5 @@
   "background_color": "#f4f4f4",
   "theme_color": "#e8fdf5",
   "display": "standalone",
-  "orientation": "portrait",
-  "lang": "en-US"
+  "orientation": "portrait"
 }
