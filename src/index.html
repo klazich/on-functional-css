@@ -2,18 +2,20 @@
 <html lang="en">
 
 <head>
+  <title>On Functional CSS</title>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="#e8fdf5" name="theme-color">
   <meta content="Kevin Lazich" name="author">
-  <title>On Functional CSS</title>
-  <script defer src="js/bundle.js"></script>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Fira+Mono:200,400,700|PT+Serif:200,400,700">
+  <link rel="preload" as="script" href="js/bundle.js">
+  <link rel="preload" as="style" href="css/styles.min.css">
   <link rel="stylesheet" href="css/styles.min.css">
+  <script defer src="js/bundle.js"></script>
+  <link rel="manifest" href="/manifest.json">
   <link rel="icon" href="img/kl-logo/kl-logo-64.png" type="img/png">
 </head>
+
+<!-- https://codelabs.developers.google.com/codelabs/add-to-home-screen/#0 -->
 
 <body class="override-serif w-100 z-5">
 
