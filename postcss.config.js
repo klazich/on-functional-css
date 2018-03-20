@@ -5,8 +5,15 @@ const config = {
   plugins: {
     'postcss-import'          : { /* options */ },
     'postcss-nested'          : { /* options */ },
-    'postcss-font-magician'   : { /* options */ },
     'postcss-cssnext'         : { /* options */ },
+    'postcss-font-magician'   : {
+      variants : {
+        'Fira Mono'      : { '200': [], '400': [], '700': [] },
+        'PT Serif'       : { '200': [], '400': [], '700': [] },
+        'Source Sans Pro': { '200': [], '400': [], '700': [] },
+      },
+      foundries: ['google'],
+    },
     'postcss-svgo'            : { /* options */ },
     'css-mqpacker'            : { /* options */ },
     'postcss-sorting'         :

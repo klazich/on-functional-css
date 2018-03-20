@@ -8,7 +8,6 @@ const sourcemaps = require('gulp-sourcemaps')
 const inline     = require('gulp-inline')
 const clone      = require('gulp-clone')
 const postcss    = require('gulp-postcss')
-const stylefmt   = require('gulp-stylefmt')
 const rename     = require('gulp-rename')
 const merge      = require('merge2')
 const del        = require('del')
@@ -25,7 +24,7 @@ console.log(ENV, 'environment', `build to: '${DIR}/'`)
 
 
 /**
- * Assets (images)
+ * Assets (images & misc.)
  */
 
 function images() {
@@ -36,7 +35,7 @@ function images() {
 }
 
 function misc() {
-  return gulp.src(['src/favicon.ico', 'src/manifest.json'])
+  return gulp.src('src/*.{ico,json}')
     .pipe(gulp.dest(DIR))
 }
 
@@ -50,7 +49,7 @@ const assets = gulp.parallel(images, misc)
 function content() {
   return gulp.src('src/index.html')
     .pipe(newer(DIR))
-    .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css', 'img'] }))
+    .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css', /*'img'*/] }))
     .pipe(ENV === 'production' ? htmlmin({ collapseWhitespace: true }) : noop())
     .pipe(gulp.dest(DIR))
 }
@@ -119,8 +118,7 @@ function server() {
 
 function watchers() {
   gulp.watch('src/img/**/*', images)
-  gulp.watch(['src/favicon.ico',
-              'src/manifest.json'], misc)
+  gulp.watch('src/*.{ico,json}', misc)
   gulp.watch('src/index.html', content)
   gulp.watch('src/js/*.js', scripts)
   gulp.watch('src/css/*.css', styles)
