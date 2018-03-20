@@ -121,6 +121,6 @@ modalToggles.forEach(elem => {
     wrap.classList.toggle('blur')
     wrap.classList.toggle('mr-scrollbar-width')
     modal.classList.toggle('hide')
-    body.classList.toggle('noscroll')
+    document.body.classList.toggle('noscroll')
   })
 })
