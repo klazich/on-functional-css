@@ -1,33 +1,88 @@
 /**
- *
+ * js/main.js
  */
+// {
+//   // bad
+//   ["foo", "bar"].forEach(func.bind(this));
+
+//   // good
+//   ["foo", "bar"].forEach(func, this);
+// }
+
+// {
+//   // bad
+//   var grade
+//   if (result < 50) grade = 'bad'
+//   else if (result < 90) grade = 'good'
+//   else grade = 'excellent'
+
+//   // good
+//   const grade = (() => {
+//     if (result < 50) return 'bad'
+//     if (result < 90) return 'good'
+//     return 'excellent'
+//   })()
+// }
+
+// {
+//   // bad
+//   void function () { /* IIFE */ }();
+
+//   // good
+//   (function () { /* IIFE */ }());
+// }
+
+// {
+//   // bad
+//   const product = (a, b) => a * b
+//   const triple = n => n * 3
+
+//   // good
+//   const product = (a, b) => a * b
+//   const triple = product.bind(null, 3)
+// }
+
+// {
+//   const plus1 = a => a + 1
+//   const mult2 = a => a * 2
+
+//   // bad
+//   mult2(plus1(5)) // => 12
+
+//   // good
+//   const pipeline = (...funcs) => val => funcs.reduce((a, b) => b(a), val)
+//   const addThenMult = pipeline(plus1, mult2)
+//   addThenMult(5) // => 12
+// }
+
+// {
+//   // bad
+//   var me = new Map();
+//   me.set("name", "Ben").set("country", "Belgium");
+
+//   // good
+//   const me = new Map();
+//   me.set("name", "Ben").set("country", "Belgium");
+// }
 
 
-// const compose = (...fns) => x => fns.reduceRight((y, f) => f(y), x)
-// const trace = label => value => {
-//   console.log(`${ label }: ${ value }`);
-//   return value;
-// };
-// const composeM = chainMethod => (...ms) => (
-//   ms.reduce((f, g) => x => g(x)[chainMethod](f))
-// );
-// const composePromises = composeM('then');
+/***** Utility Functions *****/
 
+/***** Elements *****/
 
-/**
- * Header pin/unpin on scrolling
- */
+/***** Scrollbar Width *****/
 
-const header = document.querySelector('header')
+const scrollbarWidth = window.innerWidth - document.body.offsetWidth
+
+/***** Header pin/unpin on scrolling *****/
 
 window.addEventListener('scroll', throttle(onScroll.bind({ y: 0 })))
-
 
 function onScroll() {
   const dy = window.scrollY - this.y
 
-  if ( dy > 0 ) header.style.transform = 'translateY(-200%)'// Δy > 0 -> scroll down -> hide header
-  if ( dy < 0 ) header.style.transform = 'translateY(0%)' // Δy < 0 -> scroll up   -> show header
+  if (dy > 0) header.style.transform = 'translateY(-200%)' // Δy > 0 -> scroll down -> hide header
+  if (dy < 0) header.style.transform = 'translateY(0%)' // Δy < 0 -> scroll up   -> show header
 
   this.y = window.scrollY
 }
@@ -73,13 +128,13 @@ const toggleDnFlex = elem => {
  * Header style toggling
  */
 
-const headerStyleElements       = [
+const headerStyleElements = [
   ...document.querySelectorAll('.js-std'),
-  ...document.querySelectorAll('.js-alt'),
+  ...document.querySelectorAll('.js-alt')
 ]
 const headerStyleElementToggles = [
   document.querySelector('.js-alt .js-toggle'),
-  document.querySelector('.js-std .js-toggle'),
+  document.querySelector('.js-std .js-toggle')
 ]
 
 headerStyleElementToggles.forEach(elem => {
@@ -88,7 +143,6 @@ headerStyleElementToggles.forEach(elem => {
   })
 })
 
-
 /**
  * Logged in & Logged out views toggling
  */
@@ -96,13 +150,11 @@ headerStyleElementToggles.forEach(elem => {
 const queries = ['#loggedOut', '#loggedIn']
 const parents = queries.map(query => document.querySelector(query))
 
-parents.map(parent => parent.querySelector('.js-toggle'))
-  .forEach(toggle => {
+parents.map(parent => parent.querySelector('.js-toggle')).forEach(toggle => {
     toggle.addEventListener('click', () => {
       parents.forEach(toggleDnFlex)
     })
   })
-
 
 /**
  * Introduction modal toggling
