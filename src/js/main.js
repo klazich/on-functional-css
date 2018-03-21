@@ -78,6 +78,7 @@ const scrollbarWidth = window.innerWidth - document.body.offsetWidth
 
 window.addEventListener('scroll', throttle(onScroll.bind({ y: 0 })))
 
+
 function onScroll() {
   const dy = window.scrollY - this.y
 
@@ -110,8 +111,9 @@ function throttle(handle) {
  * Search bar open/close
  */
 
-document.querySelector('#search a').addEventListener('click', event => {
-  event.currentTarget.nextElementSibling.focus()
+document.querySelector('#search a')
+  .addEventListener('click', event => {
+    event.currentTarget.nextElementSibling.focus()
 })
 
 /**
@@ -130,11 +132,11 @@ const toggleDnFlex = elem => {
 
 const headerStyleElements = [
   ...document.querySelectorAll('.js-std'),
-  ...document.querySelectorAll('.js-alt')
+  ...document.querySelectorAll('.js-alt'),
 ]
 const headerStyleElementToggles = [
   document.querySelector('.js-alt .js-toggle'),
-  document.querySelector('.js-std .js-toggle')
+  document.querySelector('.js-std .js-toggle'),
 ]
 
 headerStyleElementToggles.forEach(elem => {
@@ -143,6 +145,7 @@ headerStyleElementToggles.forEach(elem => {
   })
 })
 
+
 /**
  * Logged in & Logged out views toggling
  */
@@ -150,11 +153,13 @@ headerStyleElementToggles.forEach(elem => {
 const queries = ['#loggedOut', '#loggedIn']
 const parents = queries.map(query => document.querySelector(query))
 
-parents.map(parent => parent.querySelector('.js-toggle')).forEach(toggle => {
+parents.map(parent => parent.querySelector('.js-toggle'))
+  .forEach(toggle => {
     toggle.addEventListener('click', () => {
       parents.forEach(toggleDnFlex)
     })
   })
+
 
 /**
  * Introduction modal toggling
