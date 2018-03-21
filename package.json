@@ -16,7 +16,6 @@
     "gulp": "^4.0.0",
     "gulp-clean-css": "^3.9.3",
     "gulp-clone": "^2.0.1",
-    "gulp-html-minifier": "^0.1.8",
     "gulp-htmlmin": "^4.0.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-inline": "^0.1.3",
