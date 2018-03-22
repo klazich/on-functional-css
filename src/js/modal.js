@@ -1,5 +1,5 @@
 /**
- * Modal toggling
+ * Modal Toggling
  */
 
 const body = document.body

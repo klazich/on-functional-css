@@ -1,5 +1,5 @@
 /**
- * Toggling header nav views: Logged in & Logged out
+ * Header nav Toggling (Logged-in/Logged-out)
  */
 
 import { toggleDnFlex } from './helpers'
@@ -15,7 +15,7 @@ export default {
   type: 'click',
   handle: onClick,
   triggers: [
-    viewLoggedOut.querySelector('.js-toggle'),
-    viewLoggedIn.querySelector('.js-toggle'),
+    document.querySelector('#loggedIn .js-toggle'),
+    document.querySelector('#loggedOut .js-toggle'),
   ],
 }

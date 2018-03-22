@@ -5,6 +5,7 @@
 
 import modal from './modal'
 import headerNav from './headerNav'
+import headerTheme from './headerTheme'
 
 /***** Add Listeners *********************************************************/
 
@@ -19,6 +20,9 @@ modal.triggers.forEach(elem => {
 })
 headerNav.triggers.forEach(elem => {
   elem.addEventListener(headerNav.type, headerNav.handle)
+})
+headerTheme.triggers.forEach(elem => {
+  elem.addEventListener(headerTheme.type, headerTheme.handle)
 })
 
 /***** Scrollbar Width *******************************************************/
