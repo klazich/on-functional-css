@@ -1,9 +1,8 @@
 /**
  * Toggling header nav views: Logged in & Logged out
  */
-import { toggleDnFlex } from './helpers'
 
-/***** Elements ********************************/
+import { toggleDnFlex } from './helpers'
 
 const
   viewLoggedIn = document.querySelector('#loggedIn'),
@@ -11,13 +10,9 @@ const
   logInBttn = viewLoggedOut.querySelector('.js-toggle'),
   logOutBttn = viewLoggedIn.querySelector('.js-toggle');
 
-/***** Handle **********************************/
-
 const onClick = () => {
   [viewLoggedIn, viewLoggedOut].forEach(toggleDnFlex)
 }
-
-/***** Export **********************************/
 
 export default {
   type: 'click',

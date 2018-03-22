@@ -1,0 +1,10 @@
+.vscode
+.idea
+node_modules
+dist/
+docs/
+assets/
+package-lock.json
+yarn-lock.json
+**/*.log
+.bablerc

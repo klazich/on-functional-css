@@ -46,6 +46,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp start",
     "build": "cross-env NODE_ENV=production gulp build",
-    "git:publish": "git add docs/ && git commit -m \"docs: Build site\" && git push"
+    "git:publish": "git add docs/ && git commit -m \"docs: Build site\" && git push",
+    "prettier": "prettier --single-quote --no-semi --trailing-comma es5 --write ."
   }
 }
