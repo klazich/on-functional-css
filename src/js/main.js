@@ -3,6 +3,8 @@
  * https://github.com/timoxley/functional-javascript-workshop
  */
 
+import _ from 'lodash'
+
 import modal from './modal'
 import headerNav from './headerNav'
 import headerStyle from './headerStyle'
@@ -31,18 +33,37 @@ searchBar.triggers.forEach(elem => {
 
 /***** Header pin/unpin on scrolling *****************************************/
 
-window.addEventListener('scroll', throttle(onScroll.bind({ y: 0 })))
+window.addEventListener('scroll', _.throttle(onScroll))
+window.addEventListener('scroll', throttle(onScroll))
 
 const header = document.querySelector('header')
 
+let aa = 0
+let bb = 0
+let y = 0
+
 function onScroll() {
-  const dy = window.scrollY - this.y
+  const dy = window.scrollY - y
+  console.log(`${++aa} >>> ${window.scrollY}\t${y}\t${dy}`)
 
   if (dy > 0) header.style.transform = 'translateY(-200%)' // Δy > 0 -> scroll down -> hide header
   if (dy < 0) header.style.transform = 'translateY(0%)' // Δy < 0 -> scroll up   -> show header
 
-  this.y = window.scrollY
+  y = window.scrollY
 }
+
+// function throttle(handler) {
+//   let ticking = false // to flag if painting
+
+//   return event => { // wait for next screen refresh
+//     if (!ticking) requestAnimationFrame(() => { // fired only when screen has refreshed
+//       console.log('update!')
+//       ticking = false // reset flag
+//       handler(event)  // pass event to handler
+//     })
+//     ticking = true
+//   }
+// }
 
 function throttle(handle) {
   let painting = false // to flag if painting
@@ -50,6 +71,7 @@ function throttle(handle) {
 
   const runOnRepaint = () => {
     // fired only when screen has refreshed
+    console.log(`${++bb} >>> Update!`)
     painting = false // repaint is over
     handle(savedEvent) // passed event to handle
   }

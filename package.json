@@ -44,6 +44,7 @@
     "webpack": "^4.0.1"
   },
   "dependencies": {
+    "lodash": "^4.17.5",
     "tachyons": "^4.9.1"
   },
   "scripts": {
