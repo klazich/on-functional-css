@@ -1,4 +1,4 @@
-# On Functional CSS <small><abbr title="Functional CSS">*f*(css)</abbr></small>
+# On Functional CSS <small><abbr title="Functional CSS">_f_(css)</abbr></small>
 
 Recreating a [Medium](https://medium.com/) style article/blog post using [Tachyons](http://tachyons.io/), the css toolkit.
 
@@ -6,20 +6,19 @@ Recreating a [Medium](https://medium.com/) style article/blog post using [Tachyo
 
 ## Table of Contents
 
-- [**Introduction**](#introduction)
-  - [What is Functional CSS?](#what-is-functional-css)
-  - [About this project](#about-this-project)
-- [**Clone & Install**](#clone--install)
-- [**Features/Functionality**](#featuresfunctionality)
-  - [Gulp](#gulp)
-  - [PostCSS](#postcss)
-- [**Additional Information**](#additional-information)
-  - [Functional CSS](#functional-css)
-    - [Frameworks/Tool-kits](#frameworkstool-kits)
-    - [Writings](#writings)
-  - [Postcss Resources](#postcss-resources)
-  - [Gulp/Webpack](#gulpwebpack)
-
+* [**Introduction**](#introduction)
+  * [What is Functional CSS?](#what-is-functional-css)
+  * [About this project](#about-this-project)
+* [**Clone & Install**](#clone--install)
+* [**Features/Functionality**](#featuresfunctionality)
+  * [Gulp](#gulp)
+  * [PostCSS](#postcss)
+* [**Additional Information**](#additional-information)
+  * [Functional CSS](#functional-css)
+    * [Frameworks/Tool-kits](#frameworkstool-kits)
+    * [Writings](#writings)
+  * [Postcss Resources](#postcss-resources)
+  * [Gulp/Webpack](#gulpwebpack)
 
 ## Introduction
 
@@ -35,19 +34,21 @@ Article: [Css and Scalability](http://mrmrs.github.io/writing/2016/03/24/scalabl
 by: Adam Morse `@MRMRS`
 
 Recreating page:
-- [Medium Branding Guidelines](https://medium.design/logos-and-brand-guidelines-f1a01a733592)
-- [Making new friends](https://medium.design/making-new-friends-601525dbf5a8)
 
+* [Medium Branding Guidelines](https://medium.design/logos-and-brand-guidelines-f1a01a733592)
+* [Making new friends](https://medium.design/making-new-friends-601525dbf5a8)
 
 ## Clone & Install
 
 Clone the project from Github [here](https://github.com/klazich/on-functional-css).
+
 ```Shell
 $ git clone https://github.com/klazich/on-functional-css.git
 $ cd on-functional-css
 ```
 
 Then install packages with [npm] or [yarn]
+
 ```Shell
 $ yarn
 $ npm install
@@ -56,13 +57,16 @@ $ npm install
 ## Using package.json Scripts
 
 ### Start development server
-Run `yarn start` or `npm run start`.
-> *serves files from* `dist/`
 
+Run `yarn start` or `npm run start`.
+
+> _serves files from_ `dist/`
 
 ### Build production files
+
 Run `yarn build` or `npm run build`.
-> *builds files in* `docs/`
+
+> _builds files in_ `docs/`
 
 ## Features/Functionality
 
@@ -70,24 +74,26 @@ Run `yarn build` or `npm run build`.
 
 ### PostCSS
 
-
 ## Additional Information
 
 ### Functional CSS
-- [The Case for Atomic CSS](https://johnpolacek.github.io/the-case-for-atomic-css/) (A great collection of links)
+
+* [The Case for Atomic CSS](https://johnpolacek.github.io/the-case-for-atomic-css/) (A great collection of links)
 
 #### Frameworks/Tool-kits
-- [Tachyons](http://tachyons.io/)          ([**GitHub**](https://github.com/tachyons-css/tachyons/))
-- [Basscss](http://basscss.com/)           ([**GitHub**](https://github.com/basscss/basscss/))
-- [Solid CSS](https://solid.buzzfeed.com/) ([**GitHub**](https://github.com/buzzfeed/solid))
-- [Tailwind CSS](https://tailwindcss.com/) ([**GitHub**](https://github.com/tailwindcss/tailwindcss))
-- [Atomic CSS](https://acss.io/)           ([**GitHub**](https://github.com/acss-io/atomizer))
+
+* [Tachyons](http://tachyons.io/) ([**GitHub**](https://github.com/tachyons-css/tachyons/))
+* [Basscss](http://basscss.com/) ([**GitHub**](https://github.com/basscss/basscss/))
+* [Solid CSS](https://solid.buzzfeed.com/) ([**GitHub**](https://github.com/buzzfeed/solid))
+* [Tailwind CSS](https://tailwindcss.com/) ([**GitHub**](https://github.com/tailwindcss/tailwindcss))
+* [Atomic CSS](https://acss.io/) ([**GitHub**](https://github.com/acss-io/atomizer))
 
 #### Writings
-- [Challenging CSS Best Practices](https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/)
-- [Css and Scalability](http://mrmrs.github.io/writing/2016/03/24/scalable-css/) by **Adam Morse**
-- [Full re-write in 10 days with tachyons and functional CSS: A case study](https://hackernoon.com/full-re-write-with-tachyons-and-functional-css-a-case-study-part-1-635ccb5fb00b)
-- [Rationalizing Functional CSS](https://marcelosomers.com/writing/rationalizing-functional-css/)
+
+* [Challenging CSS Best Practices](https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/)
+* [Css and Scalability](http://mrmrs.github.io/writing/2016/03/24/scalable-css/) by **Adam Morse**
+* [Full re-write in 10 days with tachyons and functional CSS: A case study](https://hackernoon.com/full-re-write-with-tachyons-and-functional-css-a-case-study-part-1-635ccb5fb00b)
+* [Rationalizing Functional CSS](https://marcelosomers.com/writing/rationalizing-functional-css/)
 
 ### Postcss Resources
 

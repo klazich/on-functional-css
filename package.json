@@ -23,6 +23,7 @@
     "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.4",
+    "husky": "^0.14.3",
     "immutable-css": "^1.1.2",
     "merge2": "^1.2.1",
     "perfectionist": "^2.4.0",
@@ -36,6 +37,8 @@
     "postcss-sorting": "^3.1.0",
     "postcss-svgo": "^2.1.6",
     "postcss-uncss": "^0.16.1",
+    "prettier": "^1.11.1",
+    "pretty-quick": "^1.4.1",
     "through2": "^2.0.3",
     "uncss": "^0.16.1",
     "webpack": "^4.0.1"
@@ -46,7 +49,9 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp start",
     "build": "cross-env NODE_ENV=production gulp build",
-    "git:publish": "git add docs/ && git commit -m \"docs: Build site\" && git push",
-    "prettier": "prettier --single-quote --no-semi --trailing-comma es5 --write ."
+    "git:publish":
+      "git add docs/ && git commit -m \"docs: Build site\" && git push",
+    "prettier": "prettier --write \"**/*.{js,css,json,md}\"",
+    "precommit": "pretty-quick --staged"
   }
 }

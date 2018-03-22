@@ -1,7 +1,7 @@
 const path = require('path')
 
-const ENV     = process.env.NODE_ENV || 'development'
-const OUTDIR  = ENV === 'production' ? 'docs' : 'dist'
+const ENV = process.env.NODE_ENV || 'development'
+const OUTDIR = ENV === 'production' ? 'docs' : 'dist'
 
 let config = {
   mode: ENV,
@@ -9,8 +9,8 @@ let config = {
   entry: path.resolve(__dirname, 'src/js/main.js'),
 
   output: {
-    filename  : 'bundle.js',
-    path      : path.resolve(__dirname, OUTDIR, 'js'),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, OUTDIR, 'js'),
     publicPath: '/js/',
   },
 
@@ -19,8 +19,8 @@ let config = {
   module: {
     rules: [
       {
-        test   : /\.js$/,
-        loader : 'babel-loader',
+        test: /\.js$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
       },
     ],

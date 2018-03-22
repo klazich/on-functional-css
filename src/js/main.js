@@ -21,8 +21,6 @@ headerNav.triggers.forEach(elem => {
   elem.addEventListener(headerNav.type, headerNav.handle)
 })
 
-/***** Elements **************************************************************/
-
 /***** Scrollbar Width *******************************************************/
 
 const scrollbarWidth = window.innerWidth - document.body.offsetWidth
@@ -43,31 +41,30 @@ function onScroll() {
 }
 
 function throttle(handle) {
-  let painting = false    // to flag if painting
-  let savedEvent          // to keep track of the last scrollY
+  let painting = false // to flag if painting
+  let savedEvent // to keep track of the last scrollY
 
-  const runOnRepaint = () => { // fired only when screen has refreshed
-    painting = false           // repaint is over
-    handle(savedEvent)         // passed event to handle
+  const runOnRepaint = () => {
+    // fired only when screen has refreshed
+    painting = false // repaint is over
+    handle(savedEvent) // passed event to handle
   }
 
-  return event => {    // the actual event handler
+  return event => {
+    // the actual event handler
     savedEvent = event // save our event at each call
-    if ( !painting ) { // only if we weren't already doing it
-      painting = true  // repainting is starting
+    if (!painting) {
+      // only if we weren't already doing it
+      painting = true // repainting is starting
       requestAnimationFrame(runOnRepaint) // wait for next screen refresh
     }
   }
 }
 
-
-
-
 /***** Search bar open/close *************************************************/
 
-document.querySelector('#search a')
-  .addEventListener('click', event => {
-    event.currentTarget.nextElementSibling.focus()
+document.querySelector('#search a').addEventListener('click', event => {
+  event.currentTarget.nextElementSibling.focus()
 })
 
 /***** Element show/hide toggling helper *************************************/
@@ -76,7 +73,6 @@ const toggleDnFlex = elem => {
   elem.classList.toggle('dn')
   elem.classList.toggle('flex')
 }
-
 
 /***** Header style toggling *************************************************/
 

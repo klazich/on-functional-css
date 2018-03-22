@@ -1,13 +1,13 @@
-@import "tachyons";
+@import 'tachyons';
 
 /* http://www.developerdrive.com/2017/09/using-postcss-with-images/ */
 
 /* custom properties */
 
 :root {
-  --font-mono: "Fira Mono";
-  --font-sans: "Source Sans Pro";
-  --font-serif: "PT Serif";
+  --font-mono: 'Fira Mono';
+  --font-sans: 'Source Sans Pro';
+  --font-serif: 'PT Serif';
   --scrollbar-width: calc(100vw - 100%);
 }
 
@@ -49,7 +49,7 @@ pre {
 .hide {
   opacity: 0;
   visibility: hidden;
-  overflow : hidden;
+  overflow: hidden;
 }
 
 /* uncss:ignore */
@@ -67,12 +67,16 @@ pre {
   filter: blur(3px) grayscale(1);
 }
 
-.filter-animate, .filter-animate:hover, .filter-animate:focus {
-  transition: filter .15s ease-in-out;
+.filter-animate,
+.filter-animate:hover,
+.filter-animate:focus {
+  transition: filter 0.15s ease-in-out;
 }
 
-.all-animate, .all-animate:hover, .all-animate:focus {
-  transition: all .15s ease-in-out;
+.all-animate,
+.all-animate:hover,
+.all-animate:focus {
+  transition: all 0.15s ease-in-out;
 }
 
 .hover-b--gray:hover {
@@ -96,11 +100,11 @@ input:focus {
 }
 
 .html code:before {
-  content: "HTML";
+  content: 'HTML';
 }
 
 .css code:before {
-  content: "CSS";
+  content: 'CSS';
 }
 
 .html code:before,
@@ -120,7 +124,7 @@ input:focus {
 
 @media print {
   a:after {
-    content: " (" attr(href) ") ";
+    content: ' (' attr(href) ') ';
     text-decoration: none;
     font-weight: lighter;
     font-family: var(--font-mono);
