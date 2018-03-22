@@ -931,10 +931,10 @@ input:focus {
         display: block;
     }
 
-    .inline-flex-ns {
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
+    .flex-ns {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
     }
 
     .lh-title-ns {
@@ -1001,12 +1001,6 @@ input:focus {
 
     .db-l {
         display: block;
-    }
-
-    .flex-l {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
     }
 
     .h3-l {
