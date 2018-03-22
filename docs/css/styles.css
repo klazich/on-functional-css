@@ -808,7 +808,7 @@ code {
 
 h1, h2, h3, h6, .override-sans-serif {
     font-family: sans-serif;
-    font-family: "Source Sans Pro";
+    font-family: 'Source Sans Pro';
 }
 
 body {
@@ -817,7 +817,7 @@ body {
 
 code {
     font-family: monospace;
-    font-family: "Fira Mono";
+    font-family: 'Fira Mono';
 }
 
 pre {
@@ -834,7 +834,7 @@ pre {
 }
 
 .js-modal-content {
-    font-family: "Fira Mono";
+    font-family: 'Fira Mono';
     width: 720px;
     max-width: 90%;
     margin: 50px auto;
@@ -849,10 +849,6 @@ pre {
 
 .noscroll {
     overflow: hidden;
-}
-
-.mr-scrollbar-width {
-    margin-right: 17px;
 }
 
 .blur {
@@ -896,11 +892,11 @@ input:focus {
 }
 
 .html code:before {
-    content: "HTML";
+    content: 'HTML';
 }
 
 .css code:before {
-    content: "CSS";
+    content: 'CSS';
 }
 
 .html code:before, .css code:before {
@@ -915,7 +911,7 @@ input:focus {
 
 .override-serif {
     font-family: serif;
-    font-family: "PT Serif";
+    font-family: 'PT Serif';
 }
 
 @media screen and (min-width:30em) {
@@ -1053,10 +1049,10 @@ input:focus {
 
 @media print {
     a:after {
-        content: " (" attr(href) ") ";
+        content: ' (' attr(href) ') ';
         text-decoration: none;
         font-weight: lighter;
-        font-family: "Fira Mono";
+        font-family: 'Fira Mono';
         font-size: x-small;
     }
 
