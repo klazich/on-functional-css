@@ -8,7 +8,6 @@
   --font-mono: 'Fira Mono';
   --font-sans: 'Source Sans Pro';
   --font-serif: 'PT Serif';
-  --scrollbar-width: calc(100vw - 100%);
 }
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
@@ -55,11 +54,6 @@ pre {
 /* uncss:ignore */
 .noscroll {
   overflow: hidden;
-}
-
-/* uncss:ignore */
-.mr-scrollbar-width {
-  margin-right: 17px;
 }
 
 /* uncss:ignore */

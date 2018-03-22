@@ -5,7 +5,8 @@
 
 import modal from './modal'
 import headerNav from './headerNav'
-import headerTheme from './headerTheme'
+import headerStyle from './headerStyle'
+import searchBar from './searchBar'
 
 /***** Add Listeners *********************************************************/
 
@@ -21,13 +22,12 @@ modal.triggers.forEach(elem => {
 headerNav.triggers.forEach(elem => {
   elem.addEventListener(headerNav.type, headerNav.handle)
 })
-headerTheme.triggers.forEach(elem => {
-  elem.addEventListener(headerTheme.type, headerTheme.handle)
+headerStyle.triggers.forEach(elem => {
+  elem.addEventListener(headerStyle.type, headerStyle.handle)
 })
-
-/***** Scrollbar Width *******************************************************/
-
-const scrollbarWidth = window.innerWidth - document.body.offsetWidth
+searchBar.triggers.forEach(elem => {
+  elem.addEventListener(searchBar.type, searchBar.handle)
+})
 
 /***** Header pin/unpin on scrolling *****************************************/
 
@@ -64,33 +64,3 @@ function throttle(handle) {
     }
   }
 }
-
-/***** Search bar open/close *************************************************/
-
-document.querySelector('#search a').addEventListener('click', event => {
-  event.currentTarget.nextElementSibling.focus()
-})
-
-/***** Element show/hide toggling helper *************************************/
-
-const toggleDnFlex = elem => {
-  elem.classList.toggle('dn')
-  elem.classList.toggle('flex')
-}
-
-/***** Header style toggling *************************************************/
-
-const headerStyleElements = [
-  ...document.querySelectorAll('.js-std'),
-  ...document.querySelectorAll('.js-alt'),
-]
-const headerStyleElementToggles = [
-  document.querySelector('.js-alt .js-toggle'),
-  document.querySelector('.js-std .js-toggle'),
-]
-
-headerStyleElementToggles.forEach(elem => {
-  elem.addEventListener('click', () => {
-    headerStyleElements.forEach(toggleDnFlex)
-  })
-})
