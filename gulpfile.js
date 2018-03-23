@@ -20,8 +20,6 @@ const noop = require('./noop')
 const ENV = process.env.NODE_ENV || 'development'
 const DIR = ENV === 'production' ? 'docs' : 'dist'
 
-console.log(ENV, 'environment', `build to: '${DIR}/'`)
-
 /***** Assets (images & misc.) *****************/
 
 function images() {

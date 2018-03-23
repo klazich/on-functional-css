@@ -9,7 +9,7 @@ import headerStyle from './headerStyle'
 import searchBar from './searchBar'
 import headerPinning from './headerPinning'
 
-/***** Add Listeners *********************************************************/
+/***** Add Listeners ***************************/
 
 modal.triggers.forEach(elem => {
   elem.addEventListener(modal.type, modal.handle)
