@@ -1,7 +1,7 @@
 const ENV = process.env.NODE_ENV || 'development'
 const OUTDIR = ENV === 'production' ? 'docs' : 'dist'
 
-const config = {
+module.exports = {
   plugins: {
     'postcss-import': {},
     'postcss-nested': {},
@@ -29,5 +29,3 @@ const config = {
     'postcss-browser-reporter': ENV === 'production' ? false : {},
   },
 }
-
-module.exports = config

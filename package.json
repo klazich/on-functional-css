@@ -50,7 +50,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp start",
     "build": "cross-env NODE_ENV=production gulp build",
-    "git:publish":
+    "publish-gh-page":
       "git add docs/ && git commit -m \"docs: Build site\" && git push",
     "prettier": "prettier --write \"**/*.{js,css,json,md}\"",
     "precommit": "pretty-quick --staged"

@@ -3,7 +3,7 @@ const path = require('path')
 const ENV = process.env.NODE_ENV || 'development'
 const OUTDIR = ENV === 'production' ? 'docs' : 'dist'
 
-let config = {
+module.exports = {
   mode: ENV,
 
   entry: path.resolve(__dirname, 'src/js/main.js'),
@@ -26,5 +26,3 @@ let config = {
     ],
   },
 }
-
-module.exports = config
