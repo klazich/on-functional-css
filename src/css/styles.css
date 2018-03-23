@@ -116,12 +116,28 @@ input:focus {
   font-family: var(--font-serif, serif);
 }
 
-@media print {
+@media only print {
+  a:before,
+  abbr:before {
+    font-weight: 700;
+  }
+
+  a[href],
+  abbr[title] {
+    text-decoration: none;
+  }
+
   a:after {
     content: ' (' attr(href) ') ';
-    text-decoration: none;
     font-weight: lighter;
-    font-family: var(--font-mono);
+    font-family: 'Fira Mono';
+    font-size: x-small;
+  }
+
+  abbr:after {
+    content: ' (' attr(title) ') ';
+    font-weight: lighter;
+    font-family: 'Fira Mono';
     font-size: x-small;
   }
 
@@ -130,6 +146,8 @@ input:focus {
     white-space: pre-wrap;
   }
 
+  article aside button,
+  .js-intro-bttn,
   #authorCard,
   #banner,
   header,
