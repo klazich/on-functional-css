@@ -1041,10 +1041,24 @@ input:focus {
     }
 }
 
-@media print {
+@media only print {
+    a:before, abbr:before {
+        font-weight: 700;
+    }
+
+    a[href], abbr[title] {
+        text-decoration: none;
+    }
+
     a:after {
         content: ' (' attr(href) ') ';
-        text-decoration: none;
+        font-weight: lighter;
+        font-family: 'Fira Mono';
+        font-size: x-small;
+    }
+
+    abbr:after {
+        content: ' (' attr(title) ') ';
         font-weight: lighter;
         font-family: 'Fira Mono';
         font-size: x-small;
@@ -1055,7 +1069,8 @@ input:focus {
         white-space: pre-wrap;
     }
 
-    #authorCard, #banner, header, footer, aside {
+    article aside button, .js-intro-bttn, #authorCard, #banner, header, footer,
+    aside {
         display: none;
     }
 
