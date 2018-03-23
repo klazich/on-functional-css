@@ -22,9 +22,7 @@ const DIR = ENV === 'production' ? 'docs' : 'dist'
 
 console.log(ENV, 'environment', `build to: '${DIR}/'`)
 
-/**
- * Assets (images & misc.)
- */
+/***** Assets (images & misc.) *****************/
 
 function images() {
   return gulp
@@ -40,9 +38,7 @@ function misc() {
 
 const assets = gulp.parallel(images, misc)
 
-/**
- * Content (html)
- */
+/***** Content (html) **************************/
 
 function content() {
   return gulp
@@ -53,12 +49,9 @@ function content() {
     .pipe(gulp.dest(DIR))
 }
 
-/**
- * Scripts (javascript)
- */
+/***** Scripts (javascript) ********************/
 
 let webpackConfig = require('./webpack.config')
-const browser = Browser.create()
 
 function scripts() {
   return new Promise(resolve => {
@@ -70,9 +63,7 @@ function scripts() {
   })
 }
 
-/**
- * Styles (css)
- */
+/***** Styles (css with postcss) ***************/
 
 function styles() {
   let css = gulp
@@ -90,9 +81,9 @@ function styles() {
     .pipe(gulp.dest(resolve(DIR, 'css')))
 }
 
-/**
- * Server (browser-sync)
- */
+/***** Server (browser-sync) *******************/
+
+const browser = Browser.create()
 
 function server() {
   browser.init({
@@ -104,9 +95,7 @@ function server() {
   })
 }
 
-/**
- * Watchers
- */
+/***** Watchers ********************************/
 
 function watchers() {
   gulp.watch('src/img/**/*', images)
@@ -116,9 +105,7 @@ function watchers() {
   gulp.watch('src/css/*.css', styles)
 }
 
-/**
- * Gulp tasks
- */
+/***** Gulp tasks ******************************/
 
 const clean = () => del([DIR])
 const build = gulp.series(clean, assets, content, scripts, styles)
