@@ -1,8 +1,8 @@
-# On Functional CSS <small><abbr title="Functional CSS">_f_(css)</abbr></small>
+# On Functional CSS
 
 Recreating a [Medium](https://medium.com/) style article/blog post using [Tachyons](http://tachyons.io/), the css toolkit.
 
-<small>[**`CURRENT BUILD`**](https://klazich.github.io/on-functional-css/) `https://klazich.github.io/on-functional-css/`</small>
+[**CURRENT BUILD**](https://klazich.github.io/on-functional-css/) `https://klazich.github.io/on-functional-css/`
 
 ## Table of Contents
 
@@ -11,10 +11,25 @@ Recreating a [Medium](https://medium.com/) style article/blog post using [Tachyo
   * [About this project](#about-this-project)
   * [Code Louisville FEWD Project Requirements](#project-requirements)
 * [**Development**](#development)
-  * [**Requirements**](#requirements)
-  * [**Clone & Install**](#clone--install)
-* [**Features/Functionality**](#featuresfunctionality)
-  * [Gulp](#gulp)
+  * [Requirements](#requirements)
+  * [Clone & Install](#clone--install)
+  * [Building The Webpage](#building-the-webpage)
+  * [NPM scripts](#npm-scripts-packagejson)
+    * [Start developing](#start-developing)
+    * [Build production files](#build-production-files)
+    * [Push build to GitHub Pages](#push-build-to-github-pages)
+    * [Make the code look nice](#make-the-code-look-nice)
+  * [Gulp Tasks](#gulp-tasks-gulpfilejs):
+    [`images`](#images),
+    [`misc`](#misc),
+    [`content`](#content),
+    [`scripts`](#scripts),
+    [`styles`](#styles),
+    [`server`](#server),
+    [`watchers`](#watchers),
+    [`assets`](#assets),
+    [`build`](#build),
+    [`start`](#start)
   * [PostCSS](#postcss)
 * [**Additional Information**](#additional-information)
   * [Functional CSS](#functional-css)
@@ -53,8 +68,6 @@ by [Adam Morse](http://mrmrs.cc/) (the creator of Tachyons himself!) in 2016. It
 article that first introduced me to Functional/Atomic CSS. With Tachyons, I actually get
 to spend more time _designing_, than figuring out how to design.
 
----
-
 Examples of the layout and style I want to recreate:
 
 * [Making new friends](https://medium.design/making-new-friends-601525dbf5a8)
@@ -69,29 +82,34 @@ The tools I will use:
 * I will stick to using [Tachyons](http://tachyons.io/) as much as possible. When
   extending Tachyons I will use these guidelines: [Extending Basscss](https://github.com/basscss/basscss/blob/master/docs/guides/Basics.md#extending-basscss).
 
-# Development
+### Project Requirements
 
-## Requirements
+Follow this link to the [wiki]()
+
+## Development
+
+### Requirements
 
 * Node JS `9.5.0` or later
 
-## Clone & Install
+### Clone & Install
 
-Clone the project from Github, [here](https://github.com/klazich/on-functional-css). Then `cd` into the new directory.
+Clone the project from Github, [here](https://github.com/klazich/on-functional-css).
+Then `cd` into the new directory...
 
 ```shell
 $ git clone https://github.com/klazich/on-functional-css.git
 $ cd on-functional-css
 ```
 
-Then install packages with [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/en/)
+Then install packages with [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/en/)...
 
 ```shell
 $ yarn
 $ npm install
 ```
 
-## Building The Webpage
+### Building The Webpage
 
 The website is built from the source directory: `src/`, where the code is written. With the
 `NODE_ENV` environment variable set to `development`, files will be built to the `dist/`
@@ -101,16 +119,16 @@ Pages requires a `docs` directory to build from_).
 Different packages or options to packages are used depending on how `NODE_ENV` is set. If `NODE_ENV`
 is not set it will run in `development` by default.
 
-## NPM scripts (`package.json`)
+### NPM scripts (`package.json`)
 
 > _I like to use yarn for package management but `npm` will also work._
 
-The `"start"` and `"build"` scripts simply run the [start](#start-group-task) and [build](#build-group-task)
+The `"start"` and `"build"` scripts simply run the [start](#start) and [build](#build)
 Gulp tasks but sets the `NODE_ENV` environment variable before hand.
 
-### Start developing
+#### Start developing
 
-> `$ yarn run start`
+`$ yarn run start`
 
 Sets the `NODE_ENV` environment variable to `development` with [cross-env](https://www.npmjs.com/package/cross-env).
 
@@ -118,108 +136,109 @@ Builds the source files to the `dist/` directory before starting a local server 
 browser. The `src/` directory will be watched for changes and rebuilt when detected. The browser
 will be reloaded or streamed to after changes have been built.
 
-### Build production files
+#### Build production files
 
-> `$ yarn run build`
+`$ yarn run build`
 
 Sets the `NODE_ENV` environment variable to `production` with [cross-env](https://www.npmjs.com/package/cross-env).
 
 Builds the production ready files to `docs`.
 
-### Push build to GitHub Pages
+#### Push build to GitHub Pages
 
-> `$ yarn run publish-gh-page`
+`$ yarn run publish-gh-page`
 
 I use this when I want to push the current build to the GitHub Pages site. It stages changes
 in the `docs/` directory, commits them then pushes to the remote.
 
-### Make the code look nice
+#### Make the code look nice
 
-> `$ yarn run prettier`
+`$ yarn run prettier`
 
 Runs [prettier](https://github.com/prettier/prettier) on the project root. Files with these
 extensions are processed: `.js`, `.css`, `.json`, `.md`.
 
 A `precommit` script is also set that will run prettier on staged files when they are committed.
 
-## Gulp Tasks (`gulpfile.js`)
+### Gulp Tasks (`gulpfile.js`)
 
-**Note:** _`<dest>` is `dist` or `docs` depending on dev or prod build._
+**Note:** _`<dest>` is `dist` or `docs` depending on development or production builds._
 
-### Assets task
+#### Images
 
-> `$ gulp assets`
+`$ gulp images`
 
-Image files and the `manifest.json`
+Optimizes images from `src/img/` and copies them to `<dest>/img/`.
 
-* `gulp images` - Optimizes images from `src/img/` and copies them to `<dest>/img/`.
-* `gulp misc` - Copies `manifest.json` to `<dest>/`.
+#### Misc
 
-### Content task
+`$ gulp misc`
 
-> `$ gulp content`
+Copies `manifest.json` to `<dest>/`.
+
+#### Content
+
+`$ gulp content`
 
 Copies `index.html` from `src/` to `<dest>` and inlines `<img>` tags. If building
 production files, it is also minified.
 
-### Scripts task
+#### Scripts
 
-> `$ gulp scripts`
+`$ gulp scripts`
 
 Javascript is written in ES6 and compiled with [babel](https://babeljs.io/) and bundled
 with [webpack](https://webpack.js.org). Javascript files are read from `src/js/` and
 bundled together to `<dest>/js/bundle.js`.
 
-### Styles task
+#### Styles
 
-> `$ gulp styles`
+`$ gulp styles`
 
 Uses various [postcss](https://github.com/postcss/postcss) processors to compile the css
 (see the [PostCSS](#postcss) section for details on the plugins used). Builds two files to
 `<dest>/css/`: the stylesheet and a minified stylesheet.
 
-### Server task
+#### Server
 
-> `$ gulp server`
+`$ gulp server`
 
 Initiates a development server using [Browsersync](https://browsersync.io/). Browsersync
 will watch `js/`, `css/`, `index.html` at the `<dest>` directory and reload or stream to
 the browser.
 
-### Watchers task
+#### Watchers
 
-> `$ gulp watchers`
+`$ gulp watchers`
 
 Watches for changes in the `src/` directory and executes a build function if something
 is changed.
 
-### Build group task
+### _Grouped tasks_:
 
-> `$ gulp build`
+#### Assets
+
+`$ gulp assets`
+
+Runs the `images` and `misc` tasks in parallel.
+
+#### Build
+
+`$ gulp build`
 
 Using the `clean`, `assets`, `content`, `scripts`, and `styles` tasks (in that order)
 `build` creates the files needed for the site to work.
 
-### Start group task
+#### Start
 
-> `$ gulp start`
+`$ gulp start`
 
-Runs the `build` task then runs the runs the `watchers` and `server` tasks. This builds
+Runs the `build` task before running the `watchers` and `server` tasks. This builds
 the files and also starts up the development server.
 
-## Using `package.json` Scripts
-
-* `start` &mdash; `cross-env NODE_ENV=development gulp start`
-* `build` &mdash; `cross-env NODE_ENV=production gulp build`
-* `git:publish` &mdash; `git add docs/ && git commit -m \"docs: Build site\" && git push`
-* `prettier` &mdash; `prettier --write \"**/*.{js,css,json,md}\"`
-* `precommit` &mdash; `pretty-quick --staged`
-
-## Features/Functionality
-
-### Gulp
-
 ### PostCSS
+
+---
 
 ## Additional Information
 
