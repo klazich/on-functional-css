@@ -89,7 +89,7 @@ body {
     margin: 0;
 }
 
-article, aside, footer, header, nav, section {
+article, aside, footer, header, nav {
     display: block;
 }
 
@@ -179,7 +179,7 @@ button, html [type=button] {
 }
 
 a, article, aside, blockquote, body, code, div, figure, footer, h1, h2, h3, h6,
-header, html, li, main, nav, p, pre, section, ul {
+header, html, li, main, nav, p, pre, ul {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 }
