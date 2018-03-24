@@ -43,7 +43,8 @@ Recreating a [Medium](https://medium.com/) style article/blog post using
 > small, single property, immutable classes that can be assembled into a larger
 > component in HTML.
 >
-> &mdash; _Marcelo Somers_, **_Rationalizing Functional CSS_**
+> &mdash; _Marcelo Somers_,
+> [**_Rationalizing Functional CSS_**](https://marcelosomers.com/writing/rationalizing-functional-css/)
 
 For information on what functional/atomic css means see
 [Additional Information](#additional-information) and read
