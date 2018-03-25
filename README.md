@@ -1,3 +1,5 @@
+<img src="src/img/kl-logo/kl-logo.svg" align="right">
+
 # On Functional CSS
 
 Recreating a [Medium](https://medium.com/) style article/blog post using
@@ -9,8 +11,8 @@ Recreating a [Medium](https://medium.com/) style article/blog post using
 ## Table of Contents
 
 * [**Introduction**](#introduction)
+  * [Background](#background)
   * [What is Functional CSS?](#what-is-functional-css)
-  * [About this project](#about-this-project)
   * [Code Louisville FEWD Project Requirements](#project-requirements)
 * [**Development**](#development)
   * [Requirements](#requirements)
@@ -35,22 +37,11 @@ Recreating a [Medium](https://medium.com/) style article/blog post using
 
 ## Introduction
 
-### What is Functional CSS?
+### About
 
-> If you haven't heard of it, functional CSS (or atomic CSS/utility
-> classes/immutable CSS - I could go on forever. There's not a good name) is the
-> idea that instead of writing big, monolith components in my CSS, I write
-> small, single property, immutable classes that can be assembled into a larger
-> component in HTML.
->
-> &mdash; _Marcelo Somers_,
-> [**_Rationalizing Functional CSS_**](https://marcelosomers.com/writing/rationalizing-functional-css/)
+...
 
-For information on what functional/atomic css means see
-[Additional Information](#additional-information) and read
-"[Let’s Define Exactly What Atomic CSS is](https://css-tricks.com/lets-define-exactly-atomic-css/)"
-
-### About this project
+### Background
 
 When considering what to create for a
 [Code Louisville](https://www.codelouisville.org/) front-end project, my first
@@ -83,6 +74,21 @@ The tools I will use:
 * I will stick to using [Tachyons](http://tachyons.io/) as much as possible.
   When extending Tachyons I will use these guidelines:
   [Extending Basscss](https://github.com/basscss/basscss/blob/master/docs/guides/Basics.md#extending-basscss).
+
+### What is Functional CSS?
+
+> If you haven't heard of it, functional CSS (or atomic CSS/utility
+> classes/immutable CSS - I could go on forever. There's not a good name) is the
+> idea that instead of writing big, monolith components in my CSS, I write
+> small, single property, immutable classes that can be assembled into a larger
+> component in HTML.
+>
+> &mdash; _Marcelo Somers_,
+> [**_Rationalizing Functional CSS_**](https://marcelosomers.com/writing/rationalizing-functional-css/)
+
+For information on what functional/atomic css means see
+[Additional Information](#additional-information) and read
+"[Let’s Define Exactly What Atomic CSS is](https://css-tricks.com/lets-define-exactly-atomic-css/)"
 
 ### Project Requirements
 
