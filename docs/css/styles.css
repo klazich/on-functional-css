@@ -1,26 +1,4 @@
 @font-face {
-    font-family: "PT Serif";
-    font-style: normal;
-    font-weight: 400;
-    src: local("PT Serif"),
-         local(PTSerif-Regular),
-         url(//fonts.gstatic.com/s/ptserif/v9/0Om6Iw1e323HjeZHy8W4rfesZW2xOQ-xsNqO47m55DA.eot?#) format("eot"),
-         url(//fonts.gstatic.com/s/ptserif/v9/I-OtoJZa3TeyH6D9oli3ifesZW2xOQ-xsNqO47m55DA.woff2) format("woff2"),
-         url(//fonts.gstatic.com/s/ptserif/v9/sDRi4fY9bOiJUbgq53yZCfesZW2xOQ-xsNqO47m55DA.woff) format("woff");
-}
-
-@font-face {
-    font-family: "PT Serif";
-    font-style: normal;
-    font-weight: 700;
-    src: local("PT Serif Bold"),
-         local(PTSerif-Bold),
-         url(//fonts.gstatic.com/s/ptserif/v9/QABk9IxT-LFTJ_dQzv7xpGfQcKutQXcIrRfyR5jdjY8.eot?#) format("eot"),
-         url(//fonts.gstatic.com/s/ptserif/v9/QABk9IxT-LFTJ_dQzv7xpI4P5ICox8Kq3LLUNMylGO4.woff2) format("woff2"),
-         url(//fonts.gstatic.com/s/ptserif/v9/QABk9IxT-LFTJ_dQzv7xpIbN6UDyHWBl620a-IRfuBk.woff) format("woff");
-}
-
-@font-face {
     font-family: "Fira Mono";
     font-style: normal;
     font-weight: 400;
@@ -40,6 +18,28 @@
          url(//fonts.gstatic.com/s/firamono/v6/l24Wph3FsyKAbJ8dfExTZ3Z2MAKAc2x4R1uOSeegc5U.eot?#) format("eot"),
          url(//fonts.gstatic.com/s/firamono/v6/l24Wph3FsyKAbJ8dfExTZ-gdm0LZdjqr5-oayXSOefg.woff2) format("woff2"),
          url(//fonts.gstatic.com/s/firamono/v6/l24Wph3FsyKAbJ8dfExTZ3hCUOGz7vYGh680lGh-uXM.woff) format("woff");
+}
+
+@font-face {
+    font-family: "PT Serif";
+    font-style: normal;
+    font-weight: 400;
+    src: local("PT Serif"),
+         local(PTSerif-Regular),
+         url(//fonts.gstatic.com/s/ptserif/v9/0Om6Iw1e323HjeZHy8W4rfesZW2xOQ-xsNqO47m55DA.eot?#) format("eot"),
+         url(//fonts.gstatic.com/s/ptserif/v9/I-OtoJZa3TeyH6D9oli3ifesZW2xOQ-xsNqO47m55DA.woff2) format("woff2"),
+         url(//fonts.gstatic.com/s/ptserif/v9/sDRi4fY9bOiJUbgq53yZCfesZW2xOQ-xsNqO47m55DA.woff) format("woff");
+}
+
+@font-face {
+    font-family: "PT Serif";
+    font-style: normal;
+    font-weight: 700;
+    src: local("PT Serif Bold"),
+         local(PTSerif-Bold),
+         url(//fonts.gstatic.com/s/ptserif/v9/QABk9IxT-LFTJ_dQzv7xpGfQcKutQXcIrRfyR5jdjY8.eot?#) format("eot"),
+         url(//fonts.gstatic.com/s/ptserif/v9/QABk9IxT-LFTJ_dQzv7xpI4P5ICox8Kq3LLUNMylGO4.woff2) format("woff2"),
+         url(//fonts.gstatic.com/s/ptserif/v9/QABk9IxT-LFTJ_dQzv7xpIbN6UDyHWBl620a-IRfuBk.woff) format("woff");
 }
 
 @font-face {
@@ -807,17 +807,31 @@ code {
 }
 
 h1, h2, h3, h6, .override-sans-serif {
-    font-family: sans-serif;
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans Pro',
+                 -apple-system,
+                 BlinkMacSystemFont,
+                 avenir next,
+                 avenir,
+                 helvetica neue,
+                 helvetica,
+                 ubuntu,
+                 roboto,
+                 noto,
+                 segoe ui,
+                 arial,
+                 sans-serif;
+}
+
+p, .override-serif {
+    font-family: 'PT Serif', serif, georgia, times, serif;
+}
+
+code, .override-code {
+    font-family: 'Fira Mono';
 }
 
 body {
     margin: 0;
-}
-
-code {
-    font-family: monospace;
-    font-family: 'Fira Mono';
 }
 
 pre {
@@ -907,11 +921,6 @@ input:focus {
     margin-top: -25px;
     margin-right: -20px;
     font-weight: 700;
-}
-
-.override-serif {
-    font-family: serif;
-    font-family: 'PT Serif';
 }
 
 @media screen and (min-width:30em) {
