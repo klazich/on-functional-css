@@ -9,6 +9,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.1.4",
     "css-mqpacker": "^6.0.2",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
@@ -38,19 +39,18 @@
     "postcss-uncss": "^0.16.1",
     "prettier": "^1.11.1",
     "pretty-quick": "^1.4.1",
+    "tachyons": "^4.9.1",
     "through2": "^2.0.3",
     "uncss": "^0.16.1",
     "webpack": "^4.0.1"
   },
   "dependencies": {
-    "browser-sync": "^2.23.6",
-    "cross-env": "^5.1.4",
-    "tachyons": "^4.9.1"
+    "browser-sync": "^2.23.6"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp start",
-    "serve:prod": "browser-sync docs",
-    "build:prod": "cross-env NODE_ENV=production gulp build",
+    "serve": "browser-sync docs",
+    "build": "cross-env NODE_ENV=production gulp build",
     "build:dev": "cross-ev NODE_ENV=development gulp build",
     "publish-gh-page":
       "git add docs/ && git commit -m \"docs: Build site\" && git push",

@@ -88,7 +88,8 @@ The tools I will use:
 
 For information on what functional/atomic css means see
 [Additional Information](#additional-information) and read
-"[Let’s Define Exactly What Atomic CSS is](https://css-tricks.com/lets-define-exactly-atomic-css/)"
+"[Let’s Define Exactly What Atomic CSS is](https://css-tricks.com/lets-define-exactly-atomic-css/).
+"
 
 ### Project Requirements
 
@@ -99,6 +100,7 @@ Follow this link to the [wiki]()
 ### Requirements
 
 * Node JS `9.5.0` or later
+* [yarn](https://yarnpkg.com/en/)
 
 ### Clone & Install
 
