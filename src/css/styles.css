@@ -17,6 +17,11 @@
   font-family: var(--font-sans, sans-serif);
 }
 
+p,
+.override-serif {
+  font-family: var(--font-serif, serif);
+}
+
 body {
   margin: 0;
 }
@@ -110,10 +115,6 @@ input:focus {
   margin-top: -25px;
   margin-right: -20px;
   font-weight: 700;
-}
-
-.override-serif {
-  font-family: var(--font-serif, serif);
 }
 
 @media only print {
