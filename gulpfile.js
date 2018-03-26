@@ -86,10 +86,9 @@ const browser = Browser.create()
 function server() {
   browser.init({
     server: {
-      baseDir: 'dist',
-      directory: true,
+      baseDir: DIR,
     },
-    files: ['dist/js/*.js', 'dist/css/*.min.css', 'dist/index.html'],
+    files: [`${DIR}/js/*.js`, `${DIR}/css/*.min.css`, `${DIR}/index.html`],
   })
 }
 
