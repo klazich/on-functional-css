@@ -99,8 +99,9 @@ Follow this link to the [wiki]()
 
 ### Requirements
 
-* Node JS `9.5.0` or later
-* [yarn](https://yarnpkg.com/en/)
+* [Node JS](https://nodejs.org/en/) `8.10.0` or later
+* [yarn](https://yarnpkg.com/en/) `1.5.1` or later /
+  [npm](https://www.npmjs.com/) `5.6.0` or later
 
 ### Clone & Install
 
@@ -267,16 +268,11 @@ builds the files and also starts up the development server.
 
 #### Frameworks/Tool-kits
 
-* [Tachyons](http://tachyons.io/)
-  ([**GitHub**](https://github.com/tachyons-css/tachyons/))
-* [Basscss](http://basscss.com/)
-  ([**GitHub**](https://github.com/basscss/basscss/))
-* [Solid CSS](https://solid.buzzfeed.com/)
-  ([**GitHub**](https://github.com/buzzfeed/solid))
-* [Tailwind CSS](https://tailwindcss.com/)
-  ([**GitHub**](https://github.com/tailwindcss/tailwindcss))
-* [Atomic CSS](https://acss.io/)
-  ([**GitHub**](https://github.com/acss-io/atomizer))
+* [Tachyons](http://tachyons.io/)([GitHub](https://github.com/tachyons-css/tachyons/))
+* [Basscss](http://basscss.com/)([GitHub](https://github.com/basscss/basscss/))
+* [Solid CSS](https://solid.buzzfeed.com/)([GitHub](https://github.com/buzzfeed/solid))
+* [Tailwind CSS](https://tailwindcss.com/)([GitHub](https://github.com/tailwindcss/tailwindcss))
+* [Atomic CSS](https://acss.io/)([GitHub](https://github.com/acss-io/atomizer))
 
 #### Writings
 
