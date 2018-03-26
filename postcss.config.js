@@ -4,7 +4,6 @@ const OUTDIR = ENV === 'production' ? 'docs' : 'dist'
 module.exports = {
   plugins: {
     'postcss-import': {},
-    'postcss-nested': {},
     'postcss-cssnext': {},
     'postcss-font-magician': {
       variants: {

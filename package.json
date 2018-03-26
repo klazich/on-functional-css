@@ -32,7 +32,6 @@
     "postcss-discard-comments": "^2.0.4",
     "postcss-font-magician": "^2.1.0",
     "postcss-import": "^11.1.0",
-    "postcss-nested": "^3.0.0",
     "postcss-reporter": "^5.0.0",
     "postcss-sorting": "^3.1.0",
     "postcss-svgo": "^2.1.6",
