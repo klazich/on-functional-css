@@ -14,20 +14,23 @@
 
 :--heading,
 .override-sans-serif {
-  font-family: var(--font-sans, sans-serif);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, avenir next,
+    avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial,
+    sans-serif;
 }
 
 p,
 .override-serif {
-  font-family: var(--font-serif, serif);
+  font-family: var(--font-serif), serif, georgia, times, serif;
+}
+
+code,
+.override-code {
+  font-family: var(--font-mono);
 }
 
 body {
   margin: 0;
-}
-
-code {
-  font-family: var(--font-mono, monospace);
 }
 
 pre {
