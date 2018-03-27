@@ -134,14 +134,14 @@ input:focus {
   a:after {
     content: ' (' attr(href) ') ';
     font-weight: lighter;
-    font-family: 'Fira Mono';
+    font-family: var(--font-mono);
     font-size: x-small;
   }
 
   abbr:after {
     content: ' (' attr(title) ') ';
     font-weight: lighter;
-    font-family: 'Fira Mono';
+    font-family: var(--font-mono);
     font-size: x-small;
   }
 
