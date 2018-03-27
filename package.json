@@ -48,11 +48,11 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp start",
-    "serve": "browser-sync docs",
-    "build": "cross-env NODE_ENV=production gulp build",
-    "build:dev": "cross-ev NODE_ENV=development gulp build",
-    "publish-gh-page":
-      "git add docs/ && git commit -m \"docs: Build site\" && git push",
+    "build:dev": "cross-env NODE_ENV=development gulp build",
+    "build:prod": "cross-env NODE_ENV=production gulp build",
+    "predeploy": "yarn run build:prod",
+    "deploy":
+      "git add dist && git commit -m \"Build site\" && git subtree push --prefix dist origin gh-pages",
     "prettier": "prettier --write \"**/*.{js,css,json,md}\"",
     "precommit": "pretty-quick --staged"
   }

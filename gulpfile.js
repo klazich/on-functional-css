@@ -3,7 +3,6 @@ const { resolve } = require('path')
 const gulp = require('gulp')
 const newer = require('gulp-newer')
 const imagemin = require('gulp-imagemin')
-const htmlmin = require('gulp-htmlmin')
 const sourcemaps = require('gulp-sourcemaps')
 const inline = require('gulp-inline')
 const clone = require('gulp-clone')
@@ -15,23 +14,18 @@ const cleanCSS = require('gulp-clean-css')
 const Browser = require('browser-sync')
 const webpack = require('webpack')
 
-const noop = require('./noop')
-
-const ENV = process.env.NODE_ENV || 'development'
-const DIR = ENV === 'production' ? 'docs' : 'dist'
-
 /***** Assets (images & misc.) *****************/
 
 function images() {
   return gulp
     .src('src/**/*.{jpeg,jpg,png,svg}')
-    .pipe(newer(resolve(DIR, 'img')))
+    .pipe(newer(resolve('dist', 'img')))
     .pipe(imagemin({ optimizationLevel: 5 }))
-    .pipe(gulp.dest(DIR))
+    .pipe(gulp.dest('dist'))
 }
 
 function misc() {
-  return gulp.src('src/*.{ico,json}').pipe(gulp.dest(DIR))
+  return gulp.src('src/*.{ico,json}').pipe(gulp.dest('dist'))
 }
 
 const assets = gulp.parallel(images, misc)
@@ -41,10 +35,9 @@ const assets = gulp.parallel(images, misc)
 function content() {
   return gulp
     .src('src/index.html')
-    .pipe(newer(DIR))
-    .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css' /*'img'*/] }))
-    .pipe(ENV === 'production' ? htmlmin({ collapseWhitespace: true }) : noop())
-    .pipe(gulp.dest(DIR))
+    .pipe(newer('dist'))
+    .pipe(inline({ base: 'dist', disabledTypes: ['js', 'css'] }))
+    .pipe(gulp.dest('dist'))
 }
 
 /***** Scripts (javascript) ********************/
@@ -76,7 +69,7 @@ function styles() {
 
   return merge(css, min)
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(resolve(DIR, 'css')))
+    .pipe(gulp.dest(resolve('dist', 'css')))
 }
 
 /***** Server (browser-sync) *******************/
@@ -86,9 +79,9 @@ const browser = Browser.create()
 function server() {
   browser.init({
     server: {
-      baseDir: DIR,
+      baseDir: 'dist',
     },
-    files: [`${DIR}/js/*.js`, `${DIR}/css/*.min.css`, `${DIR}/index.html`],
+    files: ['dist/js/*.js', 'dist/css/*.css', 'dist/index.html'],
   })
 }
 
@@ -104,7 +97,7 @@ function watchers() {
 
 /***** Gulp tasks ******************************/
 
-const clean = () => del([DIR])
+const clean = () => del(['dist'])
 const build = gulp.series(clean, assets, content, scripts, styles)
 const start = gulp.series(build, gulp.parallel(watchers, server))
 
