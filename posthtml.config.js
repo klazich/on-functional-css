@@ -1,11 +1,20 @@
-module.exports = ctx =>
-  ctx.env === 'production'
+module.exports = ctx => {
+  return ctx.env === 'production'
     ? {
-        parser: ctx.ext === '.sml' ? 'posthtml-sugarml' : false,
-        from: ctx.from,
-        to: ctx.to,
         plugins: {
-          'posthtml-plugin': ctx.plugin,
+          htmlnano: {},
         },
       }
-    : {}
+    : {
+        plugins: {
+          'posthtml-inline-assets': {
+            root: 'src',
+          },
+          'posthtml-img-autosize': {
+            root: 'src/img',
+          },
+          'posthtml-beautify': {},
+          htmlnano: {},
+        },
+      }
+}

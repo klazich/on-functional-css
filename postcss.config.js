@@ -1,14 +1,14 @@
-module.exports = ctx =>
-  ctx.env === 'production'
+module.exports = ({ file, options, env }) =>
+  env === 'production'
     ? {
-        map: ctx.options.map,
+        map: options.map,
         plugins: {
           'postcss-uncss': { html: ['dist/index.html'] },
           cssnano: { autoprefixer: false },
         },
       }
     : {
-        map: ctx.options.map,
+        map: options.map,
         plugins: {
           'postcss-import': {},
           'postcss-cssnext': {},
