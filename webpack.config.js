@@ -7,7 +7,7 @@ module.exports = {
 
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, 'tmp', 'js'),
+    path: resolve(__dirname, 'dist', 'js'),
     publicPath: '/js/',
   },
 

@@ -46,27 +46,23 @@ const options =
   process.env.NODE_ENV === 'production'
     ? {
         map: { inline: false },
-        from: 'tmp/css/styles.css',
+        from: 'dist/css/styles.css',
         to: 'dist/css/styles.min.css',
       }
     : {
         map: { inline: false },
         from: 'src/css/styles.css',
-        to: 'tmp/css/styles.css',
+        to: 'dist/css/styles.css',
       }
 
 fs.readFile(
   process.env.NODE_ENV === 'production'
-    ? 'tmp/css/styes.css'
+    ? 'dist/css/styes.css'
     : 'src/css/styles.css',
   (err, css) => {
     postcss(processors)
       .process(css, options)
       .then(result => {
-        fs.mkdir(path.dirname(path.dirname(options.to)), err =>
-          console.log(err)
-        )
-        fs.mkdir(path.dirname(options.to), err => console.log(err))
         fs.writeFile(options.to, result.css, err => console.log(err))
         if (result.map)
           fs.writeFile(options.to + '.map', result.map, err => console.log(err))
