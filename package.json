@@ -48,7 +48,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production gulp build",
     "start": "cross-env NODE_ENV=development gulp start",
-    "serve": "browser-sync docs",
+    "serve": "browser-sync dist",
     "predeploy": "yarn run build",
     "deploy":
       "git add dist && git commit -m \"Build site\" && git subtree push --prefix dist origin gh-pages",

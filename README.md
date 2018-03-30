@@ -10,6 +10,39 @@ Recreating a [Medium](https://medium.com/) style article/blog post using
 
 ---
 
+**Code Louisville Mentor/Reviewer,**
+
+My readme is a bit out of sorts right now so i'll point out the relavent parts
+real quick.
+
+You can view the production build
+[here](https://klazich.github.io/on-functional-css/). Or, after cloning the repo
+and installing the dependencies you can start a local server that serves the
+production build by running:
+
+```shell
+$ yarn serve
+# or
+$ npm run serve
+```
+
+If you are really intrested you can build from source and start the development
+server with:
+
+```shell
+$ yarn start
+# or
+$ npm run start
+```
+
+My unprocessed code can be found in the `src\` directory:
+
+* Html - `src/index.html`
+* Javascript - `src/js/` with entry at `src/js/index.js`
+* Css - `src/css/styles.css` - there is some future css syntax
+
+---
+
 ## Table of Contents
 
 * [**Introduction**](#introduction)
@@ -129,7 +162,7 @@ There are roughly 4 build processes used in this order:
 
 * #### Content
 
-  ...html
+  ...html inline images
 
 * #### Scripts
 
