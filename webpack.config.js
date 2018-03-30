@@ -1,13 +1,17 @@
-const { resolve } = require('path')
+const path = require('path')
+
+const NODE_ENV = process.env.NODE_ENV || 'development'
+const OUT_DIR = path.join(__dirname, NODE_ENV === 'production' ? 'dist' : 'tmp')
+
+console.log(OUT_DIR)
 
 module.exports = {
-  mode: process.env.NODE_ENV || 'development',
-
-  entry: resolve(__dirname, 'src/js/main.js'),
+  mode: NODE_ENV,
+  entry: path.join(__dirname, 'src/js/main.js'),
 
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, 'dist', 'js'),
+    path: path.join(OUT_DIR, 'js'),
     publicPath: '/js/',
   },
 
