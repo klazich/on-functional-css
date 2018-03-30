@@ -7,7 +7,7 @@ console.log(OUT_DIR)
 
 module.exports = {
   mode: NODE_ENV,
-  entry: path.join(__dirname, 'src/js/main.js'),
+  entry: path.join(__dirname, 'src/js/index.js'),
 
   output: {
     filename: 'bundle.js',
