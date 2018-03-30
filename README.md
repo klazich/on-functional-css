@@ -5,8 +5,10 @@
 Recreating a [Medium](https://medium.com/) style article/blog post using
 [Tachyons](http://tachyons.io/), the css toolkit.
 
-[**CURRENT BUILD**](https://klazich.github.io/on-functional-css/)
-`https://klazich.github.io/on-functional-css/`
+> [https://klazich.github.io/on-functional-css/](https://klazich.github.io/on-functional-css/)
+> (built from `gh-pages` branch.)
+
+---
 
 ## Table of Contents
 
@@ -42,22 +44,6 @@ Recreating a [Medium](https://medium.com/) style article/blog post using
 ...
 
 ### Background
-
-When considering what to create for a
-[Code Louisville](https://www.codelouisville.org/) front-end project, my first
-idea was to make something about cats. But, I decided to go with my second idea:
-create something informative about front-end development. As a topic I wanted to
-share Functional CSS. But I suck at writing and after coming across
-[this issue](https://github.com/dwyl/learn-tachyons/issues/13), I decided I
-would _show_ rather than _tell_.
-
-For my project I recreated a [Medium](https://medium.com/) like blog post using
-the amazing [Tachyons](http://tachyons.io/) css toolkit. The article is
-"[Css and Scalability](http://mrmrs.github.io/writing/2016/03/24/scalable-css/)"
-written by [Adam Morse](http://mrmrs.cc/) (the creator of Tachyons himself!)
-in 2016. It was his article that first introduced me to Functional/Atomic CSS.
-With Tachyons, I actually get to spend more time _designing_, than figuring out
-how to design.
 
 Examples of the layout and style I want to recreate:
 
@@ -119,18 +105,38 @@ Then install packages with [npm](https://www.npmjs.com/) or
 
 ```shell
 $ yarn
+# or
 $ npm install
 ```
 
 ### Building The Webpage
 
 The website is built from the source directory: `src/`, where the code is
-written. With the `NODE_ENV` environment variable set to `development`, files
-will be built to the `dist/` directory. With `NODE_ENV=production` files will be
-built to the `docs/` directory (_GitHub Pages requires a `docs` directory to
-build from_). Different packages or options to packages are used depending on
-how `NODE_ENV` is set. If `NODE_ENV` is not set it will run in `development` by
-default.
+written. With the environment variable `NODE_ENV=development` (default), files
+will be built to the `tmp/` directory where a local dev server can serve from.
+With `NODE_ENV=production` files will be built to the `dist/` directory and
+ready to deploy.
+
+There are roughly 4 build processes used in this order:
+
+* #### Assets
+
+  The Assets task involves processing and copying the image and icon files from
+  `src/img/` (and copying `manifest.json`). [gulp-imagemin]() is used to
+  compress and optimize images and add them to the destination directory.
+  [gulp-newer]() make sure only new or changed files are processed (This is very
+  useful when running the dev server).
+
+* #### Content
+
+  ...html
+
+* #### Scripts
+
+  ...javascript webpack babel
+
+* #### Styles
+  ...css postcss
 
 ### NPM scripts (`package.json`)
 
