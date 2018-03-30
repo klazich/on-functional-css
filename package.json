@@ -11,6 +11,7 @@
     "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.4",
     "css-mqpacker": "^6.0.2",
+    "cssnano": "^3.10.0",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^3.9.3",
@@ -36,13 +37,13 @@
     "postcss-uncss": "^0.16.1",
     "prettier": "^1.11.1",
     "pretty-quick": "^1.4.1",
-    "tachyons": "^4.9.1",
     "through2": "^2.0.3",
     "uncss": "^0.16.1",
     "webpack": "^4.0.1"
   },
   "dependencies": {
-    "browser-sync": "^2.23.6"
+    "browser-sync": "^2.23.6",
+    "tachyons": "^4.9.1"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production gulp build",
