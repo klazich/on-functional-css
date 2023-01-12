@@ -42,7 +42,7 @@
     "webpack": "^4.0.1"
   },
   "dependencies": {
-    "browser-sync": "^2.23.6",
+    "browser-sync": "^2.27.11",
     "tachyons": "^4.9.1"
   },
   "scripts": {
